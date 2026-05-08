@@ -37,7 +37,7 @@ Jera Technologies maintains a product portfolio of Jera built products that show
 
 Featured products:
 
-- DAI: Structured AI workflows for retrieval, analysis, evaluation, and synthesis.
+- Structured Analysis Pipeline: AI enabled analysis workflows for source context, structured analysis, and reviewable outputs.
 - Matchup Analyzer: A decision support application that applies structured analysis to sports matchup review.
 
 ## Solution Examples

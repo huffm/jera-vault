@@ -44,3 +44,18 @@ Use applied AI software when the workflow includes AI support but still depends 
 ## Current Website Use
 
 The current site uses preferred terms such as product portfolio, Jera built products, solutions, applied AI software, decision support applications, AI enabled workflows, enterprise modernization, automation systems, structured analysis pipeline, and reviewable decision artifact.
+
+## Public Product Naming
+
+For the public site, prefer business facing names over internal product shorthand.
+
+Use these names where appropriate:
+
+- Structured Analysis Pipeline
+- Decision Artifact Pipeline
+- Analysis Workflow Platform
+- Reviewable Analysis System
+- Applied Analysis Pipeline
+- Structured Decision Support Workflow
+
+Do not lead public copy with DAI unless Malcolm explicitly approves a launch decision to make the internal name public.

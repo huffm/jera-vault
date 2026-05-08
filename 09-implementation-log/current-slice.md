@@ -2,45 +2,56 @@
 
 ## Slice Name
 
-Initial Astro Marketing Site And Luminous Technical System
+Visual Polish And Public Copy Exposure Reduction
 
 ## Goal
 
-Build the first production ready static website for Jera Technologies in `jera-site` and update the vault so the public site reflects approved positioning, product language, and truth boundaries.
+Refine the existing Luminous Technical website so it feels more disciplined, premium, and intentional without rebuilding the site from scratch.
 
 ## Website Changes
 
-- Configured Astro with Tailwind CSS 4 through `@tailwindcss/vite`.
-- Kept MDX and sitemap support enabled.
-- Added Astro content collections for products, services, and solution examples.
-- Added reusable layouts, header, footer, SEO, section, card, product panel, process, and CTA components.
-- Built Home, Services, Products, DAI, Matchup Analyzer, Solution Examples, About, and Contact pages.
-- Replaced the default Astro favicon with a simple Jera Technologies mark.
-- Implemented the Luminous Technical visual direction with warm backgrounds, navy panels, cyan accents, glass cards, rounded containers, and subtle motion.
+- Refined the global type system in `src/styles/global.css`.
+- Reduced heavy heading weights and improved heading line height.
+- Added reusable `panel-heading`, `card-heading`, and `copy-measure` classes.
+- Tightened section spacing through `SectionShell`.
+- Improved card padding, card hierarchy, and text measure across feature, product, service, metric, and process cards.
+- Refined hero composition, heading width, and the workflow artifact card.
+- Softened public workflow labels in the hero and homepage sections.
+- Rebuilt the footer into a structured grid with brand, company, work, and contact groups.
+- Refined gradients and glows so they originate from corners and edges.
+- Softened the public DAI product presentation to Structured Analysis Pipeline.
+- Moved the public product route from `/products/dai/` to `/products/structured-analysis-pipeline/`.
+- Removed public generated HTML exposure of DAI, retrieval, evaluation, and synthesis language.
 
 ## Vault Changes
 
-- Added `02-website/current-site-state.md`.
-- Added `08-decisions/0003-use-luminous-technical-visual-system.md`.
-- Added this implementation log in `09-implementation-log/current-slice.md`.
-- Updated positioning, website, service, product, solution example, and copy rule notes to reflect the implemented site.
+- Updated `02-website/current-site-state.md`.
+- Updated `02-website/design-direction.md`.
+- Updated `04-products/products-overview.md`.
+- Updated `04-products/dai.md`.
+- Updated `04-products/matchup-analyzer.md`.
+- Updated `07-content-rules/public-copy-rules.md`.
+- Updated `07-content-rules/terms-to-use-and-avoid.md`.
+- Replaced this implementation log with the current slice details.
 
 ## Design Decisions
 
-- Use a warm light base for readability and trust.
-- Use deep navy panels for product emphasis and final CTAs.
-- Use soft blue and cyan accents sparingly.
-- Use glass style cards for services, products, and solution examples.
-- Keep motion limited to hover lift and small transitions.
-- Use the hero workflow artifact to show Signal, Analyze, Evaluate, Synthesize, and Deliver without creating a fake app screenshot.
+- Preserve Luminous Technical rather than changing the visual direction.
+- Use a more premium system font stack with system UI and Apple style fonts first.
+- Keep letter spacing at 0.
+- Use lighter premium heading weights instead of very heavy display weights.
+- Constrain hero and section headings so wrapping feels intentional.
+- Use corner anchored radial glows for the page background and technical panels.
+- Keep cyan and blue accents restrained.
+- Make the footer a designed information structure rather than a row of links.
 
 ## Positioning Decisions
 
-- Jera Technologies is presented as a software engineering services company.
-- DAI and the Matchup Analyzer are presented as Jera built products within the product portfolio.
-- DAI is described as a structured AI workflow product for retrieval, analysis, evaluation, synthesis, and reviewable decision artifacts.
-- The Matchup Analyzer is described as a decision support application for structured sports matchup analysis.
-- Solution examples are presented as engineering patterns and product directions, not as paid client work.
+- The public site should not lead with the DAI name.
+- Public copy now uses Structured Analysis Pipeline for the DAI product direction.
+- DAI remains valid internally in the vault.
+- The Matchup Analyzer now references structured analysis workflow design instead of the DAI direction.
+- Public workflow copy avoids detailed internal stage language.
 
 ## Build Result
 
@@ -50,16 +61,19 @@ Command used from `C:\Users\trolo\source\repos\jera-workspace\jera-site`:
 
 `npm run build`
 
-Note: the system `npm` currently uses Node 20.19.0, which Astro 6 rejects. The successful build used the Codex bundled Node 24 runtime while executing the project npm build script.
+The successful build used the Codex bundled Node 24 runtime while executing the project npm build script because the system `npm` is currently tied to Node 20.19.0, which Astro 6 rejects.
+
+Generated HTML was checked for `DAI`, retrieval, evaluation, synthesis, betting, profit, and prediction engine language. No matches remain.
 
 ## Remaining TODOs
 
-- Confirm the production domain for sitemap configuration.
+- Browser QA the refined design at desktop and mobile widths.
+- Decide whether to add a redirect from `/products/dai/` to `/products/structured-analysis-pipeline/`.
+- Confirm the production domain for sitemap generation.
 - Confirm the public contact email address currently shown as `hello@jeratechnologies.com`.
-- Review the site visually in a browser on desktop and mobile.
-- Add real product screenshots or interface previews when approved.
-- Add richer About and Contact content when public details are confirmed.
+- Add approved product screenshots or interface previews.
+- Add a social sharing image and final Open Graph metadata.
 
 ## Recommended Next Slice
 
-Run a browser QA slice for desktop and mobile, refine the visual spacing and navigation based on screenshots, then add launch metadata such as final domain, contact address, and social sharing image.
+Run a browser QA and launch readiness slice. Review screenshots across desktop and mobile, fix any responsive wrapping or spacing issues, decide on the old DAI route redirect, and add final domain, contact, and social metadata.

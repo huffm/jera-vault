@@ -23,6 +23,8 @@ This framing is accurate, credible, and useful for the public website. It shows 
 - Solution examples can reference the products as engineering patterns.
 - Public copy must avoid guarantees, gambling centered framing, unprovided client claims, and private product details.
 
-## Slice 1 Result
+## Current Website Result
 
-The current Products page and product detail pages position DAI and the Matchup Analyzer as Jera built products in the Jera Technologies product portfolio.
+The current Products page and product detail pages position the Structured Analysis Pipeline and the Matchup Analyzer as Jera built products in the Jera Technologies product portfolio.
+
+DAI remains the internal product direction, but public copy now uses the business facing Structured Analysis Pipeline name.

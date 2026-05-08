@@ -8,13 +8,17 @@ The products are owned products and product examples. They should not be framed 
 
 ## Current Products
 
-### DAI
+### DAI Internal Product Direction
 
-DAI is a Jera Technologies product focused on structured AI workflows. It supports retrieval, analysis, evaluation, and synthesis to create reviewable decision artifacts.
+DAI remains the internal product direction for structured AI workflows.
+
+For the public site, do not lead with the DAI name. Use business facing terms such as Structured Analysis Pipeline, Decision Artifact Pipeline, Analysis Workflow Platform, Reviewable Analysis System, or Structured Decision Support Workflow.
+
+The current public page uses Structured Analysis Pipeline.
 
 ### Matchup Analyzer
 
-The matchup analyzer is a Jera built decision support application that applies the DAI direction to sports matchup analysis. It focuses on structured analysis, signal gathering, reviewable outputs, and clear decision artifacts.
+The Matchup Analyzer is a Jera built decision support application that applies structured analysis workflow design to sports matchup review. It focuses on structured analysis, signal gathering, reviewable outputs, and clear decision artifacts.
 
 ## Product Portfolio Role
 
@@ -35,6 +39,8 @@ The product portfolio should show what Jera Technologies can build through its e
 
 ## Current Website Reflection
 
-The Products page currently presents DAI and the Matchup Analyzer as Jera built products in the Jera Technologies product portfolio.
+The Products page currently presents the Structured Analysis Pipeline and the Matchup Analyzer as Jera built products in the Jera Technologies product portfolio.
 
 The page emphasizes applied AI software, structured analysis pipelines, decision support applications, productized workflow design, and polished product experiences.
+
+The public site no longer exposes the DAI name in generated HTML. The public route is `/products/structured-analysis-pipeline/`.

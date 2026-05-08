@@ -31,6 +31,6 @@ Any reference to prior or current employer related work should stay high level. 
 
 ## Current Website Boundary Check
 
-The first site slice does not claim paid client work. It describes solution examples as patterns and product directions. DAI and the Matchup Analyzer are described as Jera built products and product portfolio entries.
+The current site does not claim paid client work. It describes solution examples as patterns and product directions. The Structured Analysis Pipeline and the Matchup Analyzer are described as Jera built products and product portfolio entries.
 
 The Matchup Analyzer page avoids claims about guaranteed outcomes, profit, betting outcomes, or model accuracy. It is presented as a decision support application for structured sports matchup analysis.

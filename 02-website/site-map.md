@@ -37,13 +37,13 @@ Core content:
 
 ## Products
 
-Purpose: Showcase Jera built products, including DAI and the matchup analyzer.
+Purpose: Showcase Jera built products, including the Structured Analysis Pipeline and the Matchup Analyzer.
 
 Core content:
 
 - Products overview.
-- DAI.
-- Matchup analyzer.
+- Structured Analysis Pipeline.
+- Matchup Analyzer.
 - Product philosophy.
 - Link to solution examples where useful.
 
@@ -82,12 +82,12 @@ Core content:
 
 ## Current Route Implementation
 
-Implemented in Slice 1:
+Implemented current routes:
 
 - `/`
 - `/services/`
 - `/products/`
-- `/products/dai/`
+- `/products/structured-analysis-pipeline/`
 - `/products/matchup-analyzer/`
 - `/solution-examples/`
 - `/about/`

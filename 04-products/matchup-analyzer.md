@@ -2,7 +2,7 @@
 
 ## Product Positioning
 
-The matchup analyzer is a Jera built decision support application that applies structured AI workflow design to sports matchup analysis.
+The Matchup Analyzer is a Jera built decision support application that applies structured analysis workflow design to sports matchup analysis.
 
 It should be presented as a product example of structured analysis, signal gathering, reviewable outputs, and clear decision artifacts.
 
@@ -42,3 +42,5 @@ Do not frame the product as a betting prediction engine. Do not promise picks, p
 The Matchup Analyzer product page currently describes the product as a Jera built decision support application for structured sports matchup analysis.
 
 The page focuses on signal gathering, structured analysis, reviewable outputs, clear decision artifacts, and productized AI workflow design.
+
+The page no longer references DAI publicly. It describes the relationship in business facing terms as structured analysis workflow design.

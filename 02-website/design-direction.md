@@ -46,7 +46,7 @@ Products should have formal pages with:
 
 ## Current Visual System
 
-Slice 1 implements the Luminous Technical visual system:
+The site implements the Luminous Technical visual system:
 
 - Warm off white and pale blue white page background.
 - Deep navy and charcoal product panels.
@@ -57,3 +57,30 @@ Slice 1 implements the Luminous Technical visual system:
 - Subtle hover lift and button transitions.
 
 The site intentionally avoids a plain light theme and a full dark theme. Dark technical panels are used for product and CTA emphasis.
+
+## Slice 2 Refinements
+
+The polish slice refined Luminous Technical rather than replacing it.
+
+Typography decisions:
+
+- Use a cleaner system font stack with Apple like system fonts first.
+- Reduce over heavy heading weights.
+- Keep letter spacing at 0.
+- Tighten heading line height without making text cramped.
+- Constrain heading measure so large titles wrap intentionally.
+- Add paragraph measure helpers for readable line length.
+
+Layout decisions:
+
+- Reduce broad section padding into a more consistent rhythm.
+- Increase card padding slightly and improve card hierarchy.
+- Use balanced headings for page sections and technical panels.
+- Improve hero text width so the headline wraps more deliberately.
+- Structure the footer into brand, company, work, and contact groups.
+
+Gradient decisions:
+
+- Anchor page glows to top left, top right, and bottom right.
+- Anchor technical panel glow to corners instead of centering it.
+- Keep cyan and blue accents restrained.

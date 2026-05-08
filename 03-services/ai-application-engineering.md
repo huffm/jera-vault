@@ -24,9 +24,9 @@ The focus is practical software. AI should improve the workflow, not become the 
 
 ## Product Examples
 
-DAI demonstrates this service area through retrieval, analysis, evaluation, and synthesis workflows.
+The Structured Analysis Pipeline demonstrates this service area through structured analysis, signal organization, reviewable outputs, and human review.
 
-The matchup analyzer demonstrates how the same product direction can support structured domain analysis and reviewable outputs.
+The Matchup Analyzer demonstrates how the same product direction can support structured domain analysis and reviewable outputs.
 
 ## Public Copy Direction
 

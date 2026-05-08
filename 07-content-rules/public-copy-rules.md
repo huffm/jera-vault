@@ -41,3 +41,30 @@ The matchup analyzer should be described as a sports matchup analysis and decisi
 Slice 1 public site copy was checked for restricted public terms. The current website source does not use the restricted casual product or betting centered terms.
 
 Internal truth boundaries remain in the vault rather than being displayed as public page copy.
+
+## Public Exposure Reduction
+
+Slice 2 reduced public exposure of internal method language.
+
+Avoid leading public pages with:
+
+- DAI
+- Retrieval
+- Evaluation
+- Synthesis
+- Internal stage sequencing
+- Prompt logic
+- Scoring rules
+- Internal cognitive architecture
+
+Preferred public language:
+
+- Structured analysis
+- Signal gathering
+- Reviewable outputs
+- Clear decision artifacts
+- Productized software workflows
+- Structured Analysis Pipeline
+- Reviewable Analysis System
+
+The generated HTML was checked after Slice 2 and does not expose `DAI`, retrieval, evaluation, or synthesis.

@@ -2,9 +2,11 @@
 
 ## Product Positioning
 
-DAI is a Jera Technologies product focused on structured AI workflows.
+DAI is the internal product direction for a Jera Technologies product focused on structured AI workflows.
 
-It supports retrieval, analysis, evaluation, and synthesis so complex information can become a reviewable decision artifact.
+Public copy should not lead with the DAI name. The current public label is Structured Analysis Pipeline.
+
+The public positioning should focus on structured analysis, signal organization, reviewable outputs, and clear decision artifacts.
 
 ## What DAI Does
 
@@ -12,19 +14,19 @@ DAI provides a product direction for AI supported workflows that need structure,
 
 It is designed around:
 
-- Retrieval of relevant information.
+- Source context and signal organization.
 - Structured analysis of inputs.
-- Evaluation of competing signals.
-- Synthesis into usable outputs.
+- Review of competing signals.
+- Clear output design.
 - Reviewable decision artifacts.
 
 ## Business Relevance
 
-Many AI tools produce loose answers. DAI is positioned around structured workflows that help people review how information was gathered, interpreted, and summarized.
+Many AI tools produce loose answers. Publicly, this product direction is positioned around structured workflows that help people review how information was gathered, interpreted, and turned into a decision artifact.
 
 ## What It Demonstrates
 
-DAI demonstrates that Jera Technologies can:
+The DAI direction demonstrates that Jera Technologies can:
 
 - Build applied AI software.
 - Structure complex analysis workflows.
@@ -34,7 +36,9 @@ DAI demonstrates that Jera Technologies can:
 
 ## Public Copy
 
-DAI is a Jera Technologies product for structured AI workflows. It helps organize retrieval, analysis, evaluation, and synthesis into reviewable decision artifacts.
+Preferred public copy:
+
+The Structured Analysis Pipeline is a Jera built product for AI enabled analysis workflows. It helps organize source context, structured analysis, and reviewable outputs into clear decision artifacts.
 
 ## Boundaries
 
@@ -42,6 +46,6 @@ Do not expose private prompts, scoring rules, unreleased product strategy, or mo
 
 ## Current Website Reflection
 
-The DAI product page currently describes DAI as a Jera Technologies product that structures AI workflows into reviewable decision artifacts.
+The public product page now uses the name Structured Analysis Pipeline instead of DAI.
 
-The page focuses on retrieval, analysis, evaluation, synthesis, structured analysis, human review, and productized AI workflows.
+The page focuses on source context, structured analysis, signal review, clear output design, human review, and productized AI workflows without exposing internal stage language.

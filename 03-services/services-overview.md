@@ -29,7 +29,7 @@ Each service page should answer:
 
 ## Product Portfolio Connection
 
-DAI and the matchup analyzer should support the services story. They show that Jera Technologies can design productized workflows, structured analysis systems, and reviewable decision artifacts.
+The Structured Analysis Pipeline and the Matchup Analyzer should support the services story. They show that Jera Technologies can design productized workflows, structured analysis systems, and reviewable decision artifacts.
 
 ## Current Website Reflection
 

@@ -14,7 +14,7 @@ Jera Technologies helps organizations design, modernize, and automate software w
 
 ## Product Portfolio Description
 
-Jera Technologies maintains a product portfolio of Jera built products that demonstrate its engineering approach. These products show how structured workflows, retrieval, analysis, evaluation, and synthesis can become usable software experiences.
+Jera Technologies maintains a product portfolio of Jera built products that demonstrate its engineering approach. These products show how structured analysis, signal gathering, reviewable outputs, and productized workflows can become usable software experiences.
 
 ## Product Language
 
