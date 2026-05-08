@@ -19,6 +19,13 @@
 
 Avoid these terms in public copy:
 
+- DAI
+- Retrieval
+- Evaluation
+- Synthesis
+- Private scoring rules
+- Internal prompt logic
+- Cognitive architecture
 - Product lab
 - Hobby project
 - Experiment
@@ -59,3 +66,7 @@ Use these names where appropriate:
 - Structured Decision Support Workflow
 
 Do not lead public copy with DAI unless Malcolm explicitly approves a launch decision to make the internal name public.
+
+## Launch QA Result
+
+Current generated HTML passes the public copy exposure check. The old DAI route exists only as a redirect fallback and is excluded from the sitemap.

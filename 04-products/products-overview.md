@@ -44,3 +44,13 @@ The Products page currently presents the Structured Analysis Pipeline and the Ma
 The page emphasizes applied AI software, structured analysis pipelines, decision support applications, productized workflow design, and polished product experiences.
 
 The public site no longer exposes the DAI name in generated HTML. The public route is `/products/structured-analysis-pipeline/`.
+
+## Launch Route Decision
+
+The retired `/products/dai/` route is preserved only as a redirect path to avoid broken links during launch.
+
+Public product navigation, sitemap output, and canonical metadata should use:
+
+`/products/structured-analysis-pipeline/`
+
+Do not promote the retired route in public copy, navigation, sitemap entries, or social metadata.

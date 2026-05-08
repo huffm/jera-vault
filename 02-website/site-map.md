@@ -93,4 +93,40 @@ Implemented current routes:
 - `/about/`
 - `/contact/`
 
-The current Contact page uses `hello@jeratechnologies.com`. Confirm the production email address before launch.
+The current Contact page uses `support@jeratechnologies.com`.
+
+Contact CTA behavior:
+
+- Header `Discuss a project` routes to `/contact`.
+- Primary contact CTAs route to `/contact`.
+- Contact navigation items route to `/contact`.
+- The `Email Jera Technologies` button uses `mailto:support@jeratechnologies.com?subject=Project%20Conversation%20with%20Jera%20Technologies`.
+
+The site remains static for v1. A full backend contact form is intentionally deferred.
+
+## Redirects
+
+The retired `/products/dai/` route redirects to `/products/structured-analysis-pipeline/`.
+
+Implementation notes:
+
+- `vercel.json` defines a permanent redirect for Vercel preview and production deployment.
+- A quiet local fallback page exists so local browser QA also lands on the current public product route.
+- The retired route is excluded from the sitemap.
+- Public navigation and public product links should use `/products/structured-analysis-pipeline/`.
+
+## Launch Metadata
+
+The site uses `https://jeratechnologies.com` as the production domain for canonical URLs, Open Graph URLs, and sitemap output.
+
+## Future Contact Form Direction
+
+A later slice may add a real contact form using:
+
+- Astro API route or Astro Action.
+- Vercel on demand rendering through the Vercel adapter.
+- Resend for email delivery.
+- Vercel environment variables for `RESEND_API_KEY` and `CONTACT_TO_EMAIL`.
+- Optional Cloudflare Turnstile for spam protection.
+
+Do not add this backend until the launch site needs it.

@@ -6,7 +6,7 @@ May 8, 2026
 
 ## Current Slice
 
-Visual polish, typography refinement, footer structure, and public copy exposure reduction.
+Contact email cleanup and CTA behavior polish.
 
 ## Implemented Stack
 
@@ -45,30 +45,41 @@ Visual polish, typography refinement, footer structure, and public copy exposure
 
 ## Current Design State
 
-The site uses the Luminous Technical visual system. The current refinement tightened the type scale, reduced heavy font weights, improved paragraph measure, anchored gradients to corners and edges, added more disciplined card padding, and created a more structured footer.
+The site uses the Luminous Technical visual system. The current refinement keeps the warm light base, dark product panels, restrained blue and cyan accents, corner anchored glows, and structured enterprise presentation.
+
+This slice tightened the homepage hero headline, reduced header crowding at tablet widths, wrapped mobile navigation instead of allowing horizontal overflow, and made small screen buttons fill the available width.
+
+The current slice updated contact behavior without adding backend complexity. Contact CTAs route to `/contact`, and email CTAs use a mailto link with a prefilled subject.
 
 ## Current Positioning Reflected
 
 The site positions Jera Technologies as a software engineering services company that builds practical AI enabled products, automation systems, enterprise modernization solutions, and decision support applications.
 
-The DAI product direction is now softened publicly as the Structured Analysis Pipeline. The public page uses `/products/structured-analysis-pipeline/` and describes the product as a reviewable analysis system rather than leading with the internal DAI name.
+The DAI product direction is softened publicly as the Structured Analysis Pipeline. The public page uses `/products/structured-analysis-pipeline/` and describes the product as a reviewable analysis system rather than leading with the internal DAI name.
 
 The Matchup Analyzer is positioned as a Jera built decision support application for structured sports matchup analysis.
 
 ## Current Build State
 
-Build passes with Node 24 using the project npm build script:
+Build passes with the project npm build script:
 
 `npm run build`
 
-The local system `npm` currently uses Node 20.19.0, which Astro 6 rejects. The successful build used the Codex bundled Node 24 runtime.
+The public copy exposure check also passes:
 
-The generated HTML was checked for public exposure of `DAI`, retrieval, evaluation, synthesis, betting, profit, and prediction engine language. No matches remain in generated HTML.
+`npm run copy-check`
+
+The generated HTML was checked for public exposure of `DAI`, retrieval, evaluation, synthesis, betting model, prediction engine, guaranteed picks, profit, private scoring rules, internal prompt logic, and cognitive architecture language. No matches remain in generated HTML.
+
+Sitemap generation now uses `https://jeratechnologies.com` and excludes the retired `/products/dai/` fallback route.
+
+Contact email is now `support@jeratechnologies.com`.
+
+The contact mailto subject is `Project Conversation with Jera Technologies`.
 
 ## Launch Review Needed
 
-- Confirm the production domain used for sitemap generation.
-- Confirm the public contact email address.
 - Add real product screenshots or interface previews when available.
-- Review mobile layout in a browser before publishing.
-- Decide whether to keep a redirect from the old `/products/dai/` path after deployment.
+- Replace the placeholder social sharing image with a final brand approved image when available.
+- Run one final Vercel preview smoke test after deployment.
+- Add a real contact form in a later slice if needed.

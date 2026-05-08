@@ -23,10 +23,14 @@ Use AI language only when it describes a real workflow or capability. Preferred 
 
 - AI supported analysis.
 - Structured AI workflows.
-- Retrieval, analysis, evaluation, and synthesis.
+- Structured analysis.
+- Signal gathering.
+- Reviewable outputs.
 - Reviewable decision artifacts.
 - Human review.
 - Decision support.
+
+Avoid exposing internal method terms on public pages unless Malcolm explicitly approves them for launch.
 
 ## Product Language
 
@@ -68,3 +72,21 @@ Preferred public language:
 - Reviewable Analysis System
 
 The generated HTML was checked after Slice 2 and does not expose `DAI`, retrieval, evaluation, or synthesis.
+
+## Launch Copy Check
+
+The site now includes a repeatable public copy exposure check:
+
+`npm run copy-check`
+
+The check scans generated HTML in `dist` for restricted public terms including DAI, retrieval, evaluation, synthesis, private scoring rules, internal prompt logic, cognitive architecture, betting model, prediction engine, guaranteed picks, and profit.
+
+Run it after `npm run build` before preview deployment.
+
+## Contact Copy And Links
+
+Use `support@jeratechnologies.com` for public contact email.
+
+Do not use retired placeholder email addresses or placeholder domains in public source, generated HTML, or vault launch notes.
+
+Use mailto links for v1 contact behavior. A backend contact form should only be added in a future implementation slice with explicit approval.

@@ -84,3 +84,17 @@ Gradient decisions:
 - Anchor page glows to top left, top right, and bottom right.
 - Anchor technical panel glow to corners instead of centering it.
 - Keep cyan and blue accents restrained.
+
+## Launch Readiness Refinements
+
+Browser QA reinforced these design decisions:
+
+- The homepage hero headline should be concise enough to wrap deliberately.
+- The supporting hero paragraph carries the fuller positioning sentence.
+- The header should prioritize clean alignment over showing every call to action at every breakpoint.
+- Tablet navigation should avoid crowding the brand block.
+- Mobile navigation should wrap cleanly instead of creating horizontal page overflow.
+- Mobile action buttons should use the available width for stable tap targets.
+- Footer groups remain brand, company, work, and contact.
+
+The visual direction remains Luminous Technical. No full dark theme, plain light theme, or generic SaaS template direction was introduced.
