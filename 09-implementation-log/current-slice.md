@@ -2,42 +2,41 @@
 
 ## Slice Name
 
-Contact Email Cleanup And CTA Behavior Polish
+Homepage And Public Copy Polish
 
 ## Goal
 
-Replace placeholder contact emails, make contact CTAs route intentionally, keep the site static for v1, and document the future contact form direction.
+Improve awkward or overly stiff public wording, especially the homepage product portfolio heading, while keeping copy concise, credible, and not overly verbose.
 
 ## Website Changes
 
-- Updated the shared site config email to `support@jeratechnologies.com`.
-- Added `contactMailtoSubject` to the shared site config.
-- Added a shared `contactMailtoHref` for email CTAs.
-- Changed the Contact page `Email Jera Technologies` button to use `mailto:support@jeratechnologies.com?subject=Project%20Conversation%20with%20Jera%20Technologies`.
-- Updated footer email links to use the same shared mailto behavior.
-- Updated header, hero, and CTA section contact links to route to `/contact`.
-- Updated page level primary contact CTAs to route to `/contact`.
-- Left the site static and did not add Resend, serverless functions, Turnstile, or the Vercel adapter.
+- Updated the homepage product portfolio heading to `Jera built products with a clear engineering approach`.
+- Rewrote the homepage product portfolio description to connect Jera built products with structured software, reviewable outputs, and business facing experiences.
+- Tightened homepage service, workflow, solution example, and CTA descriptions.
+- Polished Products page copy so the product portfolio language is smoother and less repetitive.
+- Polished Services page supporting copy and outcome card descriptions.
+- Polished Solution Examples page heading, intro, card descriptions, and CTA.
+- Polished Structured Analysis Pipeline and Matchup Analyzer product detail copy.
+- Tightened selected content collection descriptions for products, services, and solution examples.
 
 ## Vault Changes
 
 - Updated `02-website/current-site-state.md`.
-- Updated `02-website/site-map.md`.
+- Updated `04-products/products-overview.md`.
 - Updated `07-content-rules/public-copy-rules.md`.
 - Replaced this implementation log with the current slice details.
 
 ## Design Decisions
 
-- Keep the existing Contact page layout and visual system.
-- Avoid adding a form surface until there is a backend implementation plan.
-- Keep the primary action simple and reliable for launch.
+- No visual system changes were needed.
+- Preserve the current Luminous Technical direction.
+- Keep headings concise and natural rather than adding longer explanatory copy.
 
 ## Positioning Decisions
 
-- Contact copy remains business facing and practical.
-- The site continues to position Jera Technologies as a software engineering company that builds practical AI enabled products, automation systems, enterprise modernization solutions, and decision support applications.
-- Structured Analysis Pipeline and Matchup Analyzer remain the public product names.
-- DAI and internal method terms were not reintroduced into public copy.
+- Public product naming remains Structured Analysis Pipeline and Matchup Analyzer.
+- The homepage product section now connects Jera built products to a clear engineering approach without implying client work.
+- Copy remains business facing and avoids fake metrics, fake clients, unsupported guarantees, or internal method exposure.
 
 ## Build Result
 
@@ -53,17 +52,13 @@ Command used from `C:\Users\trolo\source\repos\jera-workspace\jera-site`:
 
 `npm run copy-check`
 
-Additional source and generated HTML searches found no retired placeholder email addresses or placeholder domains.
-
-The only source match for `synthesis` is the CSS property `font-synthesis-weight`, not public method copy.
-
 ## Remaining TODOs
 
-- Add approved product screenshots or interface previews.
+- Run a Vercel preview smoke test after deployment.
+- Add approved product screenshots or interface previews when available.
 - Replace the placeholder social sharing image with a final brand approved image when available.
-- Run one final Vercel preview smoke test after deployment.
-- Add a real contact form later if mailto becomes insufficient.
+- Consider a real contact form in a later slice if mailto becomes insufficient.
 
 ## Recommended Next Slice
 
-Deploy a Vercel preview and smoke test the live contact links, redirects, sitemap, metadata, and mobile header behavior.
+Deploy a Vercel preview and run a live launch smoke test for routes, redirects, metadata, sitemap, contact links, active navigation, responsive layout, and social sharing previews.

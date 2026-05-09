@@ -45,6 +45,28 @@ The page emphasizes applied AI software, structured analysis pipelines, decision
 
 The public site no longer exposes the DAI name in generated HTML. The public route is `/products/structured-analysis-pipeline/`.
 
+The current Products page headline is:
+
+`Structured software products for clearer decisions`
+
+This headline keeps the page business facing and product minded. It communicates the product portfolio without implying paid client work or exposing internal product shorthand.
+
+The homepage product portfolio section now uses:
+
+`Jera built products with a clear engineering approach`
+
+This phrasing keeps the products connected to Jera engineering capability without sounding like a casual portfolio gallery or overexplaining internal methods.
+
+Product cards now use a more mature product surface structure:
+
+- Muted product type or category label.
+- Product title.
+- Short business facing description.
+- Three concise capability points.
+- Clear CTA.
+
+Dark product panels now use calmer labels and restrained navy gradients so the product presentation feels grounded rather than neon or promotional.
+
 ## Launch Route Decision
 
 The retired `/products/dai/` route is preserved only as a redirect path to avoid broken links during launch.

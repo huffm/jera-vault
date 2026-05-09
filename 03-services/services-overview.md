@@ -42,3 +42,5 @@ The Services page currently includes:
 - Product Experience Buildout
 
 Each service is connected to practical workflow outcomes instead of broad AI claims.
+
+The Enterprise Modernization copy now uses broader technical language that is credible without being stack specific. It frames modernization around existing applications, stronger application architecture, improved backend architecture, cleaner frontend patterns, integration flows, authentication and access patterns, business logic preservation, workflow modernization, and systems that are easier to maintain and extend.
