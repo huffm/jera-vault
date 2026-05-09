@@ -44,3 +44,5 @@ The Services page currently includes:
 Each service is connected to practical workflow outcomes instead of broad AI claims.
 
 The Enterprise Modernization copy now uses broader technical language that is credible without being stack specific. It frames modernization around existing applications, stronger application architecture, improved backend architecture, cleaner frontend patterns, integration flows, authentication and access patterns, business logic preservation, workflow modernization, and systems that are easier to maintain and extend.
+
+The Services detail page now gives each outcome tile a specific description. These descriptions explain the practical meaning of outcomes such as stronger application architecture, cleaner integration and access patterns, process automation, reviewable outputs, and polished user experiences instead of repeating one generic sentence across the page.

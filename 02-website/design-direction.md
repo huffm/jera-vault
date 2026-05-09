@@ -224,3 +224,28 @@ Interactive island decision:
 - No island was added in this pass.
 - Astro should remain mostly static unless interaction clearly improves visitor understanding.
 - A future Capability Explorer can be revisited after preview feedback.
+
+## Mature Rhythm And Copy Specificity Refinement
+
+The pre preview polish pass adjusted the homepage hero and card rhythm without changing the Luminous Technical system.
+
+Hero decisions:
+
+- Reduce the homepage H1 slightly so it feels premium rather than oversized.
+- Widen the hero H1 measure enough to avoid aggressive stacking.
+- Keep `text-wrap: balance` for intentional line breaks.
+- Give the hero visual card more horizontal room on desktop.
+- Keep the artifact label as `Structured Delivery System`.
+- Separate the hero artifact status pill from the heading so the heading no longer competes for width.
+
+Card and tile decisions:
+
+- Replace repeated generic descriptions with specific descriptions tied to each pattern or outcome.
+- Use service outcome cards to explain what each outcome means in practical software terms.
+- Keep cards calm, specific, and readable rather than dense.
+- Preserve muted labels, soft borders, quiet shadows, and restrained blue accents.
+
+Interactive island decision:
+
+- No island was added.
+- Larger interactive components remain deferred until after Vercel preview and launch readiness checks.

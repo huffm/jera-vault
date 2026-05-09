@@ -34,4 +34,11 @@ Do not describe this as client work unless explicitly provided later. Do not exp
 
 ## Current Website Reflection
 
-The current site presents this as a structured AI workflow pattern for evidence, analysis, synthesis, and human review.
+The current site presents this as a structured workflow pattern for source context, structured analysis, human review, and decision artifact output.
+
+Current public tile descriptions are specific rather than repeated:
+
+- Source context workflow: bring inputs, sources, and assumptions into one place before analysis starts.
+- Structured analysis: organize messy information into a path that can be followed and reviewed.
+- Human review path: keep judgment visible so people can inspect the reasoning before acting.
+- Decision artifact output: produce a clear output that records context, tradeoffs, and next steps.

@@ -33,3 +33,13 @@ A later slice may add a small accessible Capability Explorer with:
 - Product Experience Buildout.
 
 The island should use buttons with a clear selected state, minimal JavaScript, no heavy animation, and no dependency on the interaction to understand the site.
+
+## Current Slice Update
+
+The mature rhythm and copy specificity pass did not add an interactive island.
+
+Reason:
+
+- The immediate issue was surface polish, heading rhythm, hero artifact layout, and repeated tile copy.
+- Static cards with better descriptions solve the current clarity problem without adding interaction.
+- Larger interactive components should wait until after Vercel preview feedback.

@@ -175,3 +175,19 @@ Good public headings should:
 Current approved homepage product heading:
 
 `Jera built products with a clear engineering approach`
+
+## Tile Copy Specificity
+
+Avoid repeating one generic sentence across multiple cards or tiles. Repeated filler makes the site feel generated even when the information is accurate.
+
+Service outcome and solution example tiles should use descriptions that explain the specific pattern, outcome, or implementation concern.
+
+Approved direction:
+
+- Keep each tile short.
+- Make each tile specific to the heading.
+- Use practical software language.
+- Avoid fake proof, fake client claims, and named stack narrowing.
+- Preserve the broad enterprise modernization stance.
+
+The repeated phrase `A reusable pattern that can support a practical software workflow` should not appear in public generated HTML.

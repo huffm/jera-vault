@@ -6,7 +6,7 @@ May 9, 2026
 
 ## Current Slice
 
-Homepage and public copy polish.
+Mature product surface, copy specificity, and responsive rhythm pass.
 
 ## Implemented Stack
 
@@ -78,6 +78,10 @@ No interactive island was added in this slice. The site remains mostly static an
 The Enterprise Modernization service copy was refined so it is more technically credible without sounding tied to a single stack. Public copy now emphasizes existing application improvement, stronger application architecture, improved backend architecture, cleaner frontend patterns, integration flows, authentication and access patterns, business logic preservation, workflow modernization, and systems that are easier to maintain and extend.
 
 The homepage and related public copy were polished to reduce stiff phrasing. The product portfolio section now uses `Jera built products with a clear engineering approach`, with supporting copy that explains how Jera turns complex workflows into structured software, reviewable outputs, and business facing experiences. Similar wording updates were made across service previews, product pages, and solution examples to keep copy concise, natural, and less clunky.
+
+The homepage hero H1 was reduced slightly and widened so it balances better against the following section heading. The hero visual artifact uses `Structured Delivery System` and separates the status pill from the card heading so the title does not wrap awkwardly.
+
+The repeated solution tile description was replaced with specific pattern descriptions for source context, data intake, authentication, access, API integration, operational documentation, application structure, business logic preservation, and incremental modernization. Service outcome cards now also use specific descriptions instead of repeated filler copy.
 
 ## Current Positioning Reflected
 

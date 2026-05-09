@@ -36,3 +36,10 @@ Do not include sensitive employer details, proprietary architecture, private sys
 ## Current Website Reflection
 
 The current site presents this as a high level solution pattern for authentication, access, APIs, integrations, and operational documentation.
+
+Current public tile descriptions are specific rather than repeated:
+
+- Authentication flow improvement: tighten sign in, role routing, and access handoffs without disrupting existing users.
+- Role and access workflow design: shape permissions around real user paths so each role sees the right tools at the right time.
+- API integration: connect systems through clear contracts, supportable data exchange, and predictable failure handling.
+- Operational documentation: turn implementation decisions into handoff notes that support future maintenance.

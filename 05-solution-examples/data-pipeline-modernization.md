@@ -35,3 +35,10 @@ Keep public examples general unless a specific client, system, or result has bee
 ## Current Website Reflection
 
 The current site presents this as a modernization pattern for improving data intake, validation, transformation, review, and reporting workflows.
+
+Current public tile descriptions are specific rather than repeated:
+
+- Data intake: collect source data through predictable entry points before validation or reporting work begins.
+- Validation and transformation: clean and shape data with rules that are easier to inspect and maintain.
+- Review workflow: give teams a clear place to inspect exceptions, assumptions, and output quality.
+- Reporting support: prepare outputs that make operational reporting easier to trust and reuse.
