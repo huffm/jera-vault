@@ -43,3 +43,13 @@ Reason:
 - The immediate issue was surface polish, heading rhythm, hero artifact layout, and repeated tile copy.
 - Static cards with better descriptions solve the current clarity problem without adding interaction.
 - Larger interactive components should wait until after Vercel preview feedback.
+
+## Vercel Readiness Update
+
+The Vercel preview readiness pass also deferred interactive islands.
+
+Reason:
+
+- The priority is launch smoke testing, metadata verification, redirect behavior, contact links, and responsive stability.
+- Adding an island before preview deployment would introduce avoidable JavaScript and QA surface area.
+- The site currently communicates the service and product story without requiring interaction.

@@ -110,7 +110,7 @@ The retired `/products/dai/` route redirects to `/products/structured-analysis-p
 
 Implementation notes:
 
-- `vercel.json` defines a permanent redirect for Vercel preview and production deployment.
+- `vercel.json` defines permanent redirects for both `/products/dai` and `/products/dai/` for Vercel preview and production deployment.
 - A quiet local fallback page exists so local browser QA also lands on the current public product route.
 - The retired route is excluded from the sitemap.
 - Public navigation and public product links should use `/products/structured-analysis-pipeline/`.
@@ -118,6 +118,17 @@ Implementation notes:
 ## Launch Metadata
 
 The site uses `https://jeratechnologies.com` as the production domain for canonical URLs, Open Graph URLs, and sitemap output.
+
+Current launch metadata status:
+
+- Default title and description are generated through the shared SEO component.
+- Canonical URLs use `https://jeratechnologies.com`.
+- Open Graph title, description, URL, image, and image alt text are present.
+- Twitter card, title, description, and image metadata are present.
+- Theme color is set.
+- Placeholder social image output exists at `/social-card.svg`.
+- Sitemap output uses `https://jeratechnologies.com`.
+- `/products/dai/` is excluded from the sitemap.
 
 ## Future Contact Form Direction
 

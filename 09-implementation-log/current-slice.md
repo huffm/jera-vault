@@ -2,49 +2,94 @@
 
 ## Slice Name
 
-Mature Product Surface, Copy Specificity, And Responsive Rhythm Pass
+Vercel Preview Readiness And Launch Smoke Test Preparation
 
 ## Goal
 
-Improve remaining heading rhythm, reduce the homepage hero H1 slightly, fix the hero visual card heading, replace repeated tile copy with specific descriptions, and keep the site static and launch ready.
+Confirm the site is ready for Vercel preview deployment by checking production configuration, routes, redirects, sitemap output, metadata, contact links, active navigation, mobile layout, build output, and public copy exposure.
 
 ## Website Changes
 
-- Reduced the homepage hero H1 size slightly and widened the measure for better balanced wrapping.
-- Adjusted the homepage hero grid so the visual artifact has more room on desktop.
-- Kept the hero artifact heading as `Structured Delivery System` while preserving the layout fix.
-- Separated the hero artifact status pill from the heading so the title no longer wraps awkwardly.
-- Refined ServiceCard hierarchy with border separated outcome lists, signal dots, and consistent CTA placement.
-- Added specific service outcome descriptions on the Services detail page.
-- Replaced repeated solution example tile copy with pattern specific descriptions.
-- Preserved the broad Enterprise Modernization stance around stronger architecture, integration flows, access patterns, business logic preservation, and maintainable structures.
+- Added an explicit one column mobile grid to the homepage hero.
+- Added `min-w-0` to the homepage hero text and artifact columns.
+- Preserved the `Structured Delivery System` hero artifact label.
+- No new features were added.
+- No backend contact form was added.
+- No interactive island was added.
 
 ## Vault Changes
 
 - Updated `02-website/current-site-state.md`.
+- Updated `02-website/site-map.md`.
 - Updated `02-website/design-direction.md`.
-- Updated `03-services/services-overview.md`.
-- Updated `05-solution-examples/ai-decision-artifact-system.md`.
-- Updated `05-solution-examples/data-pipeline-modernization.md`.
-- Updated `05-solution-examples/authentication-and-integration-work.md`.
-- Updated `07-content-rules/public-copy-rules.md`.
 - Updated `08-decisions/0004-interactive-islands-strategy.md`.
 - Replaced this implementation log with the current slice details.
 
 ## Design Decisions
 
-- Keep the mature Luminous Technical visual system.
-- Use smaller, more balanced hero typography instead of oversized stacking.
-- Treat the hero visual as a product artifact surface, not a cramped mock screenshot.
-- Keep cards specific and calm rather than template like.
-- Do not add a new interactive island before Vercel preview.
+- Keep the mature Luminous Technical visual system unchanged.
+- Treat the homepage hero overflow fix as a launch readiness correction, not a redesign.
+- Keep the site static for Vercel preview.
+- Defer larger interaction ideas until after preview feedback.
 
 ## Positioning Decisions
 
 - Public product naming remains Structured Analysis Pipeline and Matchup Analyzer.
-- The hero artifact uses the public safe label `Structured Delivery System`.
-- The broad client flexible Enterprise Modernization positioning remains unchanged.
-- No named stack framing, fake client work, fake metrics, or unsupported claims were added.
+- Enterprise Modernization remains broad and client flexible.
+- No named stack framing, fake client work, fake metrics, guarantees, or restricted internal method terms were added.
+
+## Route And Redirect Checks
+
+Generated route files exist for:
+
+- `/`
+- `/services/`
+- `/products/`
+- `/products/structured-analysis-pipeline/`
+- `/products/matchup-analyzer/`
+- `/solution-examples/`
+- `/about/`
+- `/contact/`
+
+Redirect readiness:
+
+- `vercel.json` contains permanent redirects for `/products/dai` and `/products/dai/`.
+- The local fallback page at `/products/dai/` is marked `noindex, nofollow`.
+- The local fallback page uses a meta refresh and JavaScript replacement to `/products/structured-analysis-pipeline/`.
+- The retired route is excluded from generated sitemap output.
+
+## Metadata Checks
+
+Generated HTML confirms:
+
+- Site titles are present.
+- Page descriptions are present.
+- Canonical URLs use `https://jeratechnologies.com`.
+- Open Graph metadata exists.
+- Twitter metadata exists.
+- Theme color is set.
+- Placeholder social image metadata points to `https://jeratechnologies.com/social-card.svg`.
+- `social-card.svg` exists in `dist`.
+- Sitemap output uses `https://jeratechnologies.com`.
+- Retired DAI route is excluded from the sitemap.
+
+## Contact Checks
+
+Generated HTML confirms:
+
+- `support@jeratechnologies.com` appears where intended.
+- Retired placeholder emails and placeholder domains are absent.
+- Header contact CTA routes to `/contact`.
+- Email links use `mailto:support@jeratechnologies.com?subject=Project%20Conversation%20with%20Jera%20Technologies`.
+
+## Responsive QA Findings
+
+- Source review confirms the mobile header remains a two column chip grid with Contact spanning the full width.
+- Active navigation is route driven and verified in generated HTML for all public routes.
+- A headless mobile screenshot exposed a homepage hero overflow risk before deployment.
+- The hero grid now uses an explicit mobile column and `min-w-0` on both columns to prevent overflow.
+- Footer contact email uses wrapping rules that prevent narrow viewport overflow.
+- Full visual confirmation should be repeated on the Vercel preview URL across 360, 390, 430, 768, 1024, 1280, and 1440 pixel widths.
 
 ## Build Result
 
@@ -54,21 +99,24 @@ Command used from `C:\Users\trolo\source\repos\jera-workspace\jera-site`:
 
 `npm run build`
 
+## Copy Check Result
+
 Copy check passes.
 
 Command used from `C:\Users\trolo\source\repos\jera-workspace\jera-site`:
 
 `npm run copy-check`
 
-Generated HTML was checked for the repeated generic tile phrase. It does not appear.
+Generated HTML was also searched for retired placeholder emails, restricted public terms, betting centered language, profit language, and named stack narrowing. No matches were found.
 
 ## Remaining TODOs
 
-- Run a Vercel preview smoke test after deployment.
+- Deploy a Vercel preview.
+- Smoke test preview URLs, redirects, metadata, sitemap, contact links, active navigation, and responsive layout on the deployed preview.
 - Add approved product screenshots or interface previews when available.
 - Replace the placeholder social sharing image with a final brand approved image when available.
 - Consider a real contact form in a later slice if mailto becomes insufficient.
 
 ## Recommended Next Slice
 
-Deploy a Vercel preview and run a live launch smoke test for routes, redirects, metadata, sitemap, contact links, active navigation, responsive layout, and social sharing previews.
+Deploy to Vercel preview and run the live preview smoke test.

@@ -249,3 +249,21 @@ Interactive island decision:
 
 - No island was added.
 - Larger interactive components remain deferred until after Vercel preview and launch readiness checks.
+
+## Vercel Preview Readiness QA
+
+The launch readiness pass did not change the visual direction, but it did identify and fix a mobile hero rhythm issue.
+
+Responsive decision:
+
+- The homepage hero grid now declares one mobile column before switching to the desktop split layout.
+- The hero text column and artifact column use `min-w-0` so long text and the dark artifact surface cannot force horizontal overflow.
+- The hero artifact keeps the preferred `Structured Delivery System` label.
+- Mobile header, active navigation, footer wrapping, and contact email behavior remain unchanged.
+
+Launch design status:
+
+- Luminous Technical remains the approved visual system.
+- No new interactive island was added.
+- No backend contact form was added.
+- Remaining visual review should happen against a Vercel preview URL across mobile, tablet, laptop, and desktop widths.

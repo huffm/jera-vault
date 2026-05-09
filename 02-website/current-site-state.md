@@ -6,7 +6,7 @@ May 9, 2026
 
 ## Current Slice
 
-Mature product surface, copy specificity, and responsive rhythm pass.
+Vercel preview readiness and launch smoke test preparation.
 
 ## Implemented Stack
 
@@ -83,6 +83,10 @@ The homepage hero H1 was reduced slightly and widened so it balances better agai
 
 The repeated solution tile description was replaced with specific pattern descriptions for source context, data intake, authentication, access, API integration, operational documentation, application structure, business logic preservation, and incremental modernization. Service outcome cards now also use specific descriptions instead of repeated filler copy.
 
+The Vercel readiness pass confirmed the site remains static, buildable, and ready for preview deployment. Generated route files exist for all public routes, production metadata uses `https://jeratechnologies.com`, the sitemap excludes the retired DAI route, and contact links use `support@jeratechnologies.com`.
+
+During responsive smoke testing, the homepage mobile hero showed an overflow risk caused by the hero grid relying on implicit mobile grid columns. The hero grid now explicitly uses one mobile column and `min-w-0` on both hero columns so the H1, body copy, and `Structured Delivery System` artifact surface have stable mobile wrapping.
+
 ## Current Positioning Reflected
 
 The site positions Jera Technologies as a software engineering services company that builds practical AI enabled products, automation systems, enterprise modernization solutions, and decision support applications.
@@ -118,6 +122,7 @@ Route validation confirms:
 - About highlights About.
 - Contact highlights Contact.
 - `/products/dai/` continues to redirect to `/products/structured-analysis-pipeline/`.
+- Vercel has permanent redirects configured for both `/products/dai` and `/products/dai/`.
 
 Current route review confirms each public page exposes one main page heading:
 
@@ -139,6 +144,17 @@ The mature surface pass confirmed:
 - Header and mobile navigation remain stable after visual refinements.
 - Public HTML does not expose restricted internal product terms.
 - Contact email remains `support@jeratechnologies.com`.
+
+The Vercel readiness pass confirmed:
+
+- Generated route files exist for Home, Services, Products, Structured Analysis Pipeline, Matchup Analyzer, Solution Examples, About, and Contact.
+- Canonical URLs use `https://jeratechnologies.com`.
+- Open Graph metadata exists.
+- Twitter metadata exists.
+- Theme color is set.
+- Placeholder social image output exists at `/social-card.svg`.
+- `vercel.json` contains permanent redirects for the retired DAI route.
+- Generated HTML does not contain retired placeholder emails, restricted public terms, or named stack narrowing.
 
 ## Launch Review Needed
 
