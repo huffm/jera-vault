@@ -2,45 +2,77 @@
 
 ## Slice Name
 
-Vercel Preview Readiness And Launch Smoke Test Preparation
+High-Level UI/UX Polish, Copy Refinement, And Inquiry Experience Design Pass
 
 ## Goal
 
-Confirm the site is ready for Vercel preview deployment by checking production configuration, routes, redirects, sitemap output, metadata, contact links, active navigation, mobile layout, build output, and public copy exposure.
+Make the public Astro site feel more mature, crafted, welcoming, product-quality, and intentionally designed before Vercel preview without rebuilding the site or adding backend risk.
 
 ## Website Changes
 
-- Added an explicit one column mobile grid to the homepage hero.
-- Added `min-w-0` to the homepage hero text and artifact columns.
-- Preserved the `Structured Delivery System` hero artifact label.
-- No new features were added.
-- No backend contact form was added.
-- No interactive island was added.
+- Refined homepage hero copy to `Practical software for structured AI workflows`.
+- Reworked the workflow model heading to `A practical path from idea to usable software`.
+- Widened and separated page heading, page intro, section intro, panel copy, and card copy measures.
+- Reduced section heading aggressiveness so desktop headings do not become narrow text towers.
+- Kept headings balanced and paragraph wrapping pretty where supported.
+- Rewrote the homepage services intro to avoid the awkward `decision support software` line break.
+- Rewrote footer brand copy to feel cleaner, warmer, and less generic.
+- Changed `Authentication And Integration Work` to `Authentication & Integration Work`.
+- Changed public `Automation And Integration` service copy to `Automation & Integration`.
+- Reworked About copy so the page is company-first rather than centered on Malcolm by name.
+- Preserved broad, client-flexible service positioning and broad Enterprise Modernization language.
 
-## Vault Changes
+## Pearl Surface Refinements
 
-- Updated `02-website/current-site-state.md`.
-- Updated `02-website/site-map.md`.
-- Updated `02-website/design-direction.md`.
-- Updated `08-decisions/0004-interactive-islands-strategy.md`.
-- Replaced this implementation log with the current slice details.
+- Split the surface system into `soft-surface`, `pearl-panel`, `iridescent-edge`, and `soft-surface-glow`.
+- Kept ordinary cards calmer with `soft-surface`.
+- Used `pearl-panel` and `iridescent-edge` selectively on product cards, service and solution detail panels, metric cards, and the inquiry modal.
+- Added subtle iridescent edge and soft glow treatments to selected dark product and CTA panels.
+- Kept pearl effects static, low opacity, readable, and restrained.
+- Avoided neon gradients, rainbow shimmer, heavy glassmorphism, and busy backgrounds behind text.
 
-## Design Decisions
+## Inquiry Popup Decision
 
-- Keep the mature Luminous Technical visual system unchanged.
-- Treat the homepage hero overflow fix as a launch readiness correction, not a redesign.
-- Keep the site static for Vercel preview.
-- Defer larger interaction ideas until after preview feedback.
+Implemented Option A.
 
-## Positioning Decisions
+The site now has a polished accessible inquiry modal that submits through mailto instead of a backend.
 
-- Public product naming remains Structured Analysis Pipeline and Matchup Analyzer.
-- Enterprise Modernization remains broad and client flexible.
-- No named stack framing, fake client work, fake metrics, guarantees, or restricted internal method terms were added.
+Fields:
 
-## Route And Redirect Checks
+- Service area.
+- Project stage.
+- Timeline.
+- Name.
+- Email.
+- Message.
 
-Generated route files exist for:
+Behavior:
+
+- `Discuss a project` opens the modal when JavaScript is available.
+- Project/contact CTAs that point to `/contact` open the modal when JavaScript is available.
+- Contact navigation still routes to `/contact`.
+- The Contact page includes an inquiry trigger and direct email fallback.
+- Submission opens a prepared email draft to `support@jeratechnologies.com`.
+- The modal supports Escape close, click-outside close, a close button, focus entry, and focus return.
+- No React, Preact, Astro island, or backend form service was added.
+
+## About And Footer Refinements
+
+About:
+
+- Public copy now says Jera Technologies is led with a focus on practical software, structured workflows, and product-minded engineering.
+- The dark About panel now says `Led with a focus on practical software and structured workflows`.
+- The page no longer uses `Malcolm leads...` as the public lead framing.
+
+Footer:
+
+- Brand copy now reads as practical product and modernization support rather than a generic agency line.
+- Footer email remains `support@jeratechnologies.com`.
+- Footer wrapping remains clean across narrow widths.
+
+## Responsive QA Findings
+
+Checked routes:
 
 - `/`
 - `/services/`
@@ -49,47 +81,34 @@ Generated route files exist for:
 - `/products/matchup-analyzer/`
 - `/solution-examples/`
 - `/about/`
-- `/contact/`
+- `/contact`
 
-Redirect readiness:
+Checked widths:
 
-- `vercel.json` contains permanent redirects for `/products/dai` and `/products/dai/`.
-- The local fallback page at `/products/dai/` is marked `noindex, nofollow`.
-- The local fallback page uses a meta refresh and JavaScript replacement to `/products/structured-analysis-pipeline/`.
-- The retired route is excluded from generated sitemap output.
+- 360px
+- 390px
+- 430px
+- 768px
+- 1024px
+- 1280px
+- 1440px
 
-## Metadata Checks
+Results:
 
-Generated HTML confirms:
-
-- Site titles are present.
-- Page descriptions are present.
-- Canonical URLs use `https://jeratechnologies.com`.
-- Open Graph metadata exists.
-- Twitter metadata exists.
-- Theme color is set.
-- Placeholder social image metadata points to `https://jeratechnologies.com/social-card.svg`.
-- `social-card.svg` exists in `dist`.
-- Sitemap output uses `https://jeratechnologies.com`.
-- Retired DAI route is excluded from the sitemap.
-
-## Contact Checks
-
-Generated HTML confirms:
-
-- `support@jeratechnologies.com` appears where intended.
-- Retired placeholder emails and placeholder domains are absent.
-- Header contact CTA routes to `/contact`.
-- Email links use `mailto:support@jeratechnologies.com?subject=Project%20Conversation%20with%20Jera%20Technologies`.
-
-## Responsive QA Findings
-
-- Source review confirms the mobile header remains a two column chip grid with Contact spanning the full width.
-- Active navigation is route driven and verified in generated HTML for all public routes.
-- A headless mobile screenshot exposed a homepage hero overflow risk before deployment.
-- The hero grid now uses an explicit mobile column and `min-w-0` on both columns to prevent overflow.
-- Footer contact email uses wrapping rules that prevent narrow viewport overflow.
-- Full visual confirmation should be repeated on the Vercel preview URL across 360, 390, 430, 768, 1024, 1280, and 1440 pixel widths.
+- Automated responsive QA ran 58 route-width and modal checks with 0 failures.
+- No horizontal scrolling was detected.
+- Header remained stable.
+- Active navigation remained correct.
+- Major headings stayed within accepted line counts.
+- Intro copy used wider desktop measures.
+- Solution example headings were clean, including `Authentication & Integration Work`.
+- About copy is company-first.
+- Footer brand copy and email wrapping are clean.
+- Pearl effects remain subtle and readable.
+- Inquiry modal works on mobile and desktop.
+- Contact fallback remains clear.
+- CTA panels do not feel oversized after spacing adjustments.
+- Browser console checks reported no errors or warnings.
 
 ## Build Result
 
@@ -99,6 +118,8 @@ Command used from `C:\Users\trolo\source\repos\jera-workspace\jera-site`:
 
 `npm run build`
 
+The build generated 9 static pages.
+
 ## Copy Check Result
 
 Copy check passes.
@@ -107,16 +128,32 @@ Command used from `C:\Users\trolo\source\repos\jera-workspace\jera-site`:
 
 `npm run copy-check`
 
-Generated HTML was also searched for retired placeholder emails, restricted public terms, betting centered language, profit language, and named stack narrowing. No matches were found.
+Generated HTML was also searched for:
+
+- `support@yourtechnologies.com`
+- `hello@jeratechnologies.com`
+- `help@yourtechnologies.com`
+- `yourtechnologies.com`
+- `DAI`
+- `retrieval`
+- `evaluation`
+- `synthesis`
+- `betting model`
+- `prediction engine`
+- `profit`
+- `Malcolm leads`
+- `Authentication And Integration Work`
+
+No matches were found across generated HTML.
 
 ## Remaining TODOs
 
 - Deploy a Vercel preview.
-- Smoke test preview URLs, redirects, metadata, sitemap, contact links, active navigation, and responsive layout on the deployed preview.
+- Smoke test the deployed preview URL, redirects, metadata, sitemap, contact links, inquiry modal, active navigation, and responsive layout.
 - Add approved product screenshots or interface previews when available.
 - Replace the placeholder social sharing image with a final brand approved image when available.
-- Consider a real contact form in a later slice if mailto becomes insufficient.
+- Consider a backend contact form only if mailto becomes insufficient after preview feedback.
 
-## Recommended Next Slice
+## Recommendation
 
-Deploy to Vercel preview and run the live preview smoke test.
+The site is ready for Vercel preview after this UI/UX polish and inquiry experience pass.

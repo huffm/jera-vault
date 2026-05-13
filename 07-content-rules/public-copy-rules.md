@@ -93,13 +93,13 @@ Use mailto links for v1 contact behavior. A backend contact form should only be 
 
 Current v1 mailto behavior:
 
-- Header contact CTA routes to `/contact`.
+- Header project CTA opens the inquiry modal when JavaScript is available and falls back to `/contact`.
 - Contact navigation items route to `/contact`.
-- Product, service, solution, and page level contact CTAs route to `/contact`.
-- The Contact page email button uses the shared mailto link with a project conversation subject.
+- Product, service, solution, and page level contact CTAs open the inquiry modal when JavaScript is available and fall back to `/contact`.
+- The Contact page has an inquiry form trigger and a direct email button.
 - Footer email uses the same shared mailto link.
 
-The v1 choice is intentional: mailto keeps the public site static, simple, and launch ready while avoiding backend dependencies until they are needed.
+The v1 choice is intentional: the inquiry modal creates a prepared email draft through mailto, keeping the public site static, simple, honest, and launch ready while avoiding backend dependencies until they are needed.
 
 Future contact form direction:
 
@@ -174,7 +174,7 @@ Good public headings should:
 
 Current approved homepage product heading:
 
-`Jera built products with a clear engineering approach`
+`Jera built products with clear engineering direction`
 
 ## Tile Copy Specificity
 
@@ -191,3 +191,52 @@ Approved direction:
 - Preserve the broad enterprise modernization stance.
 
 The repeated phrase `A reusable pattern that can support a practical software workflow` should not appear in public generated HTML.
+
+## Component Display And Public Copy Pass
+
+The component display polish pass did not add new public claims, client proof, metrics, testimonials, backend contact behavior, or restricted internal method language.
+
+Public label direction:
+
+- Labels should feel like calm interface metadata, not promotional badges.
+- Use muted slate, muted blue gray, soft off white, subtle borders, and small signal dots.
+- Avoid loud uppercase blue labels.
+- Decorative dots must sit inline with the label, heading, or status element. Do not place loose decorative dots at the far edge of cards.
+
+Public text measure direction:
+
+- Page hero headings and intro copy may use wider desktop measures than card copy.
+- Keep page headings balanced and editorial.
+- Keep card copy compact and readable.
+- Avoid narrow desktop text towers for broad positioning statements.
+
+Current copy check result:
+
+- `npm run copy-check` passed after the component display polish pass.
+- Generated HTML search passed for retired placeholder emails, placeholder domains, `DAI`, retrieval, evaluation, synthesis, betting model, prediction engine, and profit language.
+- Public email remains `support@jeratechnologies.com`.
+- Contact mailto remains `mailto:support@jeratechnologies.com?subject=Project%20Conversation%20with%20Jera%20Technologies`.
+
+## May 12 Public Copy Polish Rules
+
+Current public heading and naming decisions:
+
+- Use `Authentication & Integration Work`, not `Authentication And Integration Work`.
+- Use `Automation & Integration`, not `Automation And Integration`.
+- Keep About page copy company-first. Avoid public page framing such as `Malcolm leads...`.
+- A subtle founder reference may be used elsewhere when useful, but the public About page should not read like a casual personal portfolio.
+- Prefer `decision systems`, `decision applications`, or `decision support applications` when it improves line rhythm, while preserving the Decision Support Systems service name.
+- Do not reintroduce DAI as public-facing product copy.
+
+Inquiry copy rules:
+
+- Do not claim the inquiry modal submits to a backend.
+- Use language such as `opens a prepared email draft`.
+- Keep `support@jeratechnologies.com` as the fallback email.
+- Keep the subject `Project Conversation with Jera Technologies`.
+
+Latest check result:
+
+- `npm run build` passed on May 12, 2026.
+- `npm run copy-check` passed across 9 generated HTML files.
+- Generated HTML search found no retired placeholder emails, placeholder domains, `DAI`, retrieval, evaluation, synthesis, betting model, prediction engine, profit, `Malcolm leads`, or `Authentication And Integration Work`.

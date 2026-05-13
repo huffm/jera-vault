@@ -267,3 +267,122 @@ Launch design status:
 - No new interactive island was added.
 - No backend contact form was added.
 - Remaining visual review should happen against a Vercel preview URL across mobile, tablet, laptop, and desktop widths.
+
+## Appearance Rhythm Refinement
+
+The pre preview appearance pass tightened the Luminous Technical system without changing the approved direction.
+
+Spacing decisions:
+
+- Use explicit `SectionShell` spacing variants instead of one large global section padding.
+- Keep page introductions premium, but start route content sooner.
+- Use tight follow-on spacing between related sections.
+- Connect overview cards to the detail panels they introduce.
+- Reduce CTA and footer vertical padding so they feel intentional rather than oversized.
+
+Services page decisions:
+
+- Keep overview cards and service detail panels in one section.
+- Center the final two service overview cards on desktop so the second row does not leave an awkward empty third column.
+- Use a measured overview-to-detail transition: roughly 32px on mobile, 36px at 768px, and 40px on desktop.
+
+Card and panel decisions:
+
+- Slightly reduce card padding and internal list spacing.
+- Keep body copy readable and avoid cramped mobile surfaces.
+- Reduce heavy shadow intensity.
+- Lower the visual volume of labels by using slate metadata treatments.
+- Reserve brighter blue for active navigation, focus states, tiny signal dots, and rare highlights.
+
+Responsive QA notes:
+
+- Checked 360, 390, 430, 768, 1024, 1280, and 1440 widths.
+- Checked Home, Services, Products, Structured Analysis Pipeline, Matchup Analyzer, Solution Examples, About, and Contact.
+- No horizontal scrolling was detected.
+- Header and active navigation remained stable.
+- Footer wrapping and contact email behavior remained clean.
+
+Launch design status:
+
+- The site now feels tighter, more editorial, and more product quality.
+- No new interactive island was added.
+- No backend contact form was added.
+- The site is visually ready for Vercel preview smoke testing.
+
+## Component Responsive Surface Refinement
+
+The component display polish pass keeps Luminous Technical but improves the actual display system used by cards, labels, hero copy, and page introductions.
+
+Label decisions:
+
+- Use a shared `surface-label` pattern for product cards, feature cards, metrics, dark artifact panels, and CTA metadata where appropriate.
+- Keep the tiny signal dot inline inside the label treatment.
+- Do not place decorative dots at the far right of cards.
+- Keep label color muted: slate, blue gray, deep navy, soft off white, and subtle borders.
+- Reserve bright blue for active navigation, focus states, and tiny signal dots.
+
+Text measure decisions:
+
+- Page headings use a wider page-level measure than standard section headings.
+- Hero and page intro copy use broader desktop measures so important positioning copy does not wrap too early.
+- Section intro copy supports a wider desktop line length for broad introductions.
+- Card body copy remains narrower for scanning and readability.
+- Headings use `text-wrap: balance`; paragraphs use `text-wrap: pretty` where supported.
+
+Surface decisions:
+
+- Add a reusable `pearl-surface` utility for selected cards and panels.
+- Keep the pearl effect static and subtle, using warm off white, pale blue white, silver, and very low opacity aqua or lavender corner light.
+- Avoid neon gradients, rainbow shimmer, heavy glassmorphism, and busy backgrounds behind text.
+- Preserve strong text contrast on all pearl surfaces.
+
+Responsive component decisions:
+
+- Product, service, and feature cards can use container query behavior so labels, heading scale, and copy measure adapt to the card's available width.
+- Keep this system simple and component local. Do not add JavaScript or interactive islands for this pass.
+
+Responsive QA notes:
+
+- Checked 360, 390, 430, 768, 1024, 1280, and 1440 widths.
+- Checked Home, Services, Products, Structured Analysis Pipeline, Matchup Analyzer, Solution Examples, About, and Contact.
+- No horizontal scrolling was detected.
+- Active navigation, footer wrapping, and contact email wrapping remained stable.
+- Product card labels no longer show loose dots at card edges.
+
+Launch design status:
+
+- The site is visually ready for Vercel preview smoke testing after this pass.
+- Capability Explorer and other interactive ideas remain deferred until after preview feedback.
+
+## May 12 UI/UX Polish Direction
+
+The latest polish pass keeps the Luminous Technical direction but makes the public site feel more mature, crafted, and welcoming.
+
+Typography direction:
+
+- Use separate measures for page headings, page intros, section headings, section intros, panel copy, and card copy.
+- Do not force broad desktop headings into narrow text towers.
+- Keep `text-wrap: balance` for major headings and `text-wrap: pretty` for paragraphs where supported.
+- Let cards keep tighter copy measures while page and section introductions use wider desktop lines.
+- Avoid oversized headings that stack aggressively.
+
+Surface direction:
+
+- Use pearl and iridescent effects as a quiet surface refinement, not a visual theme.
+- Prefer warm off white, pale blue white, soft silver, muted blue gray, and very low opacity aqua or lavender.
+- Apply `pearl-panel`, `iridescent-edge`, and `soft-surface-glow` sparingly to product cards, solution/service detail panels, CTA panels, selected dark product panels, and the inquiry modal.
+- Use `soft-surface` for ordinary cards so the pearl effect does not appear everywhere.
+- Continue reserving bright blue for active navigation, focus states, tiny signal dots, and rare highlights.
+
+Inquiry direction:
+
+- The inquiry experience should feel easy, polished, and honest.
+- The first implementation is a lightweight modal with service area, project stage, timeline, name, email, and message fields.
+- The form opens a prepared mailto draft and does not claim backend submission.
+- A backend form can be revisited after preview if mailto becomes insufficient.
+
+Tone direction:
+
+- About should be company-first, not a personal portfolio lead.
+- Broad service positioning stays client flexible.
+- Enterprise Modernization should emphasize stronger architecture, cleaner patterns, integration flows, authentication and access patterns, workflow modernization, business logic preservation, and maintainable application structures without naming narrow stacks.

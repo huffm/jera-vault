@@ -1,4 +1,4 @@
-# Authentication And Integration Work
+# Authentication & Integration Work
 
 ## Summary
 
@@ -43,3 +43,9 @@ Current public tile descriptions are specific rather than repeated:
 - Role and access workflow design: shape permissions around real user paths so each role sees the right tools at the right time.
 - API integration: connect systems through clear contracts, supportable data exchange, and predictable failure handling.
 - Operational documentation: turn implementation decisions into handoff notes that support future maintenance.
+
+## May 12 Naming Update
+
+The public solution example title is now `Authentication & Integration Work`.
+
+Use the ampersand in public headings for this example. The shorter title reads more cleanly in cards and avoids the awkward title casing of `Authentication And Integration Work`.
