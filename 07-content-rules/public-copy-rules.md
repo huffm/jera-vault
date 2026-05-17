@@ -99,7 +99,7 @@ Current v1 mailto behavior:
 - The Contact page has an inquiry form trigger and a direct email button.
 - Footer email uses the same shared mailto link.
 
-The v1 choice is intentional: the inquiry modal creates a prepared email draft through mailto, keeping the public site static, simple, honest, and launch ready while avoiding backend dependencies until they are needed.
+The v1 choice is intentional: the inquiry modal creates a mailto draft, keeping the public site static, simple, honest, and launch ready while avoiding backend dependencies until they are needed.
 
 Future contact form direction:
 
@@ -231,7 +231,7 @@ Current public heading and naming decisions:
 Inquiry copy rules:
 
 - Do not claim the inquiry modal submits to a backend.
-- Use language such as `opens a prepared email draft`.
+- Document the implementation internally as a mailto draft, but keep visitor-facing helper copy warm and direct.
 - Keep `support@jeratechnologies.com` as the fallback email.
 - Keep the subject `Project Conversation with Jera Technologies`.
 
@@ -240,3 +240,145 @@ Latest check result:
 - `npm run build` passed on May 12, 2026.
 - `npm run copy-check` passed across 9 generated HTML files.
 - Generated HTML search found no retired placeholder emails, placeholder domains, `DAI`, retrieval, evaluation, synthesis, betting model, prediction engine, profit, `Malcolm leads`, or `Authentication And Integration Work`.
+
+## May 14 Public Copy Refinement
+
+Current header subtitle:
+
+`Practical AI & Software Engineering`
+
+About page rules:
+
+- Do not expose internal positioning notes on public pages.
+- Do not mention recruiters, future consulting prospects, or copy designed to feel credible.
+- Keep the About page company-first and public-facing.
+- Use operating principle copy that explains how Jera Technologies works in practical terms.
+
+Approved About operating principle direction:
+
+- Practical AI: AI work starts with the workflow, the output people need, and the review path around it.
+- Enterprise judgment: modernization work respects existing architecture, integrations, access patterns, users, and business rules.
+- Product minded delivery: delivery stays close to the people using the system, with clear screens, steady workflow paths, and maintainable software.
+
+Copy sweep result:
+
+- The internal About sentence using `public positioning`, `recruiters`, `future consulting prospects`, `built to feel credible`, and `broad enough` was removed from the public site.
+- Public source no longer uses `client's system`; the Enterprise Modernization service now says `existing system`.
+- Public product CTA copy now uses `operational workflow` instead of `internal workflow`.
+- No public source matches remain for `showcase`, `lab`, or `fake agency` language.
+
+Inquiry copy direction:
+
+- The modal title is `Rough idea, stubborn workflow, or modernization effort?`.
+- The intro is `Send over the shape of it, even if it is still messy. Jera Technologies will help turn it into a practical next step.`
+- The CTA is `Send inquiry`.
+- Do not use system-like helper text in the modal footer; the visible fallback should stay warm and direct.
+
+May 15 inquiry copy update:
+
+- Use `Applied AI` in the public inquiry categories and public service label.
+- Final inquiry categories are `Applied AI`, `Enterprise Modernization`, `Workflow Automation`, `Architecture & Integration`, `Decision Support Systems`, `Product Strategy`, and `Not Sure Yet`.
+- Message label should read `What needs attention?`.
+- Message placeholder should read `A workflow, legacy system, modernization effort, product idea, integration, or decision process that needs improvement.`
+- Fallback copy should read `Prefer a direct email?` and `Send a short note to:`.
+- Keep the email spelled exactly as `support@jeratechnologies.com`.
+- Do not reintroduce the retired service label, retired engineering variant, retired fallback helper, or typo contact email.
+
+Latest check result:
+
+- `npm run build` passed on May 14, 2026.
+- `npm run copy-check` passed across 9 generated HTML files.
+- Generated HTML search found no matches for `Applied software engineering`, `public positioning`, `recruiters`, `future consulting prospects`, `built to feel credible`, `broad enough`, `showcase`, `lab`, `fake agency`, `client's system`, `internal workflow`, `DAI`, retrieval, evaluation, synthesis, betting model, prediction engine, guaranteed picks, or profit.
+- `npm run build` and `npm run copy-check` passed again on May 15, 2026 after the inquiry modal polish.
+- Generated output and public site source no longer include the retired service label, retired engineering variant, retired fallback helper, or typo contact email.
+
+## May 14 Responsive UI Copy Addendum
+
+The visual refinement pass did not introduce new client claims, agency language, internal strategy language, or private product terminology.
+
+Product page copy direction:
+
+- Prefer direct product language such as `Jera built products` or `these products`.
+- Avoid `showcase` language.
+- Avoid leaning on `credible` as a public proof substitute.
+- Describe the product examples as structured, reviewable, and usable software.
+
+Current changed product copy:
+
+- Products metadata now says `Explore Jera Technologies products for structured analysis and decision support software.`
+- Products page intro now says `Jera built products show practical engineering, reviewable workflows, and business facing software design.`
+- Product process intro now says `These products show how complex workflows can become structured, reviewable, and usable software.`
+
+Latest check result:
+
+- `npm run build` passed on May 14, 2026 after the responsive UI refinement.
+- `npm run copy-check` passed across 9 generated HTML files.
+- Generated HTML search found no matches for the targeted internal copy terms, retired DAI public exposure terms, betting centered language, or fake agency language.
+
+## May 15 Premium Design Pass Copy Audit
+
+The premium design architecture pass kept public copy stable, refined a few specific labels, and broadened the automated copy exposure check.
+
+Copy refinements landed in this pass:
+
+- Homepage product portfolio eyebrow now reads `Product lab` rather than `Product portfolio`. This aligns the public language with the brand direction of describing the lab's surfaced work as Jera built products and product lab work, while still avoiding portfolio gallery framing.
+- About `Focus / AI` and `Approach / Build` metric values were replaced with `Focus / Applied AI` and `Method / Structured` plus refined supporting copy, so the page no longer carries shout-word values that read as SaaS poster language.
+- Inquiry modal copy was confirmed against the launch spec: eyebrow `Project Inquiry`, headline `Rough idea, stubborn workflow, or modernization effort?`, intro `Send over the shape of it, even if it is still messy. Jera Technologies will help turn it into a practical next step.`, message label `What needs attention?`, message placeholder describing a workflow, legacy system, modernization effort, product idea, integration, or decision process that needs improvement, fallback heading `Prefer a direct email?`, fallback helper `Send a short note to:`, and fallback email `support@jeratechnologies.com`.
+
+`check-public-copy.mjs` was expanded so the build pipeline blocks any regression of the named internal phrases:
+
+- Internal method: `DAI`, `retrieval`, `evaluation`, `synthesis`, `private scoring rules`, `internal prompt logic`, `cognitive architecture`, `betting model`, `prediction engine`, `guaranteed picks`, `profit`.
+- Internal positioning and agency language: `public positioning`, `recruiters`, `future consulting prospects`, `built to feel credible`, `broad enough`, `fake agency`.
+- Retired service and engineering labels: `AI Application Engineering`, `Applied AI Engineering`.
+- Retired contact email typo: `jerattechnologies.com`.
+- Retired internal copy phrases: `client's system`, `internal workflow`.
+
+Latest check result:
+
+- `npm run build` passed on May 15, 2026 after the premium design architecture pass.
+- `npm run copy-check` passed across the generated HTML with the expanded restricted term list active.
+
+## May 15 Text Composition Copy Notes
+
+The text composition pass focused on how copy renders, not on rewriting the words. One small copy adjustment landed where the rendered phrasing was slightly redundant.
+
+Copy adjustments:
+
+- Contact dark panel description previously read `Best fit conversations involve applied AI software, enterprise workflow modernization, automation, integrations, product buildout, or decision applications.` The phrase `enterprise workflow modernization` was reduced to `enterprise modernization` so the description matches the rest of the public service naming and wraps more naturally inside the 52ch panel measure.
+
+No other public copy was changed in this pass. The headline statements, service summaries, product summaries, solution example summaries, About operating principles, and inquiry modal copy all remain on spec.
+
+Heading and intro measure rules:
+
+- Public section and page intros now flow inside a 56ch maximum measure. Headings sit inside 24ch (page and section) or 28ch (panel) maximums where they should compose into deliberate 2 to 3 line shapes.
+- Card body copy, helper text, footer copy, and modal copy each have their own approved measure range.
+- See `02-website/design-direction.md` `May 15 Text Composition Direction` for the full token table.
+
+Validation:
+
+- `npm run build` passed.
+- `npm run copy-check` passed across the 9 generated HTML files.
+
+## May 15 Editorial Compression Pass
+
+Public copy was compressed to feel calmer and more deliberate. The edits trimmed laundry lists, removed repeated subject phrases, and brought most section intros under 18 words so they read as 1 to 2 lines on desktop.
+
+Approved direction:
+
+- Section intros generally 10 to 16 words.
+- One clear idea per sentence. No category stacking.
+- Avoid leading every sentence with the words Jera Technologies. The brand name should appear deliberately, not as a default.
+- Replace AI enabled workflows and business facing experiences where a more specific phrase fits.
+- Card descriptions stay short and concrete. Service and solution example descriptions in the content collection do the same job.
+
+Footer direction (refresh):
+
+- Brand description: Practical AI and software engineering for teams turning complex work into usable systems.
+- Bottom row tagline preserved: Practical software for structured workflows and clearer decisions.
+- The two lines now read as distinct statements rather than near duplicates.
+
+Site meta description direction:
+
+- The default SEO description compresses to a single intent sentence ending with the four areas of work (products, automation, modernization, decision support). This keeps the description under 160 characters while preserving the public service language.
+
+The visual system, measure tokens, and section spacing rules introduced earlier in the day were unchanged. The editorial pass only changes the words on the page.

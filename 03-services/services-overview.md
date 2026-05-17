@@ -8,7 +8,7 @@ The services should be framed around business workflows and usable software, not
 
 ## Primary Service Areas
 
-1. AI Application Engineering
+1. Applied AI
 2. Enterprise Modernization
 3. Automation & Integration
 4. Decision Support Systems
@@ -35,7 +35,7 @@ The Structured Analysis Pipeline and the Matchup Analyzer should support the ser
 
 The Services page currently includes:
 
-- AI Application Engineering
+- Applied AI
 - Enterprise Modernization
 - Automation & Integration
 - Decision Support Systems
@@ -47,7 +47,7 @@ The Enterprise Modernization copy now uses broader technical language that is cr
 
 The Services detail page now gives each outcome tile a specific description. These descriptions explain the practical meaning of outcomes such as stronger application architecture, cleaner integration and access patterns, process automation, reviewable outputs, and polished user experiences instead of repeating one generic sentence across the page.
 
-The pre preview appearance pass fixed the Services page rhythm. The overview cards and detailed service panels now sit inside one connected section so the service summaries flow naturally into AI Application Engineering and the following detail panels.
+The pre preview appearance pass fixed the Services page rhythm. The overview cards and detailed service panels now sit inside one connected section so the service summaries flow naturally into Applied AI and the following detail panels.
 
 Services layout notes:
 
@@ -77,7 +77,7 @@ Text measure decisions:
 Spacing decisions:
 
 - The overview grid and detailed service panels remain inside one connected page story.
-- The first AI Application Engineering detail panel follows the overview grid at approximately 32px on mobile, 36px at 768px, and 40px on desktop.
+- The first Applied AI detail panel follows the overview grid at approximately 32px on mobile, 36px at 768px, and 40px on desktop.
 - No broad stack-specific modernization language was added. Enterprise Modernization remains framed around stronger application architecture, improved backend architecture, cleaner frontend patterns, integration flows, authentication and access patterns, business logic preservation, workflow modernization, and maintainable application structures.
 
 QA result:

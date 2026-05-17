@@ -33,7 +33,7 @@ Describe the kind of product, tool, or system that would be built.
 
 Connect the example back to Jera Technologies capabilities:
 
-- AI application engineering.
+- Applied AI.
 - Enterprise modernization.
 - Automation and integration.
 - Decision support software.

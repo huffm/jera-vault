@@ -377,7 +377,7 @@ Surface direction:
 Inquiry direction:
 
 - The inquiry experience should feel easy, polished, and honest.
-- The first implementation is a lightweight modal with service area, project stage, timeline, name, email, and message fields.
+- The current implementation is a lightweight modal with one project category dropdown, name, email, company, and message fields.
 - The form opens a prepared mailto draft and does not claim backend submission.
 - A backend form can be revisited after preview if mailto becomes insufficient.
 
@@ -386,3 +386,366 @@ Tone direction:
 - About should be company-first, not a personal portfolio lead.
 - Broad service positioning stays client flexible.
 - Enterprise Modernization should emphasize stronger architecture, cleaner patterns, integration flows, authentication and access patterns, workflow modernization, business logic preservation, and maintainable application structures without naming narrow stacks.
+
+## May 14 Public Copy And Inquiry Refinement
+
+This pass keeps the Luminous Technical direction intact while making the public copy more natural and visitor-facing.
+
+Header decision:
+
+- The small brand subtitle now reads `Practical AI & Software Engineering`.
+- The subtitle is allowed to wrap under the brand on mobile with a restrained measure instead of disappearing or forcing header overflow.
+
+About decision:
+
+- Remove internal positioning language from the public About page.
+- Keep `Calm engineering for complex systems` as the operating principles heading.
+- Describe the principles in useful public language: practical AI tied to real workflows, enterprise judgment around existing systems, and product minded delivery that stays close to users.
+
+Inquiry decision:
+
+- Simplify the modal so visitors see one category decision, then direct contact fields.
+- Use the title `Tell us what you are trying to build`.
+- Use the intro `Share a few details about the workflow, system, or product idea. Jera Technologies will follow up with a practical next step.`
+- Use the primary CTA `Send inquiry`.
+- Preserve the mailto draft behavior and fallback email link.
+
+Responsive direction:
+
+- Prefer text measures, balanced headings, and comfortable field spacing over manual line breaks.
+- Keep the modal full width only where mobile needs stable tap targets.
+- Preserve the pearl panel, muted borders, navy anchors, soft blue focus states, and generous whitespace.
+
+## May 14 Responsive UI Refinement Direction
+
+This addendum keeps the Luminous Technical system but makes the layout more container aware and less brittle.
+
+Responsive typography decisions:
+
+- Widen narrow mobile heading measures slightly so long public headings wrap in fewer awkward fragments.
+- Keep page titles strong, but avoid oversized mobile type and forced manual line breaks.
+- Preserve separate measures for page headings, section headings, intro copy, panel summaries, and card copy.
+
+Layout decisions:
+
+- Keep the header polished at tablet widths by reducing desktop nav chip density before the wide desktop CTA appears.
+- Use shared detail panel classes for Services and Solution Examples so summary copy and outcome cards can adapt to available width.
+- Let service outcome cards use two columns on small tablet widths and three columns on desktop.
+- Let solution pattern cards use two columns from small tablet upward.
+- Avoid disconnected vertical gaps by keeping overview and detail content in connected sections.
+
+Inquiry modal decisions:
+
+- Treat the modal as a small product surface with clear title, concise intro, comfortable labels, strong focus states, and visible close behavior.
+- Use a wider desktop panel and tighter vertical rhythm so the primary CTA and fallback email remain visible at normal laptop heights.
+- Use `100dvh` based max height so mobile browser chrome does not make the modal feel cramped.
+- Keep the pearl surface restrained and readable with navy actions and soft blue focus states.
+
+Accessibility and interaction decisions:
+
+- Preserve route driven active navigation, `aria-current`, dialog labelling, Escape close, click outside close, and focus return.
+- Use event delegation for inquiry triggers so future CTAs inherit the behavior without adding more JavaScript.
+- Keep native form validation in place before opening the mailto draft.
+
+## May 15 Inquiry Modal Polish Direction
+
+This focused pass keeps the inquiry modal static, lightweight, and Astro friendly while making the form feel more product quality before Vercel preview.
+
+Visual decisions:
+
+- Remove the modal-specific right edge artifact by softening the iridescent overlay on the modal panel and avoiding an always reserved scrollbar gutter.
+- Keep the pearl panel treatment calm, low contrast, and readable.
+- Use the final headline `Rough idea, stubborn workflow, or modernization effort?` with balanced wrapping and a measured headline width.
+- Use the intro `Send over the shape of it, even if it is still messy. Jera Technologies will help turn it into a practical next step.` with prettier wrapping where supported.
+- Treat the footer as an intentional form action area with a subtle divider, primary CTA on the left at desktop widths, direct email helper on the right, and a clean stacked mobile layout.
+- Keep the CTA and fallback email visible at 390px by 900px.
+
+Select decision:
+
+- Keep the native select for accessibility, keyboard support, form validity, and low implementation risk.
+- Polish the closed select state with a calm border, consistent radius, soft focus ring, and aligned chevron.
+- Do not build a fake custom dropdown for launch. The open option list is browser and OS controlled and cannot be made fully consistent across browsers with lightweight CSS alone.
+
+Final inquiry categories:
+
+- Applied AI.
+- Enterprise Modernization.
+- Workflow Automation.
+- Architecture & Integration.
+- Decision Support Systems.
+- Product Strategy.
+- Not Sure Yet.
+
+Final fallback copy:
+
+- `Prefer a direct email?`
+- `Send a short note to:`
+- `support@jeratechnologies.com`
+
+Remaining Vercel preview QA:
+
+- Recheck the modal on the deployed preview at mobile, tablet, and desktop widths.
+- Confirm mailto behavior from the live preview.
+- Confirm the native select popup is acceptable in the target browsers.
+- Recheck contact links, metadata, sitemap, redirects, and console output on the preview URL.
+
+## May 15 Premium Design Architecture Direction
+
+This pass formalized the Luminous Technical refinements that take the site from polished to top-dollar independent software studio. The system was strengthened without redesigning the underlying direction.
+
+Token decisions:
+
+- CSS tokens are grouped into base canvas, text, brand anchors, pearl detail, hairlines and borders, elevation, radii, layout, and focus ring.
+- Three step elevation scale: `--shadow-soft` for resting cards, `--shadow-card` for surfaces that earn slight emphasis, and `--shadow-lift` for hover.
+- A dedicated `--shadow-dark` for technical panels with a soft top highlight and a deeper outer shadow.
+- Added `--color-border-soft` and `--color-border-strong` so hairlines and dividers can vary without ad hoc rgba values.
+- `--ring-color` is the single source of truth for focus visible outlines.
+
+Typography decisions:
+
+- Body text uses `font-feature-settings: "ss01", "cv11", "kern"` and `font-optical-sizing: auto` so supported platforms get slightly tighter, more refined glyphs without bundling a typeface.
+- Display headings use slight negative letter spacing: page (-0.016em), section (-0.012em), panel (-0.014em), card (-0.008em), homepage H1 (-0.02em).
+- Uppercase metadata uses 0.04em on eyebrow and 0.06em on surface labels so small labels feel deliberate, not crowded.
+- A `.tabular-nums` utility lines up step counters, metric values, and capability indices.
+- `text-wrap: balance` remains the default for headings and important short labels. `text-wrap: pretty` is used for paragraphs.
+
+Surface decisions:
+
+- Iridescent edge treatment softens its right and bottom border opacities so the right edge cannot read as a duplicated line.
+- The inquiry modal panel explicitly disables `iridescent-edge::after` so it cannot show a double line near the scrollbar gutter at any size.
+- Pearl surfaces continue to lean on warm off white, pale blue white, soft silver, and very low opacity aqua or lavender corner light.
+- Technical panels gained a quiet lavender corner glow so dark surfaces feel a touch more iridescent without becoming flashy.
+- `subtle-lift` uses a cubic bezier ease and the `--shadow-lift` token plus a soft blue border on hover.
+
+Button decisions:
+
+- Primary uses a deeper vertical gradient with inset highlight and layered shadow.
+- Secondary layers an inset highlight on a soft hairline border on a small drop shadow so it reads as a real product surface in light mode.
+- Dark uses an inset highlight on a darker outer shadow so it sits naturally on technical panels.
+- All buttons use a small `:active` settle plus a 200ms cubic bezier on `:hover`.
+
+Header decisions:
+
+- Brand mark uses a subtle radial inner highlight on the deep navy ground.
+- Subtitle uses a slightly larger mobile measure so `Practical AI & Software Engineering` resolves into a deliberate two line wrap on narrow screens.
+- Active nav uses a slightly stronger blue accent border plus a calm translucent fill.
+
+Hero decisions:
+
+- Three corner glows anchor the first viewport without busy decoration.
+- A focus, approach, output tabular trust strip sits below the hero CTAs to give the first viewport quiet structural backbone.
+- Hero artifact tiles use an inset bordered step counter with tabular numerals and a calmer artifact title.
+
+Card decisions:
+
+- Feature, Service, and Process cards carry a top inline hairline that anchors the card visually without adding a heavy border.
+- Process step pairs the step counter with a fading hairline lead in.
+- Product card removes loose decorative dots and keeps the metadata bar inside the shared label treatment.
+- Metric card scales its value type smaller and uses balanced wrapping so words and short phrases both fit.
+- Dark product panel uses `01 / 02 / 03 - Capability` lead ins on its capability tiles so the dark grid reads as designed rather than uniform pill text.
+
+Inquiry modal decisions:
+
+- Final copy: eyebrow `Project Inquiry`, headline `Rough idea, stubborn workflow, or modernization effort?`, intro `Send over the shape of it, even if it is still messy. Jera Technologies will help turn it into a practical next step.`, message label `What needs attention?`, fallback heading `Prefer a direct email?`, fallback helper `Send a short note to:`, fallback email `support@jeratechnologies.com`.
+- The right edge artifact is removed by opting the modal panel out of `iridescent-edge::after`.
+- The modal close uses an SVG cross icon, the submit uses an SVG check icon, and a soft 240ms rise animation is used on open (suppressed under `prefers-reduced-motion`).
+- Native select stays. No custom dropdown was added.
+
+Accessibility decisions:
+
+- Focus visible uses a single token color and a consistent 2px ring with 3px offset.
+- Reduced motion suppresses all transitions and animations including the modal entrance.
+- Modal preserves dialog semantics, Escape close, outside click close, focus return, focus trap, labelled and described relationships, and visible field focus.
+- Touch targets remain above 40px on mobile for nav chips, buttons, and the modal close.
+
+Astro and performance decisions:
+
+- No framework island, animation library, or runtime dependency was added.
+- Static output remains the default.
+- Shared utilities (`pearl-panel`, `iridescent-edge`, `soft-surface`, `surface-label`, `subtle-lift`, `tabular-nums`, `hairline`) carry the polish across components instead of scattered one-off styling.
+
+Public copy direction (refresh):
+
+- Homepage product portfolio eyebrow now reads `Product lab`, matching the brand direction of describing surfaced work as Jera built products and product lab work.
+- About uses `Focus / Applied AI` and `Method / Structured` metric values instead of the earlier `Focus / AI` and `Approach / Build`.
+- Public source and generated HTML continue to avoid `public positioning`, `recruiters`, `future consulting prospects`, `built to feel credible`, `broad enough`, `AI Application Engineering`, `Applied AI Engineering`, `jerattechnologies.com`, `client's system`, `internal workflow`, and `fake agency` style language.
+
+## May 15 Text Composition Direction
+
+This focused pass corrected an underlying composition issue: intro paragraphs and detail panel descriptions were running at 62 to 64rem, which renders as roughly 80 to 95 characters per line and breaks the calm, intentional reading rhythm the site aims for.
+
+Measure system direction:
+
+- Measures are now expressed in `ch` so the constraint scales with the rendered font size, not absolute pixels.
+- The measures live on `:root` as named tokens and are applied through both refactored existing utilities and a new `.measure-*` utility family.
+- All measure utilities use `max-inline-size` (logical) rather than `max-width`, with `hyphens: none` and `overflow-wrap: break-word` where appropriate so words do not hyphenate and the only word splits happen as a last resort.
+
+Approved measure ranges:
+
+- Hero subtitle and lead copy: 50ch.
+- Page hero intro and section intro: 56ch.
+- General body copy: 60ch.
+- Dark panel copy (technical panel and CTA panel): 52ch.
+- Card body copy (services, features, products): 38ch.
+- Helper text (modal fallback, small notes): 34ch.
+- Footer brand copy and tagline: 38ch.
+- Footer legal line: 44ch.
+- Page heading: 24ch.
+- Section heading: 24ch.
+- Panel heading (when explicitly constrained): 28ch.
+- Card heading: 22ch (applied explicitly when needed; defaults to container width).
+- Display lead in a hero artifact: 22ch with `ch` units replacing `rem` for the hero artifact title.
+
+Wrapping direction:
+
+- Headings use `text-wrap: balance` and a small negative letter spacing.
+- Paragraphs use `text-wrap: pretty` so the last line is not a single orphan word.
+- `text-wrap: balance` is preserved on the modal title and other prominent statements.
+
+Footer composition direction:
+
+- Brand descriptive paragraph uses the 38ch footer measure.
+- Bottom row copyright uses the 44ch legal measure.
+- Bottom row tagline uses the 38ch tagline measure.
+- The contact email retains break-all on mobile and whitespace-nowrap from large desktop up so it never overflows on narrow widths.
+
+Inquiry modal composition direction:
+
+- Modal title: 26ch, balanced wrap.
+- Modal intro: 50ch, pretty wrap.
+- Fallback helper: 34ch.
+- All copy, dialog semantics, focus handling, and mailto behavior remain unchanged.
+
+Page level composition direction:
+
+- Services and Solution Examples detail panel headings use the new 24ch section heading measure with balanced wrap.
+- About, Contact, Structured Analysis Pipeline, and Matchup Analyzer dark intro panels use the new 28ch panel heading measure with balanced wrap.
+- The CTA section heading uses the 28ch panel heading measure rather than the previous `max-w-3xl` (48rem) so the heading wraps into a deliberate 2 line composition.
+
+Astro and component direction:
+
+- Measure utilities are centralized in `src/styles/global.css`. Pages avoid ad hoc inline `max-w-[...]` measure hacks.
+- Where a page-specific heading needs a custom font size, it still applies a shared `.measure-*` utility for the width constraint.
+
+## May 15 Section Intro Measure And Rhythm Refinement
+
+The earlier text composition pass tuned the intros too tight. This refinement widens intro measures so a typical section intro reads as one to three calm lines on desktop, and adds a small breathing gap between section header blocks and the content that follows.
+
+Updated measure targets:
+
+- Hero lead copy: 58ch (about 580px at the hero body font).
+- Section intro: 76ch (about 700px to 720px at the section intro body font).
+- Page hero intro: 72ch (about 700px to 730px at the slightly larger page intro font).
+- Long form body copy: 64ch.
+- Dark panel copy (technical / CTA): 58ch.
+- Card body copy: 42ch (container almost always wins, so this just stops capping the slightly wider card variants).
+- Footer brand copy: 40ch.
+- Footer tagline: 40ch.
+- Footer legal line: 44ch.
+- Helper text: 34ch.
+
+Updated header-to-content spacing:
+
+- Standard `section-shell__header`: `clamp(2.25rem, 3.6vw, 3.15rem)` margin-bottom (about 36px to 50px).
+- Page `section-shell__header--page`: `clamp(2.55rem, 4.2vw, 3.55rem)` (about 41px to 57px) so the page hero introduction lands with deliberate space before the first card grid.
+- Compact `section-shell__header--compact`: `clamp(1.9rem, 2.8vw, 2.5rem)` (about 30px to 40px).
+
+Wrapping direction stays unchanged: headings use `text-wrap: balance`, paragraphs use `text-wrap: pretty`, copy uses `hyphens: none`, and the wider intro measure lets pretty wrap settle into one to three lines rather than four to six short fragments.
+
+Mobile behavior is unchanged. Mobile section intros remain bounded by the site shell container, not by the ch token, so the calm vertical reading rhythm at narrow widths is preserved.
+
+## May 15 Section Rhythm And Footer Composition Direction
+
+This refinement formalized the section header rhythm and simplified the footer composition.
+
+Section header rhythm direction:
+
+- Each section header is one composed block: eyebrow, then heading, then intro paragraph. The inner stack uses 1.25rem of vertical rhythm so the three elements read together rather than as separate paragraphs.
+- A consistent block-end margin separates the header from cards, panels, grids, or CTA content. Targets land in the brief range: 24 to 32px on mobile, 28 to 40px on tablet, 32 to 48px on desktop. Page hero headers run slightly taller, compact section headers run tighter.
+- The header is now a flex column with logical spacing so the rhythm survives even if a consumer drops the inline margin utility.
+- A latent bug in SectionShell was using class={...} with an array, which Astro joined with commas. Switching to class:list ensured the rhythm variants actually applied for the first time.
+
+Solution Examples intro direction:
+
+- Both the homepage section and the dedicated Solution Examples page now share the intro: Reusable patterns for structured workflows and clearer implementation. The shared statement reduces dissonance and lands as one calm line on desktop.
+
+Footer composition direction:
+
+- The footer carries one brand statement, not two. The bottom row tagline was removed so the brand blurb and the copyright row are the only text blocks in the footer.
+- Brand blurb: Practical AI and software engineering for clearer workflows.
+- Bottom row: only the copyright line. At desktop the row hosts the copyright on the left and nothing on the right, which lets the footer close with a quiet beat instead of two competing prose statements.
+
+## May 15 Mobile Nav Primary Action Direction
+
+The mobile nav Contact item is now treated as the primary mobile action, not just another chip.
+
+Visual direction:
+
+- Below the sm breakpoint (640px), Contact uses a filled deep navy pill with white text, inset highlight, and a calm layered shadow. This makes the full row span obvious and gives mobile visitors a clear, premium primary action.
+- At sm and above, Contact returns to the same light chip styling as the other nav items so the flex-wrap tablet nav and the desktop horizontal nav stay calm and balanced.
+- When the visitor is on /contact, the active state wins on every breakpoint. The pill renders in the soft blue active style and still spans the full row on mobile.
+
+Implementation direction:
+
+- The mobile-nav-shell grid uses default justify-items (stretch) so col-span items naturally fill their cell.
+- Mobile nav links use inline-flex items-center justify-center so labels render centered inside the full width pill.
+- The Contact link carries a .mobile-nav-contact class. A dedicated CSS rule below 639px sets grid-column: 1 / -1 and justify-self: stretch so the geometry is robust regardless of Tailwind utility ordering.
+
+## May 15 Mobile Contact Centering Direction (revision)
+
+The earlier direction treated mobile Contact as a filled primary action. After visual review that treatment felt out of step with the rest of the calm chip nav. The revised direction:
+
+- Mobile Contact uses the same chip styling as the other mobile nav items (Services, Products, Solution Examples, About).
+- Mobile Contact spans both columns of the third row but is rendered at single-column width via width: calc(50% - 0.25rem), then centered with justify-self: center, so the third row is balanced and the empty cell never reads as awkward space.
+- Hover, focus visible, and current page states match the rest of the mobile nav. On /contact the chip shows the same soft blue active treatment as any other route highlight.
+
+Footer composition direction (revision):
+
+- The footer grid widens its left column at lg and above so the brand blurb has enough room to land on one line.
+- --measure-footer was widened from 40ch to 64ch so short brand statements can sit on one line on desktop. Mobile still wraps naturally because the container is narrower than the measure.
+- The bottom row keeps only the copyright line. The brand blurb above carries the single brand impression.
+
+## May 17 Reusable UI/UX Skill
+
+The senior UI/UX judgment used across the recent Jera refinement passes is now captured in a reusable Claude Code skill at .claude/skills/product-ui-design-architect.
+
+Doctrine:
+
+- The skill provides reusable frontend design judgment (design posture, text rhythm, section spacing, modal and form quality, mobile navigation, footer composition, accessibility, launch readiness).
+- The jera-vault provides Jera specific truth (brand direction, copy rules, repo boundaries, decision history, launch goals).
+- When the skill and the vault disagree, the vault wins.
+
+Working method for future Jera UI passes:
+
+- Invoke the official frontend-design skill for broad visual and creative direction.
+- Invoke product-ui-design-architect for refinement discipline and QA.
+- Read only the jera-vault docs the task needs.
+- Record meaningful design, copy, UX, or launch readiness changes back into the jera-vault.
+- Add a lesson to the skill only when it is reusable across projects. Jera specific lessons stay in the vault.
+
+## May 17 Design Source Research Workflow
+
+The product-ui-design-architect skill now includes a responsible design
+source research workflow that can feed future Jera design passes.
+
+How it works:
+
+- A miner script collects public GitHub API metadata and a small set of
+  config and style files into a generic design source library. It does
+  not clone repos, scrape HTML, or download large files.
+- A selector script filters that library against Jera's own docs
+  (design direction, public copy rules, current slice) plus a use case,
+  and writes a Jera specific design source brief.
+- The brief is inspiration and pattern research only. It never authorizes
+  copying components, layouts, or code. Jera builds original work.
+
+How it influences Jera design direction:
+
+- The selector scores sources against Jera signals: calm, senior,
+  premium, light theme, navy, enterprise, modernization, plus the Astro
+  and Tailwind stack and the accessibility and static output constraints.
+- Sources that lean neon, flashy, or heavily animated are penalized
+  because the Jera context asks for calm and restrained motion.
+- The brief is a research aid used before a design pass, not a launch
+  gate. The Luminous Technical visual system and the jera-vault remain
+  the source of truth. A mined source never overrides Jera direction.

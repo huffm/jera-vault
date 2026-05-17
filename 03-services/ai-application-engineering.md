@@ -1,4 +1,4 @@
-# AI Application Engineering
+# Applied AI
 
 ## Service Summary
 

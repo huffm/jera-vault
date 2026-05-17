@@ -22,7 +22,7 @@ View products
 
 Use three or four concise service cards:
 
-- AI application engineering.
+- Applied AI.
 - Enterprise modernization.
 - Automation & Integration.
 - Decision support applications.

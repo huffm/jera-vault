@@ -6,7 +6,7 @@ DAI is the internal product direction for a Jera Technologies product focused on
 
 Public copy should not lead with the DAI name. The current public label is Structured Analysis Pipeline.
 
-The public positioning should focus on structured analysis, signal organization, reviewable outputs, and clear decision artifacts.
+The public product framing should focus on structured analysis, signal organization, reviewable outputs, and clear decision artifacts.
 
 ## What DAI Does
 

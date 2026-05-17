@@ -26,7 +26,7 @@ A small Capability Explorer could be useful later, especially on the Home or Ser
 
 A later slice may add a small accessible Capability Explorer with:
 
-- AI Application Engineering.
+- Applied AI.
 - Enterprise Modernization.
 - Automation And Integration.
 - Decision Support Systems.

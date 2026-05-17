@@ -35,6 +35,6 @@ The website should present Jera Technologies as a serious software engineering s
 
 Slice 1 created the initial Astro website in `C:\Users\trolo\source\repos\jera-workspace\jera-site`.
 
-The public site now includes Home, Services, Products, DAI, Matchup Analyzer, Solution Examples, About, and Contact pages. The site reflects the approved company positioning, product portfolio framing, and truth boundaries from this vault.
+The public site now includes Home, Services, Products, Structured Analysis Pipeline, Matchup Analyzer, Solution Examples, About, and Contact pages. The site reflects the approved company positioning, product portfolio framing, and truth boundaries from this vault.
 
 Review [[current-site-state]] and [[current-slice]] before starting the next website slice.

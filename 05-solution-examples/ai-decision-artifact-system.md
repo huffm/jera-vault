@@ -26,7 +26,7 @@ The resulting software could be a web application, internal tool, or product wor
 
 ## What This Demonstrates
 
-This example demonstrates AI application engineering, productized AI workflow design, decision support, and structured output design.
+This example demonstrates Applied AI, productized AI workflow design, decision support, and structured output design.
 
 ## Claim Boundary
 

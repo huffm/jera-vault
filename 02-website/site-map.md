@@ -25,11 +25,11 @@ Core content:
 
 ## Services
 
-Purpose: Explain how Jera Technologies helps with AI application engineering, enterprise modernization, automation, integrations, and decision support software.
+Purpose: Explain how Jera Technologies helps with Applied AI, enterprise modernization, automation, integrations, and decision support software.
 
 Core content:
 
-- AI application engineering.
+- Applied AI.
 - Enterprise modernization.
 - Automation and integration.
 - Decision support applications.
