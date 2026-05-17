@@ -583,3 +583,61 @@ Boundaries respected:
 - No DAI repos were touched.
 - No git was initialized at the workspace root.
 - Nothing was deployed.
+
+## May 17 Service Copy Compression Pass
+
+Project-aware editorial pass using frontend-design for visual judgment and
+product-ui-design-architect for text rhythm and project vault integration.
+
+Vault docs read: current-site-state.md, design-direction.md,
+public-copy-rules.md, current-slice.md. Skill references applied:
+text-rhythm, section-spacing, footer-composition, vault-integration,
+launch-readiness.
+
+Implemented changes (jera-site):
+
+- src/pages/services/index.astro: compressed the Services hero intro.
+- src/content/services/ai-application-engineering.mdx: compressed
+  description.
+- src/content/services/enterprise-modernization.mdx: compressed
+  description.
+- src/content/services/decision-support-systems.mdx: compressed
+  description.
+- src/content/services/product-experience-buildout.mdx: compressed
+  description.
+- src/content/solution-examples/ai-decision-artifact-system.mdx:
+  compressed description.
+- src/content/solution-examples/authentication-and-integration-work.mdx:
+  compressed description.
+
+No CSS or component changes. The section rhythm and measure tokens from
+earlier passes already produce correct spacing; compressing the copy was
+the right fix rather than touching layout.
+
+Validation:
+
+- npm run build passed and produced 9 static pages.
+- npm run copy-check passed across 9 generated HTML files.
+- npm run preview served at http://localhost:4330/.
+- Rendered QA: Services detail panel intros are one line each at 1280px;
+  the Services hero intro is one line; Solution Examples intros are one or
+  two calm lines; homepage service cards are a tidy two lines.
+- No horizontal overflow at 390px, 430px, 768px, 1280px, 1440px on Home,
+  Services, Products, Structured Analysis Pipeline, Matchup Analyzer,
+  Solution Examples, About, and Contact.
+- Mobile Contact nav remains the centered uniform chip, readable.
+- Inquiry modal opens, fits, and renders correctly at 430px.
+- Console errors and warnings remained 0.
+
+Skill lessons:
+
+- No new reusable lesson was added. This pass reinforced the existing
+  product-ui-design-architect lessons "Compress copy before adjusting
+  measure" and "Intros are not feature lists", which already cover it.
+
+Remaining Vercel preview QA carried forward:
+
+- Deploy a Vercel preview and recheck the same widths.
+- Confirm mailto handoff opens the expected mail client.
+- Confirm the native select popup is acceptable in target browsers.
+- Smoke test contact links, redirects, metadata, sitemap, console output.

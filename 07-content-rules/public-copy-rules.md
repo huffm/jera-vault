@@ -382,3 +382,47 @@ Site meta description direction:
 - The default SEO description compresses to a single intent sentence ending with the four areas of work (products, automation, modernization, decision support). This keeps the description under 160 characters while preserving the public service language.
 
 The visual system, measure tokens, and section spacing rules introduced earlier in the day were unchanged. The editorial pass only changes the words on the page.
+
+## May 17 Service Description Copy Rules
+
+Clarified rules for service and solution example description fields in the
+content collection:
+
+- Keep each description to roughly 9 to 13 words and one clear idea.
+- Avoid four item comma lists. Three concrete terms or fewer.
+- Do not repeat a qualifier the sentence already implies (avoid "existing
+  applications ... suited to the existing system").
+- The description field is shared across the overview card, the detail
+  panel intro, and the homepage services card. Edit it once at the MDX
+  source; do not add per-surface overrides.
+- Keep the calm, senior, practical, non-hype voice. Proper casing. Avoid
+  public facing dashes where practical.
+
+Current approved service descriptions:
+
+- Applied AI: "AI enabled applications that organize analysis, review,
+  and clear outputs."
+- Enterprise Modernization: "Modernization for existing applications,
+  integrations, and access patterns."
+- Automation & Integration: "Automation across tools, data, and business
+  processes, kept visible and easy to review."
+- Decision Support Systems: "Decision systems that keep signals, context,
+  and reviewable artifacts clear."
+- Product Experience Buildout: "Technical workflows shaped into clear
+  interfaces and production ready experiences."
+
+Current approved solution example descriptions:
+
+- Decision Artifact System: "Structuring AI supported work around
+  evidence, analysis, and human review."
+- Data Pipeline Modernization: "Data movement and reporting workflows
+  improved with practical automation."
+- Authentication & Integration Work: "Improving secure access flows,
+  integrations, and connected workflows."
+- Enterprise Modernization Patterns: "Stronger architecture, business
+  logic preservation, and integration planning for existing systems."
+
+Latest check result:
+
+- npm run build and npm run copy-check passed on May 17, 2026.
+- No restricted internal terms appear in generated HTML.

@@ -714,3 +714,61 @@ How it is used for Jera:
 - Future Jera UI passes should invoke both frontend-design and product-ui-design-architect, read the relevant jera-vault docs as the source of truth, and record meaningful changes back into the vault.
 
 No site code changed in this pass. No DAI repos were touched. No deployment was performed.
+
+## May 17 Service Copy Compression Pass
+
+A project-aware editorial pass compressed verbose service and solution
+example descriptions so prominent copy renders cleanly. No CSS or
+component changes were needed; the section rhythm and measure system from
+earlier passes held.
+
+Copy changes:
+
+- Services hero intro: "Engineering support for complex workflows,
+  automation, and AI enabled ideas that need to become usable software."
+  to "Engineering support for workflows, automation, and AI ideas that
+  need usable software."
+- Enterprise Modernization service description: "Improvements to existing
+  applications, integrations, and architecture, with patterns suited to
+  the existing system." to "Modernization for existing applications,
+  integrations, and access patterns."
+- Decision Support Systems service description: "Decision support that
+  structures signals, preserves context, and produces artifacts people
+  can inspect." to "Decision systems that keep signals, context, and
+  reviewable artifacts clear."
+- Applied AI service description: "AI enabled applications that organize
+  analysis, workflow, clear outputs, and human review." to "AI enabled
+  applications that organize analysis, review, and clear outputs."
+- Product Experience Buildout service description: "Technical workflows
+  shaped into clear interfaces, useful product flows, and production
+  ready web experiences." to "Technical workflows shaped into clear
+  interfaces and production ready experiences."
+- Decision Artifact System solution example description: "Structuring AI
+  supported work around evidence, analysis, clear outputs, and human
+  review." to "Structuring AI supported work around evidence, analysis,
+  and human review."
+- Authentication & Integration Work solution example description: "A
+  practical pattern for improving secure access flows, integrations, and
+  connected workflows." to "Improving secure access flows, integrations,
+  and connected workflows."
+- Automation & Integration and the remaining solution example
+  descriptions were left as-is; they already read cleanly.
+
+Each service description feeds the overview ServiceCard, the Services
+detail panel intro, and the homepage services section card, so one
+compression fixes all three rendered locations.
+
+Validation:
+
+- npm run build passed and produced 9 static pages.
+- npm run copy-check passed across 9 generated HTML files.
+- npm run preview served the build at http://localhost:4330/.
+- Services detail panel intros render as one calm line each at 1280px.
+- The Services hero intro renders as one line.
+- Solution Examples detail panel intros render as one line (three) and
+  two calm lines (Enterprise Modernization Patterns).
+- Homepage service cards render the compressed copy at a tidy two lines.
+- No horizontal overflow at 390px, 430px, 768px, 1280px, or 1440px on any
+  inspected page.
+- The inquiry modal still opens, fits, and renders correctly at 430px.
+- Console errors and warnings remained 0.

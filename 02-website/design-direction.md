@@ -749,3 +749,24 @@ How it influences Jera design direction:
 - The brief is a research aid used before a design pass, not a launch
   gate. The Luminous Technical visual system and the jera-vault remain
   the source of truth. A mined source never overrides Jera direction.
+
+## May 17 Service Copy Compression
+
+A project-aware editorial pass compressed verbose service and solution
+example descriptions. The Luminous Technical visual system, the section
+rhythm, and the measure tokens were unchanged.
+
+Direction confirmed:
+
+- Service and solution example descriptions are short statements, not
+  comma-heavy lists. Aim for roughly 9 to 13 words and one clear idea.
+- A four item list inside one description should drop to three concrete
+  terms or fewer.
+- Remove redundant qualifier tails (for example, a trailing "with
+  patterns suited to the existing system" after the sentence already
+  said "existing applications").
+- The service description field feeds three rendered places (overview
+  card, detail panel intro, homepage services card). Compress the field
+  once at the content source rather than patching each surface.
+- Prefer better copy over widening a measure. The measure tokens stayed
+  the same; the copy got shorter.
