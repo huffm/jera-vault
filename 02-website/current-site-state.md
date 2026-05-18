@@ -772,3 +772,257 @@ Validation:
   inspected page.
 - The inquiry modal still opens, fits, and renders correctly at 430px.
 - Console errors and warnings remained 0.
+
+## May 17 About Page Voice Pass
+
+A copy and text rhythm pass on the About page. No layout or component
+changes; the existing SectionShell, technical panel, MetricCard, and
+FeatureCard structure was kept. The page reads more down to earth and
+slightly witty while staying credible for a senior independent software
+studio.
+
+About copy changes:
+
+- Page heading: "A software engineering company with product discipline"
+  to "Software engineering for messy, useful work".
+- Page intro: "Practical software and structured workflows, led with
+  product minded engineering." to "Jera Technologies builds practical AI
+  and software systems for teams trying to make complex work easier to
+  see, run, and improve."
+- Dark card heading: "Led with a focus on practical software and
+  structured workflows" to "Built for the parts of work that refuse to
+  stay simple".
+- Dark card body: "Applied AI, systems architecture, enterprise
+  modernization, and product minded delivery." to "Applied AI,
+  modernization, automation, and product delivery shaped around real
+  workflows, not slideware."
+- Focus card value: "Applied AI" to "AI that earns its keep". Body: to
+  "Tied to real workflows, useful outputs, and review paths people can
+  trust."
+- Method card value: "Structured" to "Messy ideas, cleaner paths". Body:
+  to "Translate complex technical ideas into software people can operate,
+  maintain, and explain."
+- Operating principles heading: "Calm engineering for complex systems" to
+  "Calm engineering for complicated systems".
+- Operating principles intro: to "The work stays practical: understand
+  the workflow, protect what already works, and make the next version
+  easier to use."
+- Principle 1 body trimmed to "AI starts with the workflow, the output
+  people need, and the review path around it."
+- Principle 2 body: to "Modernization respects the existing system, the
+  users, and the business rules behind it."
+- Principle 3 body: to "Useful software needs clear screens, steady
+  workflow paths, and maintainable structure."
+
+The tone stays calm, senior, and practical. The wit is light (messy work,
+not slideware, AI that earns its keep) and never gimmicky. No paid client
+work is implied. No overclaiming. No fake agency language. DAI language
+stays internal.
+
+Validation:
+
+- npm run build passed and produced 9 static pages.
+- npm run copy-check passed across 9 generated HTML files.
+- npm run preview served the build at http://localhost:4331/.
+- The About h1 wraps to a clean 2 lines at 768px, 1280px, and 1440px.
+- The MetricCard values "AI that earns its keep" and "Messy ideas,
+  cleaner paths" render as balanced short headings inside their cards.
+- No horizontal overflow at 390px, 768px, 1280px, or 1440px.
+- Cards still feel balanced. No restricted internal copy in generated
+  HTML. Console errors and warnings remained 0.
+
+## May 17 Editorial Systems Pass
+
+A project-aware editorial systems pass. The recurring verbose-intro and
+awkward-line-break problem was treated as a system issue, not a per-page
+tweak: the copy pattern was fixed across pages, a standing copy rule was
+added, and the build copy check now flags long or comma-heavy intros.
+
+Solution Examples copy:
+
+- Hero intro: "Reusable patterns for structured workflows and clearer
+  implementation." to "Practical patterns for clearer systems."
+- Decision Artifact System description: to "AI supported work organized
+  around evidence and review."
+- Data Pipeline Modernization description: to "Cleaner data movement
+  with reviewable reporting paths."
+- Authentication & Integration Work description: to "Cleaner access
+  flows and safer integrations."
+- Enterprise Modernization Patterns description: to "Stronger structure
+  for systems already in use."
+- CTA description: to "Turn a pattern into a clear plan for working
+  software."
+- Tightened five pattern card descriptions (Data intake, Role and access
+  workflow design, API integration, Application structure, Incremental
+  modernization).
+
+About copy:
+
+- Page intro: to "Practical AI and software for teams making complex
+  work easier to see and run."
+- Operating principles intro: to "Start with the workflow. Keep what
+  works. Make the next version easier to use."
+
+Site-wide:
+
+- Homepage Solution examples section intro updated to match the Solution
+  Examples page: "Practical patterns for clearer systems."
+- The build copy check advisory then flagged two verbose product hero
+  intros. Both were compressed:
+  - Structured Analysis Pipeline description: to "An AI enabled workflow
+    that turns complex information into reviewable decision work."
+  - Matchup Analyzer description: to "Structured workflow design for
+    sports matchup review and clear decision artifacts."
+- All other prominent intros were already concise from earlier passes
+  and were left unchanged.
+
+Tooling:
+
+- scripts/check-public-copy.mjs gained an advisory pass that flags
+  prominent section and page intros over 120 characters or with more
+  than three commas. It is warning only and never fails the build.
+
+Validation:
+
+- npm run build passed and produced 9 static pages.
+- npm run copy-check passed; the intro rhythm advisory reports all
+  prominent intros are concise.
+- npm run preview served the build at http://localhost:4332/.
+- Solution Examples detail panel intros render as one clean line each.
+- About intros render cleanly at 390px and 1280px.
+- Product hero intros are now concise.
+- No horizontal overflow at 390px, 768px, or 1280px on inspected pages.
+- Console errors and warnings remained 0.
+
+## May 17 Inquiry Modal Polish Pass
+
+A focused modal UX and copy rhythm pass on the inquiry modal. No other
+part of the site changed except the shared modal CSS.
+
+Modal copy revision:
+
+- Headline: "Rough idea, stubborn workflow, or modernization effort?" to
+  "Rough idea or stubborn workflow?"
+- Intro: "Send over the shape of it, even if it is still messy. Jera
+  Technologies will help turn it into a practical next step." to
+  "Modernization effort, product concept, or strange little system
+  problem? Send over the shape of it. Jera Technologies will help turn it
+  into a practical next step."
+- Email fallback helper: "Send a short note to:" to "Send project
+  details to:"
+- Message label confirmed correct as "What needs attention?" (the
+  reported "What eeds attention?" typo was not present in source; it was
+  a stale render).
+- Eyebrow, project category options, message placeholder, fallback
+  heading, and email were unchanged.
+
+Form hierarchy refinement:
+
+- The form now reads as four intentional groups: Project category,
+  Contact details, Project details, then Submit or direct email.
+- Two quiet uppercase scanning labels were added: "Contact details"
+  before the name field and "Project details" before the message field.
+  They are aria-hidden visual aids; every input keeps its own real label.
+
+CTA icon decision:
+
+- The submit icon was changed from a checkmark to a send / paper-plane
+  icon. A checkmark reads as "confirmed"; the action is sending an
+  inquiry, so the icon now depicts sending.
+
+Footer action area refinement:
+
+- The hard top border on the action area was replaced with a soft faded
+  hairline (a gradient that fades at both ends).
+- The vertical divider between the CTA and the direct email helper was
+  removed; the desktop column gap separates them now.
+- Spacing was loosened so the footer no longer feels cramped on desktop
+  or mobile.
+- The direct email fallback keeps a warm, helpful tone.
+
+Headline sizing:
+
+- The modal headline font size was reduced from clamp(2rem, 3.6vw,
+  2.78rem) to clamp(1.8rem, 2.7vw, 2.3rem) so it reads as a modal
+  heading, not a page hero, and wraps into a calm two lines.
+
+Accessibility confirmation:
+
+- Dialog semantics, Escape close, outside click close, focus return,
+  focus trap, visible focus states, native validity, and per-input
+  labels are all preserved. Escape close and focus return were verified
+  in preview.
+
+Validation:
+
+- npm run build passed and produced 9 static pages.
+- npm run copy-check passed; intro rhythm advisory clean.
+- npm run preview served the build at http://localhost:4333/.
+- Modal QA at 390, 430, 768, 1280, and 1440 (x900): headline wraps
+  cleanly as two lines, intro reads naturally, "What needs attention?"
+  is spelled correctly, the CTA is visible, the footer is not cramped,
+  the direct email fallback reads cleanly, no right edge artifact, no
+  horizontal overflow.
+- Escape closes the modal and focus returns to the trigger.
+- Console errors and warnings remained 0.
+
+Remaining Vercel preview QA:
+
+- Recheck the modal on the deployed preview at the same widths.
+- Confirm the mailto handoff opens the expected mail client.
+- Confirm the native select popup is acceptable in target browsers.
+
+## May 18 Inquiry Modal Intro Microcopy And Wrap Pass
+
+A final microcopy and text rhythm refinement on the inquiry modal intro.
+The modal design, the form structure, the accessibility behavior, and
+the mailto handoff are unchanged.
+
+The modal intro now reads "Modernization effort, product concept, or
+strange little system problem? Send the rough shape. We'll help turn it
+into a practical next step." The previous intro named "Jera Technologies"
+literally, which broke the company name across lines in rendered QA. The
+intro no longer names the company; "We'll" keeps the tone warm. The
+headline "Rough idea or stubborn workflow?" is unchanged.
+
+The modal intro paragraph switched from text-wrap: pretty to
+text-wrap: balance so every line is evened rather than only the last
+few. This removed a dangling article ("a") that pretty left at the end
+of a line at 390px.
+
+Rendered QA at 390, 430, 768, 1280, and 1440 (x900) confirmed the intro
+wraps to even lines with no company-name break and no dangling article,
+the headline stays a clean two lines, the CTA and the fallback email are
+visible, and there is no horizontal overflow. Escape close and focus
+return were verified. Console errors and warnings remained 0.
+npm run build and npm run copy-check passed.
+
+## May 18 Inquiry Modal Intro Measure Composition Pass
+
+A follow-up composition fix. The microcopy and wrap pass above improved
+the intro but it still rendered as cramped fragments, because the intro
+was constrained too narrowly (max-inline-size: 50ch, a helper-text
+width). This pass fixes the modal text composition system. The headline
+and intro copy, the form structure, the accessibility behavior, and the
+mailto handoff are all unchanged.
+
+The modal headline and the modal intro now use separate, named text
+measures. The headline uses --measure-modal-heading (24ch, compact). The
+intro uses the new --measure-modal-intro token at 64ch, up from 50ch.
+The shared modal header wrapper max-width was widened from 43rem to 46rem
+so it no longer clips the wider intro measure; the headline keeps its
+own 24ch cap. The intro keeps text-wrap: balance, which at 64ch lands
+the line break after the opening question.
+
+The intro problem was a measure problem, not a copy problem. A
+two-sentence intro in a 50ch measure can only wrap to cramped fragments;
+the fix is a wider intro measure, not shorter copy.
+
+Rendered QA at 390, 430, 768, 1280, and 1440 (x900): at 768, 1280, and
+1440 the intro composes as two calm lines (line one ends after the
+opening question, line two carries the second sentence); at 430 and 390
+it is four even lines bounded by the panel width. The headline stays a
+clean two lines. CTA visible, footer and direct email readable, no
+horizontal overflow, no right edge artifact. Escape close and focus
+return verified. Console errors and warnings 0. npm run build and
+npm run copy-check passed.

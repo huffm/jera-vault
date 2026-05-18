@@ -641,3 +641,283 @@ Remaining Vercel preview QA carried forward:
 - Confirm mailto handoff opens the expected mail client.
 - Confirm the native select popup is acceptable in target browsers.
 - Smoke test contact links, redirects, metadata, sitemap, console output.
+
+## May 17 About Page Voice Pass
+
+Copy and text rhythm pass on the About page using frontend-design for
+voice judgment and product-ui-design-architect for text rhythm and
+project vault integration. Vault docs read: current-site-state.md,
+design-direction.md, public-copy-rules.md, current-slice.md.
+
+Implemented changes (jera-site):
+
+- src/pages/about.astro: applied the new About copy direction. Page
+  heading, page intro, dark card heading and body, both MetricCard values
+  and bodies, operating principles heading and intro, and all three
+  principle card bodies were rewritten to a calmer, more human, lightly
+  witty voice. No layout or component changes.
+
+The page now reads down to earth and product minded without hype. The
+wit is light (messy work, not slideware, AI that earns its keep).
+
+Validation:
+
+- npm run build passed and produced 9 static pages.
+- npm run copy-check passed across 9 generated HTML files.
+- npm run preview served at http://localhost:4331/.
+- About inspected at 390px, 768px, 1280px, 1440px.
+- The h1 wraps to a clean 2 lines at 768px and up.
+- MetricCard values render as balanced short headings.
+- No horizontal overflow at any inspected width.
+- No restricted internal copy in generated HTML. Console clean.
+
+Remaining Vercel preview QA carried forward:
+
+- Deploy a Vercel preview and recheck the About page at the same widths.
+- Confirm mailto handoff, native select popup, contact links, redirects,
+  metadata, sitemap, and console output on the live preview.
+
+## May 17 Editorial Systems Pass
+
+Project-aware editorial systems pass using frontend-design for voice and
+product-ui-design-architect for text rhythm, copy rules, and vault
+integration.
+
+Vault docs read: 02-website/current-site-state.md,
+02-website/design-direction.md, 07-content-rules/public-copy-rules.md,
+09-implementation-log/current-slice.md. Skill references applied:
+references/text-rhythm.md, references/section-spacing.md,
+references/vault-integration.md, references/lessons-learned.md.
+
+Implemented changes (jera-site):
+
+- src/pages/solution-examples/index.astro: compressed the hero intro, the
+  CTA description, and five verbose pattern card descriptions.
+- src/content/solution-examples/*.mdx: compressed all four solution
+  example descriptions.
+- src/pages/about.astro: compressed the page intro and the operating
+  principles intro.
+- src/pages/index.astro: updated the homepage Solution examples section
+  intro to match the Solution Examples page.
+- src/content/products/dai.mdx and matchup-analyzer.mdx: compressed the
+  two product hero descriptions that the new advisory flagged.
+- scripts/check-public-copy.mjs: added a warning-only advisory for long
+  or comma-heavy prominent intros. It never fails the build.
+
+Updated jera-vault:
+
+- 07-content-rules/public-copy-rules.md: added a standing "Prominent
+  Section Intro Rule".
+
+Updated the skill:
+
+- .claude/skills/product-ui-design-architect/references/lessons-learned.md:
+  added the reusable lesson "Recurring awkward wrapping is an editorial
+  systems issue".
+
+No CSS, component, or layout changes. The measure tokens and section
+rhythm from earlier passes were already correct; the fix was copy.
+
+Validation:
+
+- npm run build passed and produced 9 static pages.
+- npm run copy-check passed; intro rhythm advisory reports all prominent
+  intros concise.
+- npm run preview served at http://localhost:4332/.
+- Rendered QA at 390px, 768px, 1280px: Solution Examples detail intros
+  one line each, About intros clean, product hero intros concise, no
+  horizontal overflow, console clean.
+
+Remaining Vercel preview QA carried forward:
+
+- Deploy a Vercel preview and recheck the same widths.
+- Confirm mailto handoff, native select popup, contact links, redirects,
+  metadata, sitemap, and console output on the live preview.
+
+## May 17 Inquiry Modal Polish Pass
+
+Focused modal UX and copy rhythm pass using frontend-design for visual
+judgment and product-ui-design-architect for modal and form quality,
+text rhythm, and accessibility.
+
+Vault docs read: 02-website/current-site-state.md,
+02-website/design-direction.md, 07-content-rules/public-copy-rules.md,
+09-implementation-log/current-slice.md. Skill references applied:
+references/modal-and-form-quality.md, references/text-rhythm.md,
+references/accessibility-checklist.md, references/vault-integration.md.
+
+Implemented changes (jera-site):
+
+- src/components/inquiry/InquiryModal.astro: new headline and intro copy,
+  the "Send project details to:" fallback helper, two aria-hidden group
+  labels (Contact details, Project details), and a send / paper-plane
+  CTA icon replacing the checkmark.
+- src/styles/global.css: reduced the modal headline scale to a
+  modal-appropriate size, added the .inquiry-form__group-label style,
+  replaced the action area hard top border with a soft faded hairline,
+  removed the vertical divider on the direct email helper, and loosened
+  footer spacing for desktop and mobile.
+
+Updated the skill:
+
+- references/lessons-learned.md: added three reusable lessons (a modal
+  heading is not a page hero; soft hairlines over mechanical dividers;
+  CTA icons should match the action's meaning).
+
+Validation:
+
+- npm run build passed and produced 9 static pages.
+- npm run copy-check passed; intro rhythm advisory clean.
+- npm run preview served at http://localhost:4333/.
+- Modal QA at 390, 430, 768, 1280, 1440 (x900): clean headline wrap,
+  natural intro, correct message label, visible CTA, uncramped footer,
+  clean direct email fallback, no right edge artifact, no horizontal
+  overflow.
+- Escape close and focus return verified. Console clean.
+
+Remaining Vercel preview QA carried forward:
+
+- Recheck the modal on the deployed preview at the same widths.
+- Confirm the mailto handoff and the native select popup behavior.
+- Smoke test contact links, redirects, metadata, sitemap, console.
+
+## May 18 Inquiry Modal Intro Microcopy And Wrap Pass
+
+A final microcopy and text rhythm refinement on the inquiry modal intro.
+No redesign, no form structure change, no accessibility change, no
+dependency change. Skills used: frontend-design for voice judgment,
+product-ui-design-architect for text rhythm and modal quality.
+
+Vault docs read: 02-website/current-site-state.md,
+08-decisions/0006-inquiry-form-experience.md,
+07-content-rules/public-copy-rules.md,
+09-implementation-log/current-slice.md.
+
+Copy change (src/components/inquiry/InquiryModal.astro):
+
+- Intro from "Modernization effort, product concept, or strange little
+  system problem? Send over the shape of it. Jera Technologies will help
+  turn it into a practical next step." to "Modernization effort, product
+  concept, or strange little system problem? Send the rough shape. We'll
+  help turn it into a practical next step."
+- Removing the literal "Jera Technologies" from the intro removes the
+  company-name line break that read as unpolished, and "We'll" keeps the
+  tone warm and down to earth.
+- The headline "Rough idea or stubborn workflow?" is unchanged.
+
+Wrap fix (src/styles/global.css):
+
+- .inquiry-modal__description changed from text-wrap: pretty to
+  text-wrap: balance. With pretty the intro still broke awkwardly at
+  390px: the article "a" dangled at the end of a line, separated from
+  "practical next step." pretty only optimizes the last few lines to
+  avoid an orphan; it does not even the body of the paragraph. balance
+  evens every line. The intro is only three to four lines, well inside
+  the browser balancing cap.
+
+Rendered QA (npm run preview, modal at x900):
+
+- 390px: intro four even lines, the question ends cleanly at line 2, the
+  second sentence is lines 3 and 4, no dangling article. Headline two
+  lines. CTA and fallback email visible.
+- 430px: same four-line shape, clean.
+- 768px: intro three even lines, headline two lines, CTA and fallback
+  visible.
+- 1280px and 1440px: intro three even lines, no awkward break.
+- No "Jera Technologies" company-name wrapping at any width.
+- No horizontal overflow at any width. Escape close and focus return
+  verified. Console errors and warnings 0.
+
+Validation:
+
+- npm run build passed and produced 9 static pages.
+- npm run copy-check passed; intro rhythm advisory clean.
+
+Skill update:
+
+- product-ui-design-architect references/lessons-learned.md gained the
+  lesson "For short prominent blocks, balance beats pretty".
+- references/text-rhythm.md wrapping guidance updated: prefer
+  text-wrap: balance for short prominent paragraphs (modal intros, hero
+  subcopy), and a note that pretty is not a stronger balance.
+
+## May 18 Inquiry Modal Intro Measure Composition Pass
+
+A composition fix for the inquiry modal intro. The earlier microcopy and
+wrap pass improved the intro but left it constrained too narrowly: the
+intro was capped at max-inline-size: 50ch, far too tight for a
+two-sentence intro, so it still rendered as cramped fragments. This pass
+fixes the measure system, not the copy. The headline and intro copy are
+both unchanged. No form structure, accessibility, or dependency change.
+
+Skills used: frontend-design for voice and composition judgment,
+product-ui-design-architect for modal quality and text rhythm.
+
+Vault docs read: 02-website/current-site-state.md,
+02-website/design-direction.md, 07-content-rules/public-copy-rules.md,
+08-decisions/0006-inquiry-form-experience.md,
+09-implementation-log/current-slice.md. Skill references read:
+modal-and-form-quality.md, text-rhythm.md, lessons-learned.md,
+vault-integration.md.
+
+Root cause:
+
+- .inquiry-modal__title and .inquiry-modal__description already had
+  separate max-inline-size values (24ch and 50ch), but 50ch is a
+  helper-text width, not an intro width. A roughly 138-character intro
+  at 50ch wraps to three or four cramped fragments.
+- The shared header wrapper .inquiry-modal__header also capped both the
+  title and the intro at max-width: 43rem, a secondary ceiling.
+
+Measure changes (src/styles/global.css):
+
+- Added two named tokens so the separation is an explicit system:
+  --measure-modal-heading: 24ch and --measure-modal-intro: 64ch.
+- .inquiry-modal__title now uses var(--measure-modal-heading). The
+  headline measure is unchanged in value (24ch), now named.
+- .inquiry-modal__description now uses width: 100% and
+  max-inline-size: var(--measure-modal-intro) (64ch, up from 50ch).
+- .inquiry-modal__header max-width widened from 43rem to 46rem so the
+  wider intro measure is never clipped by the header wrapper. The title
+  keeps its own 24ch cap, so widening the wrapper does not affect it.
+- The intro keeps text-wrap: balance. At the 64ch measure, balance lands
+  the line break after the opening question ("...system problem?") and
+  keeps the second sentence whole on line two. text-wrap: pretty was
+  tested at the same measure and rejected: it greedily filled line one
+  and stranded the verb "Send" at the end of it.
+
+Rendered QA (npm run preview, modal at x900):
+
+- 1280px: intro two lines. Line 1 "Modernization effort, product
+  concept, or strange little system problem?" Line 2 "Send the rough
+  shape. We'll help turn it into a practical next step." Matches the
+  brief's QA target.
+- 1440px: identical two-line composition.
+- 768px: intro two lines, same break.
+- 430px and 390px: intro four even lines, bounded by the panel width
+  (the 64ch token does not bind at mobile), no cramped fragments.
+- Headline stays a clean two lines ("Rough idea or" / "stubborn
+  workflow?") at every width.
+- CTA visible, footer and direct email readable, no horizontal overflow,
+  no right edge artifact. Escape close and focus return to the trigger
+  verified. Console errors and warnings 0.
+
+Validation:
+
+- npm run build passed and produced 9 static pages.
+- npm run copy-check passed; intro rhythm advisory clean.
+
+Skill update:
+
+- references/lessons-learned.md gained "A modal heading and its intro
+  need separate measures".
+- references/modal-and-form-quality.md gained a "Text composition"
+  section on separate heading and intro measures.
+- references/text-rhythm.md measure guidance gained a note that a
+  heading and its intro need separate measures even inside a modal.
+
+Remaining Vercel preview QA carried forward:
+
+- Recheck the modal on the deployed preview at 390, 430, 768, 1280, 1440.
+- Confirm the mailto handoff and the native select popup behavior.
+- Smoke test contact links, redirects, metadata, sitemap, console.

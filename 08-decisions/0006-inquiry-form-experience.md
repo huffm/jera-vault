@@ -157,3 +157,128 @@ QA result:
 - The CTA and the fallback email link remain visible at 390px x 900px without scrolling the panel.
 - No horizontal overflow was detected on any tested width.
 - Console errors and warnings were both 0 on the preview server.
+
+## May 17 Modal Polish Update
+
+A focused modal UX and copy pass refined the inquiry modal further.
+
+Copy:
+
+- Headline shortened to "Rough idea or stubborn workflow?"
+- Intro changed to "Modernization effort, product concept, or strange
+  little system problem? Send over the shape of it. Jera Technologies
+  will help turn it into a practical next step."
+- Email fallback helper changed to "Send project details to:".
+- Project category options, message label ("What needs attention?"),
+  message placeholder, fallback heading, and email are unchanged.
+
+Form hierarchy:
+
+- The form is presented as four groups: Project category, Contact
+  details, Project details, then Submit or direct email. Two aria-hidden
+  uppercase scanning labels mark the Contact details and Project details
+  groups. Each input keeps its own associated label.
+
+CTA icon:
+
+- The submit button icon changed from a checkmark to a send /
+  paper-plane icon. A checkmark implied the inquiry was already
+  confirmed; the send icon depicts the actual action.
+
+Footer action area:
+
+- The hard top border was replaced with a soft faded hairline.
+- The vertical divider between the CTA and the direct email helper was
+  removed; a column gap separates them on desktop.
+- Spacing was loosened so the footer is not cramped.
+
+Headline sizing:
+
+- The headline font size was reduced so the modal headline reads as a
+  modal heading rather than a page hero.
+
+Accessibility:
+
+- Dialog semantics, Escape close, outside click close, focus return,
+  focus trap, visible focus states, native validity, and per-input
+  labels remain intact. Escape close and focus return were verified in
+  preview. The native select is unchanged; no custom dropdown was added.
+
+The mailto draft behavior is unchanged.
+
+## May 18 Modal Intro Microcopy And Wrap Update
+
+A final microcopy and text rhythm refinement on the inquiry modal intro.
+The modal design, the form structure, the accessibility behavior, and
+the mailto handoff are all unchanged.
+
+Copy:
+
+- Intro changed to "Modernization effort, product concept, or strange
+  little system problem? Send the rough shape. We'll help turn it into a
+  practical next step." The previous intro named "Jera Technologies"
+  literally, which broke the company name across lines in rendered QA
+  and read as unpolished. The name is now dropped from the intro and
+  replaced with "We'll", which keeps the tone warm and down to earth.
+- The headline "Rough idea or stubborn workflow?" is unchanged.
+
+Wrapping:
+
+- The modal intro paragraph (.inquiry-modal__description) switched from
+  text-wrap: pretty to text-wrap: balance. pretty only optimizes the
+  last few lines to prevent an orphan; it left a dangling article ("a")
+  at the end of a line at 390px. balance evens every line. The intro is
+  three to four lines, well within the browser balancing cap.
+
+QA result:
+
+- Rendered QA at 390, 430, 768, 1280, and 1440 (x900): the intro wraps
+  to even lines with no company-name break and no dangling article, the
+  headline stays a clean two lines, the CTA and the fallback email are
+  visible, there is no horizontal overflow.
+- Escape close and focus return verified. Console errors and warnings 0.
+- npm run build and npm run copy-check passed.
+
+## May 18 Modal Intro Measure Composition Update
+
+A composition fix. The microcopy and wrap update above improved the
+intro but it still rendered as cramped fragments because it was
+constrained too narrowly. This update fixes the modal text composition
+system. The headline and intro copy are unchanged. The form structure,
+the accessibility behavior, and the mailto handoff are unchanged.
+
+Decision: the modal headline and the modal intro use separate, named
+text measures.
+
+- The headline (.inquiry-modal__title) stays compact, at the
+  --measure-modal-heading token (24ch, unchanged in value, now named).
+- The intro (.inquiry-modal__description) uses the new
+  --measure-modal-intro token at 64ch, up from a too-narrow 50ch.
+- The shared header wrapper (.inquiry-modal__header) max-width was
+  widened from 43rem to 46rem so it never clips the wider intro measure.
+  The headline keeps its own 24ch cap regardless of the wrapper width.
+- The intro keeps text-wrap: balance. At 64ch, balance places the line
+  break after the opening question and keeps the second sentence whole.
+
+Rationale: the intro problem was a measure problem, not a copy problem.
+A two-sentence intro forced into a 50ch helper-text measure can only
+wrap into cramped fragments. The fix is to give the intro its own wider
+measure, not to keep trimming the copy. 50ch was a leftover from the
+May 15 text composition pass, which set the modal intro to a helper-like
+width; that value is now corrected.
+
+QA result:
+
+- Rendered QA at 390, 430, 768, 1280, and 1440 (x900): at 768, 1280, and
+  1440 the intro composes as two calm lines with the break after the
+  opening question; at 430 and 390 it is four even lines bounded by the
+  panel. The headline stays a clean two lines. CTA visible, footer and
+  direct email readable, no horizontal overflow, no right edge artifact.
+- Escape close and focus return to the trigger verified. Console errors
+  and warnings 0.
+- npm run build and npm run copy-check passed.
+
+Remaining Vercel preview QA: recheck the modal at the five widths on the
+deployed preview, confirm the mailto handoff and the native select
+popup, and smoke test contact links, redirects, metadata, sitemap, and
+console output.

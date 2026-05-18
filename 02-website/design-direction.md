@@ -770,3 +770,84 @@ Direction confirmed:
   once at the content source rather than patching each surface.
 - Prefer better copy over widening a measure. The measure tokens stayed
   the same; the copy got shorter.
+
+## May 17 About Page Voice
+
+The About page voice was loosened from stiff and corporate toward calm,
+human, and lightly witty, without becoming cute or hypey.
+
+Voice direction confirmed for About:
+
+- Headlines may carry a small, dry human note (for example "messy, useful
+  work" or "parts of work that refuse to stay simple"). Keep it light and
+  never gimmicky.
+- MetricCard values may be short phrases rather than single words when
+  the phrase reads as a confident statement (for example "AI that earns
+  its keep"). The card value keeps text-balance so it composes cleanly.
+- Body copy stays practical and concrete: real workflows, not slideware.
+- The pass was copy and text rhythm only. Layout and components were not
+  changed.
+
+## May 17 Editorial Systems Pass
+
+Recurring verbose-intro wrapping was addressed as a system, not a page.
+
+Direction confirmed:
+
+- Prominent section and page intros carry one idea, avoid comma-heavy
+  service lists, and stay short enough to render as one or two calm lines
+  on desktop. Cards and panels carry the detail.
+- When the same wrapping problem recurs across pages, the fix is the copy
+  pattern and the project copy rule, not per-page CSS. The measure tokens
+  and section rhythm were not changed in this pass.
+- The build copy check now prints an advisory for long or comma-heavy
+  intros so the issue is caught at build time rather than discovered
+  visually page by page.
+
+## May 17 Inquiry Modal Polish
+
+The inquiry modal was refined as a small product experience: calmer
+headline scale, intentional form grouping, a softer footer, and a send
+icon that matches the action.
+
+Direction confirmed:
+
+- A modal headline is sized as a modal heading, not a page hero. Keep it
+  short and cap the font size below the page hero scale.
+- Forms read better as visible groups. Quiet uppercase scanning labels
+  (Contact details, Project details) group fields without heavy dividers.
+  Each input keeps its own real label; the group labels are aria-hidden
+  visual aids.
+- Footers and action areas use soft faded hairlines, not hard
+  edge-to-edge rules, and use whitespace or a column gap instead of a
+  vertical divider line.
+- A primary action icon depicts the action. Submit and send use a send
+  or paper-plane icon, never a checkmark.
+
+## May 18 Modal Text Composition Direction
+
+The inquiry modal headline and the inquiry modal intro are separate
+composition objects and use separate, named text measures. This
+supersedes the modal measure note in the May 15 Text Composition
+Direction section (which set the modal intro to 50ch).
+
+Direction confirmed:
+
+- The modal headline and the modal intro must never share one measure.
+  The headline is a short, strong statement; the intro is a supporting
+  paragraph. They have different jobs and different ideal line lengths.
+- The headline uses a narrow measure (--measure-modal-heading, 24ch) so
+  it reads as a compact modal heading.
+- The intro uses a distinctly wider measure (--measure-modal-intro,
+  64ch) so a two-sentence intro composes as two calm lines on desktop,
+  not a narrow column of cramped fragments. 50ch was too narrow and is
+  retired.
+- The shared modal header wrapper must not silently cap the intro. Its
+  max-width is wide enough (46rem) that each text element is governed by
+  its own measure, not by the wrapper.
+- The intro keeps text-wrap: balance. At the 64ch measure, balance lands
+  the line break after the opening question rather than stranding the
+  next sentence's first word on line one.
+- Awkward intro wrapping in a modal is treated as a measure problem
+  first. Fix the measure before trimming copy. Do not shorten good copy
+  to compensate for a bad measure.
