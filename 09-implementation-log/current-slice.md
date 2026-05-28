@@ -8,6 +8,266 @@ Premium Design Architecture Pre-Launch Pass
 
 Make the Jera Technologies public site feel more polished, more intentional, more trustworthy, and more product quality so it reads as a top-dollar independent software studio. Keep the existing positioning, the Astro static delivery model, and the simplified inquiry experience.
 
+## May 28 Focused Contact Alignment Correction
+
+Focused correction pass on footer and contact action alignment only. No
+layout redesign and no background-system change.
+
+Implementation (`jera-site`):
+
+- `src/components/layout/Footer.astro`: removed the mini boxed contact card.
+  Footer Contact now matches Company/Work rhythm as a simple link stack:
+  stronger `Start an inquiry` + quieter icon `Prefer email?`.
+- `src/pages/contact.astro`: kept a single primary `Open inquiry form`
+  action and the quiet `Prefer email?` fallback; removed the forced
+  wide-button treatment so the CTA fits its content naturally.
+- `src/styles/global.css`: refined shared `.quiet-email-link` icon/text
+  alignment, spacing, underline/focus behavior, and footer/contact
+  modifiers. Removed boxed footer-module styling and kept a simple aligned
+  secondary-link treatment.
+
+Hierarchy and safety rules confirmed:
+
+- Raw `support@jeratechnologies.com` remains hidden from normal body text.
+- Email remains reachable only through `mailto:` href fallback paths.
+- Inquiry form remains the primary contact path in footer, contact panel,
+  and modal contexts.
+- Keyboard focus-visible behavior on primary and secondary actions remains
+  intact.
+- Rationale: the mini-card footer treatment was rejected because it looked
+  cramped and lopsided inside an otherwise typographic footer grid.
+
+Verification:
+
+- `npm run build` passed (9 pages).
+- `npm run copy-check` passed (public copy clean).
+- Rendered QA screenshots:
+  - `contact-footer-desktop-1440x1700.png`
+  - `contact-footer-mobile-390x2100.png`
+  - `contact-desktop-1440x900.png`
+  - `contact-mobile-390x844.png`
+- Runtime checks against preview HTML:
+  - no visible raw email text in rendered body text checks
+  - `Prefer email?` links resolve to `mailto:`
+  - `Open inquiry form` and `Start an inquiry` remain trigger-based
+    primary actions.
+
+## May 27 Micro-Polish: Contact Hierarchy + Surface Finishing
+
+Focused refinement pass (no layout redesign). frontend-design for visual
+judgment, product-ui-design-architect for surface/finish discipline. Vault
+read: design-direction.md, current-site-state.md, current-slice.md,
+ADR-0006. User decision captured: hide email via a quiet mailto link, raw
+address never shown.
+
+Contact hierarchy (form primary, email demoted):
+
+- New shared `.quiet-email-link` primitive (`global.css`): small muted
+  "Prefer email?" mailto link, no raw address rendered; works without JS.
+- `src/pages/contact.astro`: removed the equally-weighted white "Email
+  directly" button; dark panel now has one `button-dark` primary ("Open
+  inquiry form") + the quiet link.
+- `src/components/inquiry/InquiryModal.astro`: action-area fallback reduced
+  from heading + note + raw-address link to the single quiet "Prefer
+  email?" link.
+- `src/components/layout/Footer.astro`: Contact column now leads with
+  "Start an inquiry" (`/contact`, inquiry-trigger) + quiet "Prefer email?";
+  raw `siteConfig.contactEmail` text removed. Verified at runtime:
+  `document.body.innerText` contains no `support@jeratechnologies.com` on
+  Contact (address lives only in mailto hrefs + modal submit script).
+- Rationale recorded in ADR-0006: structured intake, spam filtering, future
+  spam controls (honeypot, rate limiting, Turnstile); demoting the address
+  reduces scraping and stops it competing with the form. Mailto fallback +
+  no-JS access preserved.
+
+Surface finishing (shared primitives, `global.css`):
+
+- `.soft-surface-glow` (hero/featured panel): rebuilt from a 3-layer boxy
+  pool to a 5-layer falloff (rising-then-fading opacity arc, growing blur)
+  + faint aqua ambient, so the shadow dissolves into the section below
+  instead of a hard bottom line.
+- `.soft-surface` (white cards): bright top+left inset sheen, faint
+  cool/cyan bottom-right bevel (cyan edge light), inner white ring, and a
+  tight→wide 3-step outer shadow. Interior unchanged/clean.
+- `.surface-label` / `--dark` (chips): cool outline, inner top highlight,
+  faint bottom edge, low outer shadow — polished pills.
+- `.technical-panel` (dark anchors): refined inner edge (brighter top
+  highlight + faint full inset ring); no added outer weight.
+- Buttons: added `:active` pressed states (primary/secondary/dark — surface
+  settles, highlight dims). `Header.astro`: nav active gains inset
+  highlight + low shadow; inactive gains a faint hover shadow; transition
+  widened from colors to all.
+
+Verification:
+
+- `npm run build` passed (9 pages); `npm run copy-check` passed (intro
+  advisory clean).
+- Browser QA: Contact 1440 + 390, home hero 1440, home cards 1150, home
+  390, inquiry modal 1280. Hero shadow reads as natural falloff; chips,
+  white cards, dark panel, buttons read more refined; contact form is the
+  clear primary with email demoted to the quiet link. No raw address in
+  rendered text. Horizontal overflow 0 at 390 on home and contact. Console
+  0 errors / 0 warnings.
+- Not committed.
+
+Skill update:
+
+- `product-ui-design-architect` lessons-learned: added "Premium surface
+  finish is edge and elevation, not heavier fill" (layered shadow falloff,
+  edge light, inner highlight, pressed states) and "Demote a secondary
+  action; do not delete it or render its payload as prominent content".
+
+## May 26 Clean Pearl Base Correction
+
+Context:
+
+- Feedback on the warm pearl pass: the background now had a cream/brown cast that read older, heavier, dusty, less premium. Target is clean, modern, expensive pearl — near-white with the faintest cool cast, not beige and not blue-washed.
+
+Root cause (my own prior edits):
+
+- The warm pearl restoration set the base to `#faf8f3 → #f6f2e9 → #f7f5ef`, `--color-background #f7f5ef`, warm header `rgba(247,245,239,0.82)`, SEO `theme-color #f7f5ef`. Those mid/low stops are yellow-warm; at full-page scale that reads as beige/parchment.
+
+Fix (background tone + card polish only, `jera-site`):
+
+- Base → clean cool pearl `#fbfcfe → #f5f8fc → #f9fbfd`; `--color-background #f6f8fb`; `--color-surface #fcfdff`; header tint `rgba(248,250,253,0.82)`; SEO theme-color `#f6f8fb`.
+- `body::before` ambient kept but lowered to barely-visible soft blue corner light (blue `0.085`, cyan `0.055`, lavender `0.04`, floor `0.045`); no central haze.
+- `.soft-surface` cards: crisp white interior + directional edge light (bright top-left inset rim, faint cool bottom-right inset) so the border reads as polished light, not a drawn outline; restrained aqua/lavender corner sheen for material iridescence. `--color-card-edge` softened to `rgba(96,140,190,0.16)`.
+- Iridescent cards (ProductCard, MetricCard) and dark `technical-panel` anchors unchanged. No layout/structure/copy change. Not committed.
+
+Files changed:
+
+- `src/styles/global.css`, `src/components/layout/Header.astro`, `src/components/seo/SEO.astro`.
+
+Verification:
+
+- `npm run build` passed (9 pages); `npm run copy-check` passed; intro advisory clean.
+- Browser QA done this pass: 1440 (hero/cards/product lab), 390 (hero/nav), Contact 1440. Clean pearl, no cream/brown, dark panels contrast, cards material with subtle edge. Console 0/0. No overflow at 1440 (1425/1425) or 390 (375/375).
+
+Skill update:
+
+- `product-ui-design-architect` lessons-learned: sharpened the accent-wash lesson to also cover the *warm* failure mode — do not create premium depth by tinting the whole field beige/brown/blue; keep a clean base material first, then use edge light, restrained iridescence, and surface hierarchy.
+
+### May 27 Clean Pearl verification re-run + token hygiene
+
+A follow-up session re-verified the correction against the live render and closed the two loose ends.
+
+- Confirmed the committed HEAD is the rejected beige (`--color-background #f7f5ef`, body `#faf8f3 → #f7f5ef`, header `rgba(247,245,239,0.78)`, theme-color `#f7f5ef`); the working tree is the clean-pearl fix. No beige/brown remains in the working tree (computed base `#f6f8fb` = rgb(246,248,251), every body-gradient stop blue-highest).
+- Hygiene (`src/styles/global.css`): removed the dead `--color-pearl-warm: rgba(255,248,234,0.55)` cream token (defined, never referenced — a latent re-warming hazard), and corrected the `body::before` comment that still described a "warm pearl base / page centre stays warm pearl" to "clean cool-pearl base / clean pearl". No rendered change; aligns code intent with the implemented direction.
+- Browser QA this session: home 1440 (top, full page, product/service cards), 1150 (top), 390 (full); the 1150 width the prior pass left unchecked is now confirmed clean pearl. Mobile horizontal overflow 0 at 390 (scrollWidth == clientWidth). Console 0 errors / 0 warnings.
+- `npm run build` passed (9 pages); `npm run copy-check` passed (intro advisory clean). Not committed.
+
+## May 26 Warm Pearl Restoration
+
+Context:
+
+- Feedback on the stop-order pass: it went too far toward a blue-washed background; the page felt blue overall and lost the warm pearl, expensive, crafted studio feel. The ask was better premium surface design, not more blue — blue should act as edge light, hierarchy, and surface detail.
+
+Root cause (git diff vs HEAD):
+
+- Two layers were stacking blue: my stop-order base field (cooled to `#e9edf5…` top to bottom) and the May 21/22 `body::before` ambient (blue `0.185`, cyan `0.15`, plus a central haze radial at `46% 22%` spreading blue across the page middle). Together they washed the page; the warm pearl baseline (`#faf8f3 → #f3f7fb → #f7f5ef`, `--color-background #f7f5ef`, grid-only `body::before`) had been overwritten.
+
+Fix (focused, `jera-site` only):
+
+- Background: warm pearl base restored (`#faf8f3 → #f6f2e9 → #f7f5ef`), `--color-background` back to `#f7f5ef`, header tint back to warm `rgba(247,245,239,0.82)`. Ambient `body::before` kept (viewport-anchored) but demoted to soft blue corner light (blue `0.10`, cyan `0.07`, lavender `0.045`, navy floor `0.05`) with the central haze removed. Pearl tokens lowered to `0.10`/`0.07`.
+- Cards: added `--color-card-edge`/`--color-card-edge-strong`. `.soft-surface` reworked to a clean white interior with a premium edge — refined cool border + inset white rim so the edge catches light — over the layered soft shadow. FeatureCard/ServiceCard/ProcessStep inline border switched to `--color-card-edge`. ProductCard/MetricCard keep `pearl-panel`+`iridescent-edge` for material iridescence.
+- No section wash bands. No DAI repos touched. Not committed.
+
+Files changed:
+
+- `src/styles/global.css`, `src/components/layout/Header.astro`, `src/components/cards/FeatureCard.astro`, `src/components/cards/ServiceCard.astro`, `src/components/cards/ProcessStep.astro`.
+
+Verification:
+
+- `npm run build` passed (9 pages). `npm run copy-check` passed; intro advisory clean.
+- Browser QA (1440/1150/390, overflow, console, Products/Contact) NOT completed — dev-server review was interrupted. Must be done before sign-off.
+
+Skill update:
+
+- `product-ui-design-architect` lessons-learned: added/sharpened the principle that premium colour depth must not come from washing the whole page in the accent colour — preserve the base material identity first, then use the accent as edge light, hierarchy, and surface detail; and that stacked atmosphere layers (base field + ambient) must be read together, since each looked restrained alone but washed the page combined.
+
+## May 26 Second Principal Review And Base Field Stop-Order Correction
+
+Context:
+
+- A second principal-level second-opinion review was requested after the May 22 atmosphere depth rebalance.
+- Concern unchanged: the homepage should feel like an expensive, mature software studio site, calm and art-directed, not a white marketing page with blue added afterward.
+- Constraint: keep the viewport-anchored global atmosphere; no isolated section wash bands; smallest focused correction.
+
+Design judgment before edits:
+
+- The global composition is correct and coherent from hero through footer; the atmosphere is genuinely viewport-anchored, not banded.
+- Product Lab does not read as a sudden colour shift.
+- Card and panel hierarchy are strong; spacing rhythm reads premium; the dark panels (hero artifact, decision artifact, CTA) anchor the page well.
+- No awkward wrapping, weak contrast, noisy gradients, or template feel observed.
+- One real remaining issue: the top still read slightly too white, most visibly at narrow widths. Objective check of the computed background confirmed the base field gradient carried its warmest, palest stop (`#efede7`) at the very top and only turned cool soft-blue at ~46%; the html backing (`#f7f5ef`) and header tint were warmer still. On wide desktop the corner glows hid this; on a 390px hero the rem-anchored glows under-cover, so the warm base showed through as a flat fold.
+
+Implemented change:
+
+- `jera-site/src/styles/global.css` and `jera-site/src/components/layout/Header.astro`.
+- Carried the cool soft-blue pearl up to the top stop of the base field; warm pearl now returns only at the footer close.
+  - base field: `#efede7 0% → #e9edf5 46% → #edf0f6 70% → #efede7 100%` becomes `#e9edf5 0% → #e7ebf3 42% → #edf0f6 72% → #f1efe9 100%`.
+  - `--color-background`: `#f7f5ef` → `#edf0f6`.
+  - sticky header tint: `rgba(247,245,239,0.78)` → `rgba(237,240,246,0.78)`.
+- Colour values only. Ambient `body::before`/`body::after` layers untouched. No wash bands. No layout, spacing, copy, or component-logic change.
+
+Why this fix:
+
+- It removes the warm chalky top at the shared base-field primitive, so the hero sits in soft blue atmosphere (aligned with the navy-anchor + soft-blue standards) on every width, while preserving the warm off-white identity through the footer return and the pearl surfaces.
+
+Verification:
+
+- Visual before/after: homepage 1440px (hero, seam, Product lab, dark panel, CTA/footer), 1150px (hero), 390px (hero/nav, deep section); products 1440px and 390px.
+- Console clean (0 errors, 0 warnings). No horizontal overflow at 1440 (1425/1425), 1150 (1135/1135), 390 (375/375) on home and products.
+- `npm run build` passed (9 pages). `npm run copy-check` passed; intro advisory clean.
+
+Skill update:
+
+- `product-ui-design-architect` references/lessons-learned.md: sharpened the "design the global atmosphere first" lesson with the base-field stop-order diagnostic and the note that rem-anchored corner glows under-cover narrow viewports (so test the top tone at mobile width and tune base field + html backing + header tint together).
+
+## May 22 Second-Opinion Design Review And Atmosphere Depth Rebalance
+
+Context:
+
+- A principal-level review was requested after the May 21 atmosphere correction.
+- Concern: the page still risked reading too white at the top, with lower sections carrying more perceived depth.
+- Constraint: keep the viewport-anchored global atmosphere model; do not reintroduce isolated section wash bands.
+
+Design judgment before edits:
+
+- The global composition was directionally correct and no longer visually split.
+- Product Lab did not read as a sudden color shift.
+- Cards and panel hierarchy were strong.
+- Remaining issue: the top-third atmosphere still read slightly chalky against the richer lower composition.
+
+Implemented change:
+
+- `jera-site/src/styles/global.css` only.
+- Tuned global atmosphere primitives:
+  - slightly cooler and more even body base field gradient;
+  - stronger top-left blue and top-right cyan ambient glows;
+  - added a very soft central blue haze to bridge hero into early sections;
+  - slightly raised lavender mid-right presence;
+  - slightly reduced low navy floor opacity.
+- No section-level wash bands added.
+- No component, layout, spacing, or copy changes.
+
+Why this fix:
+
+- This keeps the atmosphere art-directed globally instead of patching individual sections.
+- It increases perceived premium depth at the hero/top without adding visual noise, neon, or glassmorphism artifacts.
+
+Verification:
+
+- Visual checks:
+  - Homepage: wide desktop, 1150px, 390px.
+  - Products page: desktop + 390px coherence cross-check.
+- Automated runtime checks via Playwright probe:
+  - no console warnings/errors at home 1600/1150/390 and products 390.
+  - no horizontal overflow at the same viewports.
+- Build and copy:
+  - `npm run build` passed (9 pages).
+  - `npm run copy-check` passed.
+
 ## May 15 Premium Design Architecture Pass
 
 This pass acted as a senior refinement of the Luminous Technical system, not a redesign.
@@ -919,5 +1179,161 @@ Skill update:
 Remaining Vercel preview QA carried forward:
 
 - Recheck the modal on the deployed preview at 390, 430, 768, 1280, 1440.
+- Confirm the mailto handoff and the native select popup behavior.
+- Smoke test contact links, redirects, metadata, sitemap, console.
+
+## May 21 Color Depth And Iridescence Pass
+
+Appearance refinement using frontend-design for visual judgment and
+product-ui-design-architect for surface hierarchy, color placement,
+iridescent restraint, section rhythm, card polish, and responsive review.
+Vault docs read: 02-website/design-direction.md, current-site-state.md,
+07-content-rules/public-copy-rules.md, current-slice.md.
+
+Problem: the site read too white and slightly undercolored. Large light
+sections sat on one near-flat field with flat white cards, so the eye saw
+empty white between the navy panels.
+
+Approach: fixed it at the design-system primitives first, then applied
+the primitives consistently, rather than one-off section styling.
+
+Implemented changes (jera-site):
+
+- src/styles/global.css:
+  - Deepened the body background wash: stronger corner glows and a cooler
+    four-stop linear gradient that passes through pale blue mid-page.
+  - Raised `--color-pearl-aqua` and `--color-pearl-lavender` modestly.
+  - Added `--wash-blue`, `--wash-aqua`, `--wash-lavender`, and
+    `--color-section-wash-edge` tokens.
+  - Added a `--shadow-lift-glow` token (lift + soft blue glow).
+  - Added a full-bleed `.section-shell--wash` variant: low-opacity blue,
+    aqua, and lavender corner light over a pale blue linear wash, with a
+    faded top hairline (no hard border).
+  - Tinted `soft-surface` with faint aqua/lavender corner light and a
+    slightly higher base opacity.
+  - `.subtle-lift:hover` now uses `--shadow-lift-glow` with a slightly
+    stronger blue border.
+  - Added a `.card-topline` utility (faint blue) to replace three
+    identical inline neutral card hairlines.
+- src/components/sections/SectionShell.astro: added a `surface`
+  (`plain` | `wash`) prop, applied to light shells only.
+- src/pages/index.astro: wash on Product lab and Solution examples.
+- src/pages/products/index.astro: wash on the process section.
+- src/components/cards/FeatureCard.astro, ServiceCard.astro,
+  ProcessStep.astro: now use `.card-topline`.
+- src/components/layout/Footer.astro: soft blue/aqua closing wash.
+
+No public copy changed. No dependencies added. No DAI repos touched.
+
+Validation:
+
+- npm run build passed and produced 9 static pages.
+- npm run copy-check passed across 9 HTML files; intro rhythm advisory
+  clean.
+- Rendered QA at 1150px and 390px on Home, Services, Products, Solution
+  Examples, and Contact, plus the inquiry modal.
+- Washed bands read as calm section transitions on desktop and mobile;
+  cards lift off the cooler field with the faint blue topline; product
+  process section separates cleanly from the grid above; modal unaffected
+  and free of the right edge artifact.
+- No horizontal overflow at 390px (scrollWidth == clientWidth).
+- Console errors and warnings: 0.
+
+Skill update:
+
+- product-ui-design-architect references/lessons-learned.md gained
+  "Flat-white pages need depth and separation, not louder accents".
+
+Remaining Vercel preview QA carried forward:
+
+- Recheck the eight public pages and the modal on the deployed preview at
+  390, 768, 1150, and 1280, confirming the washes and card glows read as
+  intended on the live URL.
+- Confirm the mailto handoff and the native select popup behavior.
+- Smoke test contact links, redirects, metadata, sitemap, console.
+
+## May 21 Page Atmosphere Composition Correction
+
+Correction of the color-depth pass above, on feedback that color was
+applied locally rather than art-directed globally and the homepage felt
+visually split (flat-white top, colored lower zone, abrupt transition).
+Treated as a composition and visual-system correction, not a stronger
+gradient pass. frontend-design for composition judgment;
+product-ui-design-architect for surface hierarchy, section rhythm, and
+responsive review. Vault docs read: design-direction.md,
+current-site-state.md, public-copy-rules.md, current-slice.md.
+
+What was wrong with the previous pass:
+
+- The page background was distributed across the full document height, so
+  the blue mid-stops pooled on the lower-middle of the long page while
+  the hero stayed pale.
+- The isolated `section-shell--wash` bands sat lower on the page and read
+  as patches, reinforcing the split instead of composing one page.
+
+Composition review (before editing): captured fresh homepage screenshots
+at 1440px (hero and the hero-to-content seam) and confirmed the upper
+page was under-lit while color appeared lower. Decided the atmosphere had
+to be viewport-anchored and consistent from the hero down, with section
+separation carried by surface hierarchy and rhythm rather than bands.
+
+Implemented changes (jera-site):
+
+- src/styles/global.css:
+  - Replaced the document-height body background with an even, calm pearl
+    base linear gradient.
+  - Moved the colored atmosphere into a fixed, full-viewport ambient layer
+    (`body::before`): blue top-left, cyan top-right, faint lavender
+    mid-right, low navy floor glow. Chosen as a `position: fixed`
+    pseudo-element rather than `background-attachment: fixed` because iOS
+    Safari ignores the latter.
+  - Moved the faint grid texture to a second fixed layer (`body::after`),
+    masked to the upper screen.
+  - Refined `soft-surface` to a cleaner, brighter white so cards read as
+    material surfaces sitting in the lit field (clear surface hierarchy).
+- src/pages/index.astro: removed `surface="wash"` from Product lab and
+  Solution examples.
+- src/pages/products/index.astro: removed `surface="wash"` from the
+  process section.
+- src/components/sections/HeroSection.astro: tightened hero bottom padding
+  (`pt-12 pb-9 sm:pt-16 sm:pb-11 lg:pt-20 lg:pb-12`) so the gap into What
+  Jera builds is no longer a blank white void.
+
+The `section-shell--wash` prop and CSS remain available but unused on the
+homepage. The global atmosphere is the intended fix for "too white".
+
+No public copy changed. No dependencies added. No DAI repos touched.
+
+Verification (browser preview, not just build):
+
+- Fresh screenshots before and after at 1440px (hero, seam, deep
+  section), 1150px (hero), and 390px (hero, nav).
+- After: the ambient lighting renders identically at the top and in a
+  deep section (Solution examples), so the page reads as one coherent lit
+  composition with no split and no abrupt band; the hero left is lit, not
+  flat white; the hero-to-content gap is tighter; products process
+  section sits in the same field with no wash band.
+- A Playwright full-page screenshot mis-renders fixed backgrounds (paints
+  only in the first stitched viewport), so per-viewport captures at
+  multiple scroll positions were used instead.
+- Mobile 390px: no horizontal overflow (scrollWidth == clientWidth);
+  hero and nav clean and lit.
+- npm run build passed (9 static pages). npm run copy-check passed; intro
+  advisory clean. Console errors and warnings: 0.
+
+Skill update:
+
+- product-ui-design-architect references/lessons-learned.md: the
+  flat-white lesson was rewritten to "When a page feels too white, design
+  the global atmosphere first" — do not add isolated colored bands; find
+  the distribution cause, anchor atmosphere to the viewport, and build it
+  as layers (base field, hero lighting, section continuity, card surface
+  hierarchy, restrained iridescent detail).
+
+Remaining Vercel preview QA carried forward:
+
+- Recheck the homepage atmosphere on the deployed preview at 390, 768,
+  1150, 1280, and a wide desktop, confirming the fixed ambient reads
+  consistently top-to-bottom on the live URL and on iOS Safari.
 - Confirm the mailto handoff and the native select popup behavior.
 - Smoke test contact links, redirects, metadata, sitemap, console.

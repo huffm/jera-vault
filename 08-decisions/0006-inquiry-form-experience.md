@@ -282,3 +282,82 @@ Remaining Vercel preview QA: recheck the modal at the five widths on the
 deployed preview, confirm the mailto handoff and the native select
 popup, and smoke test contact links, redirects, metadata, sitemap, and
 console output.
+
+## May 27 Contact Hierarchy: Form Primary, Email Demoted
+
+Decision: the inquiry form is the single primary contact path. Direct
+email is demoted to a quiet, secondary fallback, and the raw address is no
+longer rendered as visible text anywhere on the site.
+
+Why the form is primary over direct email:
+
+- The structured form (category, name, email, company, message) produces
+  better-organized intake than a bare email, and the category + message
+  prompt help filter low-quality or off-topic messages.
+- It is the foundation for future spam controls — honeypot field, rate
+  limiting, Cloudflare Turnstile, structured dropdowns — none of which a
+  plain `mailto:` link supports. Keeping the form primary now avoids
+  re-training visitors later.
+
+Why direct email is hidden / secondary:
+
+- A prominently displayed raw address invites scraping and spam, and a
+  second equally-weighted "Email directly" CTA competes with the form and
+  blurs the intended action.
+- Demoting it keeps the form the obvious choice while still giving people
+  who strongly prefer email an honest, reachable path.
+
+Implementation:
+
+- A shared `.quiet-email-link` primitive: a small muted text link labelled
+  "Prefer email?" that points at the `mailto:` href. The literal address
+  is never printed as page content (it lives only in the `mailto:` href
+  and the modal's submit script).
+- Contact page dark panel: one `button-dark` primary ("Open inquiry form")
+  plus the quiet link. The old equally-weighted white "Email directly"
+  button was removed.
+- Inquiry modal action area: the fallback heading, note, and raw-address
+  link were replaced with the single quiet "Prefer email?" link.
+- Footer Contact column: leads with "Start an inquiry" (`/contact`, with
+  the inquiry-trigger so it opens the modal where JS is available) and a
+  quiet "Prefer email?" beneath. The raw address was removed.
+
+Constraints preserved (consistent with this ADR's boundaries):
+
+- The mailto fallback remains; the contact path still works without
+  JavaScript (every affordance is a real anchor — modal triggers fall back
+  to `/contact` or `mailto:`).
+- No backend form service was added. The form still opens a prepared
+  mailto draft. No claim of successful submission was introduced.
+- copy-check still passes; the address only appears in `mailto:` hrefs, not
+  as forbidden visible copy.
+
+This supersedes the earlier "direct email helper on the right" framing in
+the modal action area, which displayed the raw address.
+
+## May 28 Contact Alignment Correction (no hierarchy change)
+
+Decision refinement: keep the May 27 hierarchy (form primary, email
+demoted), but tighten the composition rule so demoted email actions remain
+intentional and aligned.
+
+Implementation refinement:
+
+- Footer Contact column does not use a boxed mini-card treatment. It is a
+  simple aligned link stack: primary `Start an inquiry` plus quiet mail-icon
+  `Prefer email?`.
+- Contact page dark panel keeps one primary `Open inquiry form` action and
+  one quiet `Prefer email?` fallback; the primary button is content-fit and
+  not forced into an unnecessarily wide block.
+- Shared `.quiet-email-link` spacing and icon alignment were refined so the
+  fallback reads consistently in footer, contact panel, and modal contexts.
+
+Rules reaffirmed:
+
+- No raw support email in visible page text.
+- `mailto:` fallback remains functional and reachable without JavaScript.
+- Secondary email action stays subordinate and never competes with the form
+  CTA.
+- Demoted actions should stay simple, aligned, and intentional. Avoid
+  decorative mini-card wrappers that visually detach the fallback from the
+  surrounding footer system.

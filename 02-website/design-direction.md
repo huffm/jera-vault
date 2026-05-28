@@ -851,3 +851,351 @@ Direction confirmed:
 - Awkward intro wrapping in a modal is treated as a measure problem
   first. Fix the measure before trimming copy. Do not shorten good copy
   to compensate for a bad measure.
+
+## May 21 Color Depth And Iridescence Refinement
+
+This pass answered a specific note: the site was reading too white and
+slightly undercolored. The fix added tasteful color depth and a more
+present pearl/iridescent finish while keeping the Luminous Technical
+direction, the light theme, the navy anchors, and the restrained product
+feel. Iridescence stays a quiet surface refinement, never the concept.
+
+Why: large light sections all sat on one near-flat field with flat white
+cards, so the eye read the page as empty white between navy panels. The
+remedy is depth and separation, not louder accents.
+
+Background direction:
+
+- The body wash now carries more present color: stronger corner glows
+  (blue top-left, aqua top-right, navy bottom-right, lavender bottom-left)
+  over a cooler four-stop linear gradient that moves through pale blue in
+  the middle before returning warm. The page no longer reads as flat
+  white, but text contrast is unchanged because the wash sits behind
+  content, never under body copy on a card.
+
+Section separation direction:
+
+- A new full-bleed `section-shell--wash` variant paints a very soft
+  tinted band (low-opacity blue, aqua, and lavender corner light over a
+  pale blue linear wash) with a faded top hairline instead of a hard
+  border. Alternating washed and plain sections gives the page clear,
+  calm section transitions without heavy rules or noisy decoration.
+- `SectionShell` gained a `surface` prop (`plain` | `wash`). Washes are
+  applied to alternating light sections only; dark-toned shells ignore
+  the wash. Homepage washes: Product lab and Solution examples. Products
+  washes: the "How Jera builds products" process section.
+
+Surface and card direction:
+
+- `soft-surface` (ordinary cards) picked up a faint aqua top-right and
+  lavender bottom-left corner tint plus slightly higher base opacity, so
+  cards have subtle dimensionality and lift off the now slightly cooler
+  background instead of disappearing into it.
+- The repeated card top hairline was centralized as a `.card-topline`
+  utility carrying a faint blue tint (replacing three identical inline
+  neutral hairlines in FeatureCard, ServiceCard, and ProcessStep). Light
+  cards now pick up restrained brand color at their top edge.
+- `subtle-lift` hover now uses a `--shadow-lift-glow` token that adds a
+  soft blue glow under the existing lift, so hover feels premium and
+  intentional rather than a flat shadow bump. Hover blue border opacity
+  was nudged up slightly.
+- Pearl tokens (`--color-pearl-aqua`, `--color-pearl-lavender`) were
+  raised modestly so product cards, metric cards, the inquiry modal
+  surroundings, and detail panels show a touch more iridescence.
+- The footer closes the page on a soft blue/aqua wash instead of flat
+  white, so the final surface carries color like the rest of the page.
+
+Restraint rules confirmed:
+
+- No neon, rainbow shimmer, animated iridescence, or heavy glassmorphism.
+- Bright blue stays reserved for active nav, focus states, signal dots,
+  and these restrained accents (card toplines, hover glow, wash edges).
+- All washes and glows are `aria-hidden` decorative layers and never
+  reduce text contrast.
+
+QA: see current-slice.md and current-site-state.md for the rendered QA
+record at 1150px and 390px.
+
+## May 21 Page Atmosphere Composition Correction (supersedes the banded approach above)
+
+The Color Depth pass directly above was directionally right but executed
+locally instead of art-directed globally, and it was corrected the same
+day. This section is the current direction; where it conflicts with the
+banded approach above, this wins.
+
+Why the previous pass was insufficient:
+
+- The page felt visually split. The top (hero through What Jera builds)
+  still read flat white, then the lower sections gained colored
+  atmosphere, so the transition felt abrupt and added-after-the-fact.
+- Root cause: the page background was distributed across the *total
+  document height* (a tall multi-stop linear gradient plus radial glows
+  positioned by percentage of the whole page). The blue mid-stops landed
+  on the lower-middle of a long page, so color pooled there while the
+  hero stayed pale.
+- The `section-shell--wash` bands made it worse: they were isolated
+  colored zones lower on the page, reinforcing "color appears lower" and
+  reading as patches rather than one composition.
+
+Corrected direction — a coherent, layered atmosphere:
+
+- Atmosphere is anchored to the viewport, not the document. A fixed,
+  full-viewport ambient layer sits behind every screen so the hero is lit
+  the same as the footer and there is no banding. It is implemented as a
+  decorative `position: fixed` pseudo-element (`body::before`), which is
+  more reliable than `background-attachment: fixed` because iOS Safari
+  ignores the latter.
+- The ambient layer is soft studio lighting: a blue glow top-left, cyan
+  top-right, a faint lavender mid-right, and a low navy floor glow,
+  over an even, calm pearl base (`body` background). The base no longer
+  carries a strong mid-page blue band.
+- A faint technical grid texture (`body::after`, also fixed, masked to
+  the upper screen) sits just above the ambient field for craft.
+- Section separation now comes from surface hierarchy, spacing rhythm,
+  and the dark anchors, not from colored bands. The homepage and products
+  isolated washes were removed. The `section-shell--wash` prop/utility
+  remains available but is unused on the homepage; do not reach for it to
+  fix "too white" — fix the global atmosphere instead.
+- Ordinary cards (`soft-surface`) are now cleaner, brighter white so they
+  read as material surfaces sitting inside the lit environment, giving
+  clear surface hierarchy.
+- Hero vertical rhythm was tightened (smaller hero bottom padding) so the
+  gap into What Jera builds no longer reads as an empty white void.
+
+Layer model to keep in mind for future passes: base page field → hero
+lighting → section transition (continuity, not bands) → card surface
+hierarchy → restrained iridescent detail. Bright blue stays reserved for
+active nav, focus, and signal dots. All glows are `aria-hidden` and never
+reduce text contrast. No neon, no loud gradient sections, no gimmicky
+glassmorphism.
+
+## May 26 Base Field Stop-Order Correction (refines the atmosphere model above)
+
+A second-opinion principal review confirmed the viewport-anchored
+atmosphere is correct and the page is coherent top to bottom, with one
+remaining issue: the top still read slightly too white, most visibly at
+narrow widths. Root cause was the stop *order* of the base field, not a
+weak ambient layer.
+
+What was wrong:
+
+- The body base gradient carried its warmest, palest stop (`#efede7`) at
+  the very top (0%) and only turned cool soft-blue at ~46%. The
+  html/overscroll colour (`#f7f5ef`) and the sticky header tint
+  (`rgba(247,245,239,0.78)`) were warmer still. So the hero — the place
+  the brand wants soft blue atmosphere and navy anchors to own — was the
+  palest, warmest, flattest point of the page.
+- The `body::before` corner glows are sized in rem and anchored off the
+  corners, so on a wide desktop they light the hero but on a 390px
+  viewport they barely reach it. That left the narrow-width hero sitting
+  on the bare warm base field, reading like a default white marketing
+  fold.
+
+Corrected direction:
+
+- Carry the cool soft-blue pearl up to the top stop of the base field so
+  the hero sits in the soft atmosphere (aligned with the deep-navy-anchor
+  and soft-blue standards). Base field is now
+  `#e9edf5 0% → #e7ebf3 42% → #edf0f6 72% → #f1efe9 100%`: cool blue-white
+  from the top, with a warm pearl note returning only at the very bottom
+  so the footer still closes on warmth.
+- `--color-background` (html/overscroll) cooled from `#f7f5ef` to
+  `#edf0f6`, and the sticky header tint cooled to
+  `rgba(237,240,246,0.78)`, so the three surfaces that define "the pale
+  top" are tuned together and a warm header strip no longer undercuts the
+  cooled field.
+- The viewport-anchored ambient layer (`body::before` / `body::after`)
+  was intentionally left untouched: this was a base-field colour-order
+  fix, not a glow change, and no section wash bands were reintroduced.
+- The warm off-white identity is preserved through the footer return and
+  the pearl surfaces (cards, panels, modal), not through a warm top.
+
+This is the current base-field direction; where it conflicts with the
+warm-top wash described in earlier sections, this wins.
+
+## May 26 Warm Pearl Restoration (supersedes the cool base field above)
+
+The stop-order correction above over-rotated. Combined with the May 21/22
+ambient field (a strong blue/cyan `body::before` plus a central blue
+haze), cooling the base field made the whole page read blue-washed and
+lost the warm pearl identity. This pass is the correction; where it
+conflicts with the cool base field above, this wins.
+
+Why the blue-washed result was wrong:
+
+- Premium colour depth was being chased by tinting the whole page blue.
+  That is the wrong lever. A blue field reads like a generic SaaS
+  template, not an expensive, crafted pearl studio. Jera's material
+  identity is warm pearl; blue is a brand *accent*, not the ground.
+- Two layers were stacking blue: the base field gradient (cooled to
+  `#e9edf5…`) and the ambient `body::before` (blue `0.185`, cyan `0.15`,
+  plus a central haze radial at `46% 22%` that pushed blue into the page
+  middle). Together they washed the page.
+
+Corrected direction — warm pearl base, blue as edge light:
+
+- The base field is warm pearl top to bottom
+  (`#faf8f3 → #f6f2e9 → #f7f5ef`). `--color-background` is warm `#f7f5ef`
+  again and the sticky header tint is warm `rgba(247,245,239,0.82)`.
+- The viewport-anchored ambient layer is kept but demoted to soft blue
+  *corner* light: blue top-left `0.10`, cyan top-right `0.07`, a whisper
+  of lavender mid-right `0.045`, a low navy floor `0.05`. The central blue
+  haze is removed. The page centre stays warm pearl; blue only lights the
+  edges of each screen.
+- Pearl/iridescent tokens are kept low (`aqua 0.10`, `lavender 0.07`) so
+  iridescence is a material finish on select surfaces, never a page tint.
+
+How card outlines and iridescence work going forward:
+
+- Iridescent cards (ProductCard, MetricCard) keep `pearl-panel` +
+  `iridescent-edge`: that is where pearl/aqua/lavender material lives, as
+  a finish on the surface, not on the page.
+- Non-iridescent cards (FeatureCard, ServiceCard, ProcessStep) use
+  `soft-surface` with a clean white interior and a *premium edge*: a
+  refined blue-cyan hairline border (`--color-card-edge`,
+  `rgba(86,132,184,0.22)`) paired with an inset white rim
+  (`inset 0 0 0 1px rgba(255,255,255,0.55)`) so the edge reads as a lit
+  material bevel, not a flat 1px line. Plus the existing blue `card-topline`
+  and the layered `--shadow-soft`.
+- Principle: keep the warm pearl material identity first; use blue and
+  iridescence as edge light, hierarchy, and surface detail — never as a
+  full-page wash. The top is kept from feeling flat white by warm pearl
+  tone + soft blue corner ambient + premium card edges, not by colouring
+  the field blue.
+
+## May 26 Clean Pearl Base (supersedes the warm pearl base above)
+
+The warm pearl restoration over-warmed: stops like `#f6f2e9` / `#f7f5ef`
+gave the page a cream/brown, parchment cast that read older, heavier, and
+less premium. "Pearl" here means a *clean, near-white, faintly cool*
+surface — not warm/beige. Where this conflicts with the warm pearl base
+above, this wins.
+
+Why the cream/brown pass was rejected:
+
+- Warm off-white at full-page scale reads as beige/parchment, which feels
+  dusty and dated, not like an expensive modern software studio. The base
+  must stay near-white; warmth at field scale is the wrong move even
+  though warmth in small pearl highlights is fine.
+
+Corrected base direction (clean pearl, blue as edge light):
+
+- Body base is near-white with only the faintest cool shift so it is not
+  dead-flat: `#fbfcfe 0% → #f5f8fc 52% → #f9fbfd 100%`.
+  `--color-background` is `#f6f8fb`, `--color-surface` `#fcfdff`, the
+  sticky header tint `rgba(248,250,253,0.82)`, and the SEO `theme-color`
+  `#f6f8fb`. No warm/beige stops anywhere at field scale.
+- The viewport-anchored ambient (`body::before`) is kept but barely
+  visible: soft blue corner light only (blue `0.085`, cyan `0.055`,
+  lavender `0.04`, navy floor `0.045`), no central haze. Against the
+  cleaner white it was nudged down so it stays atmosphere, not a wash.
+- Pearl/iridescent tokens stay low (`aqua 0.10`, `lavender 0.07`) as a
+  material finish on select surfaces only.
+
+The rule going forward: **clean pearl base first; blue/cyan as edge
+light; iridescence as a material finish.** Never create depth by tinting
+the whole field beige, brown, or blue.
+
+How cards should be treated going forward:
+
+- Non-iridescent cards (`soft-surface`: FeatureCard, ServiceCard,
+  ProcessStep) keep a crisp white interior but must not read as plain
+  boxes. The premium edge is **directional**: a bright inset rim on the
+  top-left and a faint cool inset on the bottom-right
+  (`inset 1px 1px 0 rgba(255,255,255,0.95)`,
+  `inset -1px -1px 0 rgba(99,140,184,0.07)`), so the border looks like
+  polished light catching a bevel rather than a drawn blue outline. The
+  base hairline (`--color-card-edge`, lowered to `rgba(96,140,190,0.16)`)
+  is intentionally faint. A restrained aqua (top-right) and lavender
+  (bottom-left) corner sheen gives quiet iridescence; the interior stays
+  clean and readable. Layered `--shadow-soft` seats the card.
+- Iridescent cards (ProductCard, MetricCard) keep `pearl-panel` +
+  `iridescent-edge` for a stronger material finish — reserved for a few
+  surfaces so iridescence stays an accent.
+- Dark navy panels (`technical-panel`) are unchanged anchors; against the
+  cleaner pearl field they contrast better without being made heavier.
+
+## May 27 Micro-Polish: Contact Hierarchy + Surface Finishing
+
+A focused refinement pass — no layout redesign. Two themes: make the
+inquiry form the unambiguous primary contact path, and lift the surface
+finish (shadow, chips, cards, buttons) from clean to high-end.
+
+Contact hierarchy direction (now the standing rule):
+
+- The inquiry form is the primary contact path everywhere. Direct email is
+  a demoted, secondary fallback — never an equally-weighted CTA beside the
+  form, never shown as large page content or in the main contact card.
+- The raw address is not rendered as visible text anywhere on the site.
+  The direct-email affordance is a small, quiet `mailto:` link labelled
+  "Prefer email?" (a new shared `.quiet-email-link` primitive). It routes
+  to a mail draft on click and works without JavaScript, so the address is
+  reachable but never prominent.
+- Why form-first: the structured form (category, name, email, company,
+  message) gives better intake structure, filters low-quality messages,
+  and opens a future path for spam controls (honeypot, rate limiting,
+  Turnstile, structured dropdowns) that a bare `mailto:` cannot. Why hide
+  the address: a prominent raw address invites scraping/spam and competes
+  with the form; demoting it keeps the form the obvious action.
+- Applied in three places: the Contact page dark panel (single
+  `button-dark` primary + quiet link), the inquiry modal fallback (quiet
+  link, address removed), and the footer Contact column (leads with "Start
+  an inquiry" → `/contact`, with a quiet "Prefer email?" beneath).
+- Constraint kept from ADR-0006: a mailto fallback remains and contact
+  works without JavaScript. See `08-decisions/0006-inquiry-form-experience.md`.
+
+Premium surface finishing direction (the ongoing rule):
+
+- Create depth and richness through **layered light**, not heavier fills.
+  A surface reads expensive when its *edge* and *elevation* are refined,
+  while its interior stays clean and readable.
+- Shadows fall off naturally. A premium drop shadow is several stacked
+  layers with progressively larger blur and a gentle opacity arc (rising
+  then fading), never a single boxed pool with a hard bottom line. The
+  hero/featured panel glow (`.soft-surface-glow`) was rebuilt this way so
+  it dissolves into the page below.
+- White cards (`.soft-surface`) get a bright top + left inset sheen, a
+  faint cool/cyan bottom-right bevel (cyan edge light), an inner white
+  containment ring, and a tight-to-wide outer shadow. Interior stays crisp.
+- Chips/labels (`.surface-label` / `--dark`) get a cool outline, an inner
+  top highlight, a faint bottom edge, and a low outer shadow so they read
+  as polished pills, not flat tags.
+- Dark panels (`.technical-panel`) keep their weight but gain a refined
+  inner edge (brighter top highlight + faint full inset ring) so the
+  border reads as lit material, not a drawn line.
+- Buttons gain a pressed `:active` state (surface settles in, highlight
+  dims) for tactility; nav active/hover states gain an inset highlight and
+  a low shadow. Restrained, never flashy.
+- Restraint rules from the Clean Pearl direction still hold: clean pearl
+  base, no beige cast, no full-page blue wash, no isolated colored bands,
+  no cheap glassmorphism. Iridescence and cyan stay edge/finish details.
+
+## May 28 Contact Module Alignment Addendum
+
+The contact hierarchy rule remains unchanged: inquiry form first, email as
+demoted fallback. This addendum clarifies composition quality requirements
+for that demoted action.
+
+Direction:
+
+- A secondary action must not look accidental. When email is demoted, keep
+  it quieter than the primary path but align it to the same action group so
+  it reads intentional.
+- Use one shared primitive (`.quiet-email-link`) with consistent icon size,
+  icon baseline alignment, spacing, hover, focus-visible, and active states
+  across footer, contact panel, and modal.
+- In the footer, demoted secondary actions should remain simple typographic
+  links aligned to the column grid. Avoid decorative mini cards or cramped
+  boxed modules unless the entire footer system uses that pattern.
+- Preferred footer contact shape:
+  `Start an inquiry` (stronger text link) then `[mail icon] Prefer email?`
+  (smaller muted link).
+- On Contact panels, primary CTA sizing should be content-fit by default.
+  Do not force full-width button stretch unless a very narrow viewport
+  explicitly requires it.
+- The small mail icon stays on `Prefer email?` to signal function quickly
+  without adding visual weight.
+- Keep the raw email address hidden from visible page copy. It may exist in
+  `mailto:` hrefs and scripted fallback handoff only.
+- Preserve no-JS fallback and keyboard accessibility for both primary and
+  secondary actions.
