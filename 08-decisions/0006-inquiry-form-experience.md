@@ -361,3 +361,29 @@ Rules reaffirmed:
 - Demoted actions should stay simple, aligned, and intentional. Avoid
   decorative mini-card wrappers that visually detach the fallback from the
   surrounding footer system.
+
+## May 28 Principal Polish Addendum (surgical refinement)
+
+Decision refinement: keep the same hierarchy and behavior, but improve how
+it composes across contact surfaces.
+
+What changed in the rule set:
+
+- The primary contact action remains the inquiry path (`Open inquiry form`,
+  `Start an inquiry`), and its sizing should be content-fit in panel
+  contexts unless narrow mobile constraints require wider controls.
+- The demoted fallback remains `Prefer email?` and now consistently carries a
+  small mail icon so the action is legible at a glance without visual
+  competition.
+- Footer contact stays a simple aligned link stack (not a mini-card):
+  primary line first, secondary line second, aligned with other footer
+  columns.
+- The same subordinate fallback pattern is used in contact panel and inquiry
+  modal action areas so demotion is consistent instead of ad hoc.
+
+What did not change:
+
+- No backend form dependency was added.
+- No-JS fallback behavior remains intact (real anchor `mailto:` links).
+- Raw support email is still hidden from normal page text and remains only in
+  `mailto:` hrefs and mailto draft logic.

@@ -1199,3 +1199,36 @@ Direction:
   `mailto:` hrefs and scripted fallback handoff only.
 - Preserve no-JS fallback and keyboard accessibility for both primary and
   secondary actions.
+
+## May 28 Principal Polish Addendum (Reference-Led, No Redesign)
+
+This pass was a focused finish pass, not a layout or background-system
+change. It used product-ui-design-architect references to borrow patterns,
+not visuals, from mature product sites and UI systems.
+
+Reference patterns applied:
+
+- Footer closure should be typographic and grid-aligned, not a detached mini
+  module.
+- Demoted actions should stay in the same action group as the primary path,
+  with clear subordinate styling and an icon that signals function quickly.
+- White cards read premium through directional edge light + layered shadow,
+  not louder fills.
+- Primary CTAs in panels should be content-fit by default, with full-width
+  behavior reserved for narrow mobile constraints.
+- Form/modals should read as one coherent product surface with clean field
+  rhythm and strong focus-visible affordances.
+
+Standing rules refined:
+
+- Do not reintroduce boxed mini-cards for footer contact actions unless the
+  whole footer system uses that language.
+- Keep footer Contact as:
+  `Start an inquiry` (stronger line) then `[mail icon] Prefer email?`
+  (quieter line), aligned to the same column rhythm as Company and Work.
+- Keep direct email hidden and secondary: no raw address in visible page
+  text; address remains in `mailto:` hrefs and mailto fallback logic only.
+- Keep inquiry primary across contact panel, modal, and footer; keep email as
+  an intentional fallback, never a competing CTA.
+- Preserve clean pearl base, navy anchors, subtle edge light, and restrained
+  surface polish.

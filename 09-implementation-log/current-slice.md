@@ -8,6 +8,70 @@ Premium Design Architecture Pre-Launch Pass
 
 Make the Jera Technologies public site feel more polished, more intentional, more trustworthy, and more product quality so it reads as a top-dollar independent software studio. Keep the existing positioning, the Astro static delivery model, and the simplified inquiry experience.
 
+## May 28 Principal Design Architect Review + Focused Polish
+
+Scope:
+
+- Surgical polish pass on contact composition, inquiry surface finishing,
+  footer close rhythm, and shared card/button interaction details.
+- No background-system change and no broad layout redesign.
+
+Reference-led patterns used (from local product-ui-design-architect manuals):
+
+- Typographic footer systems with aligned column rhythm.
+- Grouped primary/secondary contact actions where secondary remains visibly
+  subordinate.
+- Directional edge-light + layered shadow card finishing over clean interiors.
+- Content-fit CTA sizing in panel contexts (full-width only when mobile
+  constraints require it).
+- Modal treatment as a coherent product intake surface with consistent focus
+  and spacing rhythm.
+
+Implementation (`jera-site`):
+
+- `src/styles/global.css`
+  - Refined shared `soft-surface` and `card-topline` finishing (subtle edge
+    light, layered shadow tuning).
+  - Refined `.quiet-email-link` icon sizing/alignment and hover/focus/active
+    states for consistent secondary action behavior.
+  - Added contact/footer composition helpers:
+    `.contact-primary-panel`, `.contact-topic-grid`,
+    `.footer-contact-stack`, `.footer-contact-primary`, `.footer-legal-row`.
+  - Refined inquiry modal panel, field focus, close button focus-visible, and
+    fallback-link spacing for a cleaner intake surface hierarchy.
+- `src/pages/contact.astro`
+  - Added structural hooks so the dark intake panel reads as the primary
+    surface and right-side cards compose as one intentional group.
+  - Kept one primary action (`Open inquiry form`) and one quiet secondary
+    fallback (`Prefer email?` with icon).
+- `src/components/inquiry/InquiryModal.astro`
+  - Kept form-first hierarchy and replaced visible raw email fallback content
+    with quiet `Prefer email?` link treatment + icon.
+- `src/components/layout/Footer.astro`
+  - Kept a simple aligned Contact column (`Start an inquiry` then quiet mail
+    fallback) and tightened footer legal row spacing so the close feels more
+    intentional.
+
+Verification:
+
+- Visual QA screenshots:
+  - `.qa-screens/principal-polish-pass/contact-1440x900.png`
+  - `.qa-screens/principal-polish-pass/contact-390x844.png`
+  - `.qa-screens/principal-polish-pass/contact-footer-1440x1700.png`
+  - `.qa-screens/principal-polish-pass/contact-footer-390x2100.png`
+  - `.qa-screens/principal-polish-pass/modal-1440x900.png`
+  - `.qa-screens/principal-polish-pass/modal-390x844.png`
+  - `.qa-screens/principal-polish-pass/home-1440x900.png`
+- `npm run build` passed (9 pages).
+- `npm run copy-check` passed.
+- Raw `support@jeratechnologies.com` not rendered as visible body text in
+  source/component copy checks; address remains in `mailto:` href/script
+  fallback paths only.
+- Inquiry remains the primary path in contact panel, footer, and modal.
+- Mobile horizontal overflow not observed in captured 390px review shots.
+- Browser console check could not be executed in this session because
+  Playwright/browser MCP tooling was unavailable.
+
 ## May 28 Focused Contact Alignment Correction
 
 Focused correction pass on footer and contact action alignment only. No

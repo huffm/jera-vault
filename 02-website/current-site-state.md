@@ -2,11 +2,125 @@
 
 ## Date
 
-May 15, 2026
+May 26, 2026
 
 ## Current Slice
 
-Pre-launch premium design architecture pass. The Luminous Technical system was refined toward a top-dollar independent software studio feel without rebuilding the site or adding dependencies.
+Second principal-level design review of the homepage atmosphere. The viewport-anchored atmosphere system remains intact and the page reads coherent top to bottom. The one remaining issue — the top still reading slightly too white, most visible at narrow widths — was traced to the base field gradient carrying its warmest, palest stop at the very top while the cool soft-blue only arrived mid-viewport. The fix carried the cool soft-blue pearl up to the top stop (with a warm pearl note returning only at the footer), and cooled the html/overscroll colour and the sticky header tint to match, so the hero now sits in soft blue atmosphere instead of a flat warm white. No ambient-glow change and no section wash bands.
+
+## May 26 Clean Pearl Base (corrects the warm pearl pass below)
+
+The warm pearl restoration over-warmed into a cream/brown parchment cast
+that read older and less premium. This pass moves the base to a clean,
+near-white, faintly cool pearl; keeps blue only as barely-visible corner
+ambient; and gives cards a directional, light-catching edge plus a
+restrained iridescent sheen. Where it conflicts with the warm pearl pass
+below, this wins.
+
+What changed (`jera-site`):
+
+- `src/styles/global.css`:
+  - Body base → clean cool pearl `#fbfcfe 0% → #f5f8fc 52% → #f9fbfd 100%` (no warm/beige stops).
+  - `--color-background` `#f7f5ef` → `#f6f8fb`; `--color-surface` `#fffdfa` → `#fcfdff`.
+  - `body::before` ambient lowered to barely-visible soft blue corner light (blue `0.085`, cyan `0.055`, lavender `0.04`, navy floor `0.045`); no central haze.
+  - `--color-card-edge` softened `rgba(86,132,184,0.22)` → `rgba(96,140,190,0.16)`; `--color-card-edge-strong` → `rgba(96,140,190,0.3)`.
+  - `.soft-surface` reworked: crisp white interior, **directional** edge light (bright top-left inset rim, faint cool bottom-right inset), restrained aqua (TR) + lavender (BL) corner sheen, layered `--shadow-soft`.
+- `src/components/layout/Header.astro`: header tint `rgba(247,245,239,0.82)` → `rgba(248,250,253,0.82)`.
+- `src/components/seo/SEO.astro`: `theme-color` `#f7f5ef` → `#f6f8fb`.
+- FeatureCard/ServiceCard/ProcessStep still use `--color-card-edge` (unchanged from prior pass). ProductCard/MetricCard keep `pearl-panel`+`iridescent-edge`. `technical-panel` dark anchors unchanged.
+
+Why: warm off-white at field scale reads beige/parchment, not premium. Clean pearl base first; blue/cyan as edge light; iridescence as a material finish on select surfaces only.
+
+Verification (rendered this pass):
+
+- `npm run build` passed (9 pages); `npm run copy-check` passed, intro advisory clean.
+- Browser QA at 1440px (hero, What Jera builds cards, Product lab), 390px (hero/nav), and Contact at 1440px: clean pearl base, no cream/brown cast, dark panels contrast cleanly, cards read as material with subtle edge light. Console 0 errors / 0 warnings. No horizontal overflow at 1440 (1425/1425) or 390 (375/375).
+
+## May 26 Warm Pearl Restoration (corrects the stop-order pass below)
+
+On review the stop-order pass read blue-washed: stacked on the May 21/22
+ambient field it made the whole page blue and lost the warm pearl
+identity. This pass restores warm pearl as the base and demotes blue to
+soft corner ambient + premium card edge light. Where it conflicts with
+the stop-order pass, this wins.
+
+What changed (`jera-site`):
+
+- `src/styles/global.css`:
+  - `--color-background` back to warm `#f7f5ef`.
+  - Body base field back to warm pearl `#faf8f3 0% → #f6f2e9 52% → #f7f5ef 100%` (no blue field).
+  - `body::before` ambient demoted to soft blue *corner* light: blue top-left `0.10`, cyan top-right `0.07`, lavender mid-right `0.045`, navy floor `0.05`; the central blue haze radial (`46% 22%`) is removed.
+  - Pearl tokens lowered to `aqua 0.10` / `lavender 0.07`.
+  - New `--color-card-edge` (`rgba(86,132,184,0.22)`) and `--color-card-edge-strong`.
+  - `.soft-surface` now: clean white interior (`#ffffff`), refined cool border (`--color-card-edge`), an inset white rim (`inset 0 0 0 1px rgba(255,255,255,0.55)`) so the edge catches light, plus the layered `--shadow-soft`.
+- `src/components/layout/Header.astro`: header tint back to warm `rgba(247,245,239,0.82)`.
+- `src/components/cards/FeatureCard.astro`, `ServiceCard.astro`, `ProcessStep.astro`: inline border token switched from `--color-border` to `--color-card-edge` so the premium edge is not overridden.
+- ProductCard and MetricCard keep `pearl-panel` + `iridescent-edge` (iridescent material is theirs); no change.
+
+Why:
+
+- Warm pearl is Jera's material identity; blue is an accent. Premium depth comes from surface design (card edges, layered shadows, iridescent finish on select cards) and soft corner ambient, not from washing the field blue.
+
+Verification status:
+
+- `npm run build` passed (9 static pages). `npm run copy-check` passed; intro rhythm advisory clean.
+- Rendered browser QA at 1440/1150/390 and overflow/console checks were NOT completed this pass (dev-server review was interrupted). Pending before sign-off: confirm warm pearl reads correctly, cards show the premium edge, no horizontal overflow at 390px, console clean, and Products/Contact coherence.
+
+## May 26 Base Field Stop-Order Correction
+
+This pass was a focused colour-order correction surfaced by rendered QA, not a redesign.
+
+What changed:
+
+- `src/styles/global.css`:
+  - `--color-background` cooled from `#f7f5ef` to `#edf0f6` (html/overscroll backing).
+  - Body base field gradient changed from `#efede7 0% → #e9edf5 46% → #edf0f6 70% → #efede7 100%` to `#e9edf5 0% → #e7ebf3 42% → #edf0f6 72% → #f1efe9 100%` so the soft blue-white owns the top and warmth returns only at the footer close.
+- `src/components/layout/Header.astro`: sticky header tint cooled from `rgba(247,245,239,0.78)` to `rgba(237,240,246,0.78)` so the header strip matches the cooled top.
+- `body::before` / `body::after` viewport-anchored ambient layers untouched. No section wash bands. No layout, spacing, copy, or component-logic changes (colour values only).
+
+Why:
+
+- The hero, where the brand wants soft blue atmosphere and navy anchors, was the palest/warmest point of the page. On narrow viewports the rem-anchored corner glows under-cover the hero, so the warm base field showed through as a flat marketing-white fold. Fixing the stop order at the shared base-field primitive resolves it globally without touching the working atmosphere model.
+
+Validation:
+
+- Homepage reviewed before/after at 1440px (hero, seam into What Jera builds, Product lab, dark decision panel, CTA/footer), 1150px (hero), and 390px (hero/nav, deep section).
+- Products page reviewed at 1440px and 390px as a coherence cross-check.
+- No console errors or warnings; no horizontal overflow at 1440px (1425/1425), 1150px (1135/1135), or 390px (375/375) on home and products.
+- `npm run build` passed (9 static pages). `npm run copy-check` passed; intro rhythm advisory clean.
+
+## May 22 Atmosphere Depth Rebalance
+
+This pass was a focused correction from rendered QA, not a redesign.
+
+What changed:
+
+- `src/styles/global.css` now uses a slightly cooler, more even base field gradient.
+- `body::before` ambient glows were rebalanced globally:
+  - stronger blue top-left glow,
+  - stronger cyan top-right glow,
+  - a subtle central blue haze to carry atmosphere through the hero/content seam,
+  - a slightly clearer lavender mid-right note,
+  - slightly reduced navy floor opacity to keep the lower page calm.
+- No section-local wash bands were added.
+- No section structure, card layout, copy, or component logic was changed.
+
+Why:
+
+- The prior composition was coherent but still a little pale at the top compared to the richer middle/lower composition.
+- The fix needed to happen at shared atmosphere primitives, not per-section styling, to preserve the global composition model.
+
+Validation:
+
+- Homepage reviewed at wide desktop, 1150px, and 390px.
+- Products page reviewed at desktop and mobile as a coherence cross-check.
+- Playwright console/overflow probe:
+  - home 1600px: no console warnings/errors, no horizontal overflow.
+  - home 1150px: no console warnings/errors, no horizontal overflow.
+  - home 390px: no console warnings/errors, no horizontal overflow.
+  - products 390px: no console warnings/errors, no horizontal overflow.
+- `npm run build` passed (9 static pages).
+- `npm run copy-check` passed.
 
 ## Implemented Stack
 
@@ -1026,3 +1140,108 @@ clean two lines. CTA visible, footer and direct email readable, no
 horizontal overflow, no right edge artifact. Escape close and focus
 return verified. Console errors and warnings 0. npm run build and
 npm run copy-check passed.
+
+## May 21 Color Depth And Iridescence Pass
+
+Addressed the note that the site read too white and slightly
+undercolored. The pass added color depth, soft section separation, and a
+more present pearl finish while keeping the light theme, navy anchors,
+soft blue accents, card layout, and restrained product feel intact. The
+iridescence remains a quiet surface refinement, not the concept.
+
+Files changed (jera-site):
+
+- src/styles/global.css: deeper body background wash (stronger corner
+  glows + cooler four-stop linear gradient); raised pearl aqua and
+  lavender tokens; new `--wash-blue` / `--wash-aqua` / `--wash-lavender`
+  and `--color-section-wash-edge` tokens; new `--shadow-lift-glow` token;
+  new full-bleed `.section-shell--wash` variant with a faded top
+  hairline; tinted `soft-surface` corner light and higher base opacity;
+  `subtle-lift` hover now uses the glow shadow with a slightly stronger
+  blue border; new `.card-topline` utility (faint blue).
+- src/components/sections/SectionShell.astro: added a `surface`
+  (`plain` | `wash`) prop; wash applies to light shells only.
+- src/pages/index.astro: `surface="wash"` on Product lab and Solution
+  examples sections.
+- src/pages/products/index.astro: `surface="wash"` on the "How Jera
+  builds products" process section.
+- src/components/cards/FeatureCard.astro, ServiceCard.astro,
+  ProcessStep.astro: replaced the inline neutral top hairline with the
+  shared `.card-topline` utility.
+- src/components/layout/Footer.astro: soft blue/aqua closing wash instead
+  of flat white.
+
+Validation:
+
+- npm run build passed and produced 9 static pages.
+- npm run copy-check passed across 9 HTML files; intro rhythm advisory
+  clean.
+- Rendered QA against the dev server at 1150px and 390px on Home,
+  Services, Products, Solution Examples, and Contact (plus the inquiry
+  modal).
+- Desktop: washed Product lab and Solution examples bands read as clear,
+  calm section transitions; plain and washed sections alternate with the
+  dark panels breaking them up; feature/service cards show the faint blue
+  topline and lift off the cooler field; the products process section
+  separates cleanly from the product grid above.
+- Mobile (390px): tinted bands are visible and calm; documentElement
+  scrollWidth equals clientWidth (no horizontal overflow).
+- Inquiry modal: pearl panel, headline, intro, form groups, Send inquiry
+  CTA, and direct email fallback all render correctly with no right edge
+  artifact (the modal opts out of the iridescent overlay and was
+  unaffected).
+- Console errors and warnings: 0.
+
+No copy changed. No dependencies added. No DAI repos touched. The site
+remains static and launch ready.
+
+## May 21 Page Atmosphere Composition Correction
+
+The color-depth pass above was corrected the same day. It had added
+isolated `section-shell--wash` bands, which made the homepage feel
+visually split: a flat-white top (hero through What Jera builds) and a
+colored lower zone, with an abrupt transition. Root cause: the page
+background was distributed across the full document height, so the blue
+mid-stops pooled on the lower-middle of a long page while the hero stayed
+pale; the washes reinforced "color only lower." This correction replaced
+the local treatment with one art-directed global atmosphere.
+
+Files changed (jera-site):
+
+- src/styles/global.css: replaced the document-height body background
+  with an even, calm pearl base; moved the colored atmosphere into a
+  fixed, full-viewport ambient layer (`body::before`, blue top-left, cyan
+  top-right, faint lavender mid-right, low navy floor glow) so every
+  screen shares the same lighting; moved the faint grid texture to a
+  second fixed layer (`body::after`); refined `soft-surface` to a cleaner,
+  brighter white so cards read as surfaces inside the lit field.
+- src/pages/index.astro: removed `surface="wash"` from Product lab and
+  Solution examples.
+- src/pages/products/index.astro: removed `surface="wash"` from the
+  process section.
+- src/components/sections/HeroSection.astro: tightened hero bottom padding
+  so the gap into What Jera builds is no longer a blank white void.
+
+The `section-shell--wash` prop and CSS remain in the codebase but are
+unused on the homepage; the global atmosphere is the intended fix for a
+"too white" page, not isolated bands.
+
+Validation:
+
+- npm run build passed and produced 9 static pages.
+- npm run copy-check passed across 9 HTML files; intro advisory clean.
+- Rendered QA against the dev server at 1440px, 1150px, and 390px on the
+  homepage (hero, hero-to-content seam, a deep section) and the products
+  page. The ambient lighting renders identically at the top and in deep
+  sections, so the page reads as one coherent composition with no split
+  and no abrupt colored band. The hero left is lit, not flat white.
+- Note: a Playwright full-page screenshot mis-renders a fixed background
+  (it paints only in the first stitched viewport), so per-viewport
+  captures at multiple scroll positions were used to judge the fixed
+  ambient. The fixed pseudo-element technique was chosen over
+  background-attachment: fixed for iOS Safari reliability.
+- Mobile (390px): documentElement scrollWidth equals clientWidth (no
+  horizontal overflow); hero and nav read clean and lit.
+- Console errors and warnings: 0.
+
+No public copy changed. No dependencies added. No DAI repos touched.
