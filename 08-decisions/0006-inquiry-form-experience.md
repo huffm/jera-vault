@@ -536,3 +536,75 @@ toast was rendered at 390px in a local preview to confirm the premium look and
 no overflow. The full live success path (real Turnstile + Resend on Vercel)
 must be smoke-tested on a preview deployment — it cannot run under
 `astro preview`/`dev`.
+
+## June 1 In-Modal Success State (toast removed; ghost rectangle fixed)
+
+Decision: this **supersedes the toast** above. A successful submission now keeps
+the modal open and **transitions the same modal from its form view to an in-modal
+success view**. The toast system is removed entirely. Failure stays inline in the
+form as a polished two-line block. UX-only — endpoint, Turnstile, honeypot,
+validation, origin checks, and Resend are unchanged.
+
+Cause of the reported "faint rectangular ghost surface": it was the **toast**.
+The toast was `position: fixed`, `z-index: 120`, with a pearl background, border,
+and shadow, and it auto-dismissed after ~5.2s. Submitting once, then re-opening
+the inquiry modal within that window, left the toast still present *behind* the
+modal panel — appearing as a faint translucent rectangle across the lower-right
+of the panel (through the Turnstile area). Clicking the backdrop closed the modal
+and the toast then timed out, so "clicking away made it disappear." Confirmed via
+the screenshot geometry and the toast's fixed positioning/z-index. (Not an
+`alert`/`confirm`/`window.open`/`mailto`/native-submit issue — none exist in the
+flow; `event.preventDefault()` is still the first line and the form is
+`novalidate`.)
+
+Why a same-modal success state (not a toast): a toast is a transient corner
+surface that (a) can leave a layer behind the modal — the ghost — and (b) is easy
+to miss for something as deliberate as a project inquiry. An in-modal success
+state cannot leave a stale layer behind the modal and is impossible to miss.
+
+Why no "Send another inquiry": it was considered as an optional secondary action
+and briefly implemented, then removed at the user's direction — after sending,
+the modal should simply confirm and offer **Close**, not invite another send.
+
+Success flow (`InquiryModal.astro`), a small state machine — idle / submitting /
+success / error:
+
+1. `event.preventDefault()` (first line); an `isSubmitting` guard + disabled
+   submit button block duplicate submissions.
+2. On `response.ok && data.ok` (and the honeypot path): clear the submitting
+   flag, reset the form, clear status + error, **hide the form view, show the
+   success view**, then `turnstile.reset()` (now off-screen → cannot flash), and
+   move focus into the success view.
+3. Opening always forces the form view and clears any error; closing from the
+   success view restores the form view — so no confirmation layer can linger
+   behind a future open.
+
+Success view design (premium product surface, not an alert, not a toast):
+
+- Pearl-consistent with the panel; a small blue→cyan gradient check, title
+  "Inquiry sent.", supporting line "Thanks for sharing the details. We'll review
+  it and be in touch soon.", and a single **Close** button. No green box, no
+  floating corner toast, no entrance animation (no cheap motion).
+- Accessible: container is `role="status"` + `aria-live="polite"`, focus moves
+  into it on success (announced), `tabindex="-1"` keeps it out of the tab cycle,
+  Close is keyboard-reachable with visible focus, focus returns to the trigger on
+  close. The focus trap still filters hidden views.
+
+Failure view: the form view stays; a calm two-line block (`role="alert"`) shows
+title "Inquiry was not sent." and line "Please try again in a moment." — a soft
+rose surface, restrained border, generic and leak-free. This replaces the long
+red single-paragraph status.
+
+No browser popups, alerts, mailto fallbacks, native navigation, stale toasts, or
+invisible ghost layers are allowed in this flow. The secure inquiry form remains
+the only public contact path.
+
+Verification: `npm run build` + `npm run copy-check` pass (9 HTML files); a
+`dist/` scan finds no `mailto:`, `support@…`, `alert(`, `window.open`, or
+`inquiry-toast`. Rendered in a local preview at 390px: the modal opens on the
+form view (success/error hidden, no toast element in the DOM, no horizontal
+overflow); the success view renders with only Close and focus lands on it; the
+two-line failure block renders as two clean lines. The full live success path
+(real Turnstile + Resend on Vercel) still must be smoke-tested on a preview
+deployment — it cannot run under `astro preview`/`dev` (the form is also gated by
+`PUBLIC_FORM_ENABLED` locally).

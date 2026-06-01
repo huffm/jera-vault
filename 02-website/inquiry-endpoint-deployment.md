@@ -125,27 +125,40 @@ the contact page, inquiry modal, and footer (ADR 0006, June 1 2026).
 
 ## Success / failure UX (client)
 
-On a successful response the inquiry modal **closes gracefully and a toast
-confirms** the send — there is no inline-only success state and, deliberately,
-no browser alert, mail-client popup, or transient overlay. See ADR 0006
-("June 1 Success UX") for the full decision.
+On success the inquiry modal **swaps its own content from the form to an in-modal
+success view** — there is no toast, no browser alert, no mail-client popup, and
+no transient overlay. Failure stays inline in the form. See ADR 0006
+("June 1 In-Modal Success State") for the full decision and the ghost-rectangle
+post-mortem.
 
-- **Success:** reset form → reset Turnstile → close modal (focus returns to the
-  trigger) → show a pearl-styled toast: title "Inquiry sent", quieter line
-  "We'll be in touch soon." Auto-dismisses (~5s), dismissible, `role="status"`.
-- **Why the modal closes before resetting Turnstile:** resetting a *visible*
-  managed Turnstile widget can briefly flash its challenge overlay (the
-  "faint popup" that was reported). Closing the modal first removes the widget
-  from view, so the reset is invisible.
-- **Failure:** the modal stays open and shows the generic inline message
-  "Something went wrong sending your inquiry. Please try again in a moment." No
-  backend validation detail is exposed; no popup.
+- **Success:** the same modal transitions form view → success view. Sequence:
+  clear the submitting flag → reset the form → clear status/error → hide the form
+  view → show the success view → reset Turnstile (now off-screen, so it cannot
+  flash) → move focus into the success view (`role="status"`, announced). Success
+  view: a blue/cyan check, title "Inquiry sent.", line "Thanks for sharing the
+  details. We'll review it and be in touch soon.", and a single **Close** action.
+  There is intentionally **no "Send another inquiry"** action.
+- **Why in-modal, not a toast:** the earlier toast was a fixed-position pearl
+  surface that auto-dismissed after ~5s. Reopening the modal within that window
+  left the toast sitting *behind* the modal panel as a faint translucent
+  rectangle (the reported "ghost box"); clicking the backdrop dismissed it. An
+  in-modal success state cannot leave a layer behind the modal and is harder to
+  miss for a project inquiry. The toast system (markup, JS, CSS) was removed.
+- **Why Turnstile is reset only after the form view is hidden:** resetting a
+  *visible* managed Turnstile widget can briefly flash its challenge overlay.
+  Hiding the form view first makes the reset off-screen and invisible.
+- **Failure:** the modal stays open on the form view and shows a calm two-line
+  block (`role="alert"`): title "Inquiry was not sent." and line "Please try
+  again in a moment." No backend detail is exposed, no popup. (The long
+  single-paragraph error was replaced.)
 - **Duplicate submits** are blocked by an `isSubmitting` guard plus the disabled
   submit button while a request is in flight. The honeypot path runs the same
-  success handler so a bot sees an identical outcome.
+  success transition so a bot sees an identical outcome.
+- **No stale layers:** opening always forces the form view and clears any error;
+  closing from the success view restores the form view for the next open.
 
-This is UX only — the endpoint, Turnstile/Resend, validation, origin checks, and
-the form-only contact rule are unchanged.
+This is UX only — the endpoint, Turnstile/Resend, validation, origin checks, the
+honeypot, and the form-only contact rule are unchanged.
 
 ## How to test the endpoint
 
