@@ -123,6 +123,30 @@ the contact page, inquiry modal, and footer (ADR 0006, June 1 2026).
   submit button is disabled — no mailto fallback, and the form is never faked as
   sent.
 
+## Success / failure UX (client)
+
+On a successful response the inquiry modal **closes gracefully and a toast
+confirms** the send — there is no inline-only success state and, deliberately,
+no browser alert, mail-client popup, or transient overlay. See ADR 0006
+("June 1 Success UX") for the full decision.
+
+- **Success:** reset form → reset Turnstile → close modal (focus returns to the
+  trigger) → show a pearl-styled toast: title "Inquiry sent", quieter line
+  "We'll be in touch soon." Auto-dismisses (~5s), dismissible, `role="status"`.
+- **Why the modal closes before resetting Turnstile:** resetting a *visible*
+  managed Turnstile widget can briefly flash its challenge overlay (the
+  "faint popup" that was reported). Closing the modal first removes the widget
+  from view, so the reset is invisible.
+- **Failure:** the modal stays open and shows the generic inline message
+  "Something went wrong sending your inquiry. Please try again in a moment." No
+  backend validation detail is exposed; no popup.
+- **Duplicate submits** are blocked by an `isSubmitting` guard plus the disabled
+  submit button while a request is in flight. The honeypot path runs the same
+  success handler so a bot sees an identical outcome.
+
+This is UX only — the endpoint, Turnstile/Resend, validation, origin checks, and
+the form-only contact rule are unchanged.
+
 ## How to test the endpoint
 
 Local dev note: `astro dev` does not run Vercel Functions. Test the function

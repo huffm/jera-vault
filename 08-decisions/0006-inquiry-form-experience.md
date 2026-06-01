@@ -474,3 +474,65 @@ Verification: `npm run build` and `npm run copy-check` pass across 9 HTML files;
 a `dist/` scan finds no `mailto:`, no `support@…`, and no raw support address in
 visible text or hrefs (only the visitor's own `you@example.com` input
 placeholder remains).
+
+## June 1 Success UX: Modal Close + Toast (transient popup eliminated)
+
+Decision: a successful submission now **closes the modal gracefully and shows a
+toast** outside the modal, instead of leaving an inline success status inside an
+open modal. Failures stay inline. This is a UX-only change — the endpoint, the
+security controls (Turnstile, honeypot, validation, origin checks, Resend), and
+the form-only contact rule are unchanged.
+
+Likely source of the reported "faint popup / brief flash" on success: the old
+success path called `window.turnstile.reset()` while the modal — and the
+Turnstile widget — were still open and visible. Resetting a visible managed
+Turnstile widget can briefly render its interaction/verification overlay, which
+reads as a transient popup. A secondary contributor is the browser's
+autofill / "save info" bubble that any in-place submit of a form with
+name/email fields can surface. There is **no** `alert()`, `confirm()`,
+`window.open`, `mailto:`, `target="_blank"`, or native form navigation in the
+flow — `event.preventDefault()` is the first line of the submit handler, and the
+form is `novalidate` (so the only validation bubble is the deliberate
+`reportValidity()` on the invalid path, never on success).
+
+Fix: on success the modal closes first (which removes the widget from view), so
+the subsequent `turnstile.reset()` — kept so a re-open gets a fresh token —
+cannot flash an overlay. Confirmation moves to a toast that is a real product
+surface, not a browser alert.
+
+Success flow (`InquiryModal.astro`):
+
+1. `event.preventDefault()`; a `isSubmitting` guard blocks duplicate submits
+   while a request is in flight (submit button is also disabled during the
+   request).
+2. On `response.ok && data.ok`: reset the form, reset Turnstile, clear the
+   inline status, close the modal (focus returns to the trigger), show the toast.
+3. The honeypot path routes through the **same** success handler, so a bot sees
+   the identical outcome and no signal leaks.
+
+Toast design (premium surface, treated like a product component — not an alert):
+
+- Pearl material (white→cool radial wash), a blue/cyan edge-light hairline, a
+  soft layered shadow, and a small blue→cyan gradient check icon. No loud green
+  box, no cheap animation.
+- Copy: a short bold title "Inquiry sent" with the reassurance as the quieter
+  supporting line "We’ll be in touch soon." Title/note use `text-wrap: balance`
+  so any wrap stays even with no single-word orphan or mid-word break.
+- Fixed bottom-right on desktop; full-width within gutters at ≤30rem (verified
+  at 390px: within viewport, no horizontal overflow).
+- Accessible: `role="status"` + `aria-live="polite"`, a keyboard-reachable
+  dismiss button with visible focus, auto-dismiss after ~5.2s, and motion that
+  the global `prefers-reduced-motion` rule neutralizes while keeping it visible.
+
+Failure flow: modal stays open; inline status shows the generic
+"Something went wrong sending your inquiry. Please try again in a moment." No
+backend detail is exposed and no popup is shown. The earlier catch-block copy
+that still said "or use the email link below" (a leftover from the removed
+mailto) was corrected to the generic message.
+
+Verification: `npm run build` + `npm run copy-check` pass (9 HTML files); a
+`dist/` scan finds no `mailto:`, `support@…`, `alert(`, or `window.open`. The
+toast was rendered at 390px in a local preview to confirm the premium look and
+no overflow. The full live success path (real Turnstile + Resend on Vercel)
+must be smoke-tested on a preview deployment — it cannot run under
+`astro preview`/`dev`.
