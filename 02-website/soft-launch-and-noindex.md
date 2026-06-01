@@ -38,7 +38,10 @@ as a static backstop.
   `X-Robots-Tag: noindex, nofollow, noarchive` on `/(.*)`.
 - Vercel header config is **static** — it cannot read `PUBLIC_SOFT_LAUNCH`. It
   is unconditional and applies on every deploy until removed.
-- It is flagged with a `$comment` in the file as soft-launch-only.
+- This soft-launch-only reminder lives here in the docs, not in `vercel.json`:
+  Vercel's config schema rejects extra properties (e.g. `$comment`), so the
+  `headers` block must be removed by following the checklist below before
+  public launch.
 
 ## Where env vars are set
 
