@@ -387,3 +387,90 @@ What did not change:
 - No-JS fallback behavior remains intact (real anchor `mailto:` links).
 - Raw support email is still hidden from normal page text and remains only in
   `mailto:` hrefs and mailto draft logic.
+
+## May 31 Secure Inquiry Endpoint v1 (form submits to `/api/inquiry`)
+
+Decision: the inquiry modal now **submits to a secure backend endpoint**
+instead of opening a `mailto:` draft. This supersedes the mailto-on-submit
+behavior described above. Direct email is unchanged as the quiet secondary
+fallback ("Prefer email?").
+
+What changed (`src/components/inquiry/InquiryModal.astro`):
+
+- The submit handler `fetch`-POSTs JSON to `/api/inquiry` (category, name,
+  email, company, message, `turnstileToken`, `website` honeypot).
+- A visually hidden, `aria-hidden`, `tabindex="-1"` honeypot field (`website`).
+- A Cloudflare Turnstile widget that renders **only** when
+  `PUBLIC_TURNSTILE_SITE_KEY` is set and the form is enabled.
+- An `aria-live="polite"` status region for generic success/failure copy. No
+  server-side validation detail is shown to the visitor.
+- `PUBLIC_FORM_ENABLED` gate: when not exactly `"true"` the submit button is
+  disabled and a calm "being finalized for launch" note shows — the form never
+  fakes a successful send.
+
+Category contract: option values are now slugs (`applied-ai`,
+`enterprise-modernization`, `workflow-automation`, `architecture-integration`,
+`decision-support-systems`, `product-strategy`, `not-sure-yet`) that the
+endpoint validates against. Display labels are unchanged. The endpoint maps the
+slug back to the label for the email body. Keep the two lists in sync.
+
+Accessibility unchanged: dialog semantics, Escape close, outside-click close,
+focus entry/return, focus trap, visible focus, native validity, per-input
+labels. The honeypot is removed from the a11y tree and tab order.
+
+Endpoint, env vars, Turnstile/Resend setup, security controls, rate-limiting
+stance, and the launch checklist live in
+`02-website/inquiry-endpoint-deployment.md`. The "Boundaries: do not add a
+backend form submission service in this slice" constraint above was scoped to
+the earlier static slice; v1 of the secure endpoint is the approved successor.
+
+## June 1 Form-Only Contact (mailto fallback removed for v1)
+
+Decision: for v1 and soft launch the **only** public contact path is the
+secure inquiry form. The "Prefer email?" `mailto:` fallback is **removed** from
+all public UI. This supersedes every earlier section that demoted-but-kept the
+mailto fallback (May 27, May 28 x2, and the "Direct email is unchanged as the
+quiet secondary fallback" line in the May 31 section). It also reverses the
+earlier boundary "Do not remove the mailto fallback" and the accessibility note
+"The form keeps a visible fallback email link."
+
+Why direct email was removed:
+
+- A `mailto:` href cannot be secured — the destination address is exposed in
+  the page source to anyone who inspects or clicks it, and it is trivially
+  scraped. Email obfuscation is weak and hurts accessibility, so it is not a
+  real mitigation.
+- The form is the stronger path: it carries Turnstile, a honeypot, validation,
+  origin checks, and server-side delivery. The mailto fallback bypasses all of
+  those spam controls.
+- The receiving inbox is configured **server-side only** via `CONTACT_TO_EMAIL`
+  (Vercel env). No public personal email or support alias appears in page text
+  or hrefs. `src/config/site.ts` no longer exports any email or `mailto:` value.
+
+Form-disabled honesty (soft launch): when `PUBLIC_FORM_ENABLED` is not exactly
+`"true"`, the submit button is disabled and the modal shows a calm note —
+"Inquiry submission is being finalized for soft launch." No mailto fallback is
+offered; the page is not a dead end because the form and its message remain the
+clear, single contact affordance.
+
+Implementation:
+
+- `src/config/site.ts`: removed `contactEmail`, `contactMailtoSubject`, and the
+  `contactMailtoHref` export.
+- `InquiryModal.astro`: removed the "Prefer email?" `.quiet-email-link` from the
+  action area; the primary "Send inquiry" button now spans the action row.
+  Status/error/disabled copy no longer references an email link.
+- `Footer.astro`: Contact column is now just "Start an inquiry" (`/contact`,
+  inquiry-trigger). The quiet email link was removed.
+- `contact.astro`: dark panel keeps the single "Open inquiry form" button; its
+  no-JS `href` now points to `/contact` instead of a `mailto:`. The quiet email
+  link was removed.
+- `global.css`: the now-orphaned `.quiet-email-link*` and
+  `.inquiry-form__fallback` rules were deleted, and the modal action area was
+  collapsed from a two-column (button + fallback) grid to a single full-width
+  primary button.
+
+Verification: `npm run build` and `npm run copy-check` pass across 9 HTML files;
+a `dist/` scan finds no `mailto:`, no `support@…`, and no raw support address in
+visible text or hrefs (only the visitor's own `you@example.com` input
+placeholder remains).
