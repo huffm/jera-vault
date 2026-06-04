@@ -608,3 +608,71 @@ two-line failure block renders as two clean lines. The full live success path
 (real Turnstile + Resend on Vercel) still must be smoke-tested on a preview
 deployment — it cannot run under `astro preview`/`dev` (the form is also gated by
 `PUBLIC_FORM_ENABLED` locally).
+
+## June 4 Form Quality Pass: validation, error surface, success close
+
+Three refinements; no change to the endpoint, Turnstile/Resend, honeypot, origin
+checks, or the form-only contact rule.
+
+**Success view loses its internal Close.** The success view previously held a
+"Close" button. Removed — the modal already provides three exits (top-right X,
+Escape, backdrop click) and the success container takes focus (`role="status"`,
+`tabindex="-1"`) so it is announced. In the success state the only focusable
+element is the X (verified), so there is no accessibility need for an internal
+button; it was redundant. The success state now reads as a calm, complete
+confirmation with no extra action bar.
+
+**Error styling — restrained clay surface, not a harsh paragraph.** The inline
+send-failure block is now a flex layout: a small clay alert icon plus a body with
+title "Inquiry was not sent." (deep clay `#8f3a26`, weight 700) and a quieter line
+"Please try again in a moment." (`--color-muted-strong`). Surface is a soft clay
+wash (`rgba(176,75,55,0.07→0.035)`) with a restrained `rgba(176,75,55,0.26)`
+border and an inset highlight — tone-signalling, palette-consistent, generic, and
+leak-free. `role="alert"`.
+
+**Client-side validation — graceful, accessible, inline.** Native
+`checkValidity()`/`reportValidity()` (ugly browser bubbles) were replaced with a
+custom inline system:
+
+- Each field has a `<p class="inquiry-field__error">` wired via
+  `aria-describedby`; on failure the field gets `aria-invalid="true"` (which
+  drives a restrained clay border + soft clay focus ring) and the message shows.
+- On submit, every field is validated; the inline messages render and focus moves
+  to the **first** invalid field (announced via its describedby). No POST occurs.
+- Errors live-clear: once a flagged field is corrected (`input`/`change`), its
+  message clears. New errors are never introduced mid-typing — only relaxed.
+- Bounds and the email shape **mirror `api/inquiry.ts` exactly** — category in the
+  allowlist; name 2–120; email ≤200 and `/^[^\s@]+@[^\s@]+\.[^\s@]+$/`; company
+  ≤200; message 20–4000 — so the client never rejects what the server accepts nor
+  waves through what it rejects. **Client validation is UX only; the server
+  remains the source of truth and is unchanged.** Messages are human and calm and
+  expose no server internals.
+- Missing Turnstile is now a graceful inline message under the widget
+  (`role="alert"`: "Please complete the verification, then send again.") rather
+  than a generic-feeling status line. The honeypot is untouched and still hidden.
+
+State machine (`InquiryModal.astro`) — idle / clientInvalid / submitting /
+success / serverError / formDisabled / turnstilePending. Each transition fully
+clears stale UI: opening forces the form view and clears field/turnstile/server
+errors; success resets the form, clears all errors, hides the form view, then
+resets Turnstile off-screen; serverError keeps the form view and shows the clay
+block; an `isSubmitting` guard + disabled submit prevent duplicates. No toast,
+popup, alert, native navigation, mailto fallback, or ghost layer exists.
+
+Verification (local `astro preview`, 390px, throwaway build with
+`PUBLIC_FORM_ENABLED=true` and Cloudflare's public always-pass Turnstile test key
+`1x…AA` — `.env.local` untouched; the shipped build is rebuilt clean):
+
+- Empty submit → 4 inline errors (category/name/email/message; company optional),
+  focus on the first invalid, no native bubble, no overflow, 0 console errors.
+- Bad email → "Please enter a valid email address."; short message → "…at least
+  20 characters."; both live-clear on correction.
+- Valid data + test token → real POST (404 under preview) → clay error block,
+  modal stays on the form view.
+- Success view: 0 internal buttons, focus on the container, only the X focusable;
+  Escape, backdrop, and X all close; reopening returns a clean, reset form.
+- `dist` scan: no `mailto:`, `support@…`, `alert(`, `window.open`, or
+  `inquiry-toast`; clean build does not contain the test key.
+
+Live success (real Turnstile + Resend on Vercel) still must be smoke-tested on a
+preview deployment.

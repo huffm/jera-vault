@@ -132,12 +132,23 @@ no transient overlay. Failure stays inline in the form. See ADR 0006
 post-mortem.
 
 - **Success:** the same modal transitions form view → success view. Sequence:
-  clear the submitting flag → reset the form → clear status/error → hide the form
-  view → show the success view → reset Turnstile (now off-screen, so it cannot
-  flash) → move focus into the success view (`role="status"`, announced). Success
-  view: a blue/cyan check, title "Inquiry sent.", line "Thanks for sharing the
-  details. We'll review it and be in touch soon.", and a single **Close** action.
-  There is intentionally **no "Send another inquiry"** action.
+  clear the submitting flag → reset the form → clear status/field/server errors →
+  hide the form view → show the success view → reset Turnstile (now off-screen, so
+  it cannot flash) → move focus into the success view (`role="status"`,
+  announced). Success view: a blue/cyan check, title "Inquiry sent.", line "Thanks
+  for sharing the details. We'll review it and be in touch soon." There is
+  intentionally **no internal action button** (no "Close", no "Send another") —
+  the modal's top-right X, Escape, and backdrop click are the ways out, and the
+  success container takes focus so it is announced (in this state the X is the
+  only focusable element, so no internal button is needed).
+- **Client validation (UX only; server authoritative):** the modal validates
+  inline before POST — category required (allowlist), name 2–120, email ≤200 and
+  a basic shape, company ≤200, message 20–4000, Turnstile present — **mirroring
+  `api/inquiry.ts` exactly**. Failures show per-field messages (wired via
+  `aria-describedby` + `aria-invalid`, restrained clay styling) and focus the
+  first invalid field; no native browser bubbles. The server re-validates
+  everything and remains the source of truth — client checks are never trusted by
+  the endpoint and expose no server internals.
 - **Why in-modal, not a toast:** the earlier toast was a fixed-position pearl
   surface that auto-dismissed after ~5s. Reopening the modal within that window
   left the toast sitting *behind* the modal panel as a faint translucent
