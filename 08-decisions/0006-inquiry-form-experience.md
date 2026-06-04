@@ -676,3 +676,95 @@ Verification (local `astro preview`, 390px, throwaway build with
 
 Live success (real Turnstile + Resend on Vercel) still must be smoke-tested on a
 preview deployment.
+
+## June 4 Success Composition (tighten copy, center, fix awkward wrap)
+
+Problem: the success supporting line wrapped awkwardly — "…We'll review it and"
+/ "be in touch soon." — and the block looked stranded. Cause: `.inquiry-success`
+was left-aligned (`justify-items: start`) and narrow (`max-width: 42ch`) inside a
+wide panel, and the longer Option B line orphaned its tail.
+
+Decision: compose the success view as a deliberate, centered confirmation
+surface, and use the shorter copy so it renders cleanly without forcing a bad
+break.
+
+- Copy is now **Option A**: title "Inquiry sent.", line "Thanks for sharing the
+  details. We'll be in touch soon." (Option B's "review it and" was the source of
+  the orphan and was dropped — extra words were not worth a bad wrap.)
+- `.inquiry-success` is centered (`justify-items: center`, `text-align: center`,
+  `margin-inline: auto`, `max-width: 34rem`) with calmer clamped vertical padding,
+  so the icon, title, and copy read as one grouped, finished surface rather than
+  leftover form content.
+- `.inquiry-success__note` uses `max-inline-size: 26ch` + `text-wrap: balance` so
+  the two sentences land as two even lines ("Thanks for sharing the details." /
+  "We'll be in touch soon.") instead of relying on default wrapping. The title
+  also gets `text-wrap: balance`.
+
+Unchanged: same-modal success pattern, no internal close button, X / Escape /
+backdrop close, `role="status"` + focus announcement, the polished clay error
+block, and the accessible inline validation.
+
+Verification (local `astro preview`, throwaway enabled build): rendered line
+measurement confirms the note is exactly two even lines at **both 1280px and
+390px**, the block is centered in the panel, no horizontal overflow; Escape,
+backdrop, and X still close; reopening returns a clean form; empty submit still
+yields 4 inline field errors with focus on the first; the error block markup is
+intact. `npm run build` + `npm run copy-check` pass; `dist` scan finds no
+`mailto:`, `support@…`, `alert(`, `window.open`, or `inquiry-toast`; the clean
+build ships Option A copy and not the test key.
+
+## June 4 Initial-Open Ghost Rectangle (backdrop-filter + transform)
+
+Symptom: on first open of the modal — before any interaction — a faint
+rectangular pale box appeared behind the lower/right form area and vanished on
+any click. This was NOT the old toast (long removed) and not a post-submit
+artifact; it showed on initial render.
+
+Cause: the modal panel (`.inquiry-modal__panel`) carried the shared
+`.pearl-panel` class, which applies `backdrop-filter: blur(18px)`. The panel
+also runs the `inquiry-rise` entrance **transform** animation and sits inside
+the overlay's own `backdrop-filter: blur(20px)`. A backdrop-filter on a
+transforming element nested inside another backdrop-filter is a known Chromium
+compositing bug: it leaves a stale snapshot of the panel's backdrop as a faint
+rectangle until the next repaint (a click) clears it. Diagnosis was by computed
+style + toggling classes in a live preview; screenshots do NOT capture it
+(taking a screenshot forces the repaint that clears it), which is itself the
+tell that it is a GPU compositing ghost, not a painted element. Turnstile, the
+hidden success/error views, and the honeypot were all transparent with no
+filters and were ruled out.
+
+Fix: remove the `pearl-panel` class from the modal panel. The
+`.inquiry-modal__panel` rule already defines its own full background, border,
+and box-shadow, so `.pearl-panel` contributed **only** the unwanted
+`backdrop-filter` — dropping the class removes the blur with zero visual change.
+The overlay keeps its own blur (and runs only an opacity fade, not a transform),
+so the page behind the modal is still blurred and the panel still reads as a
+pearl surface.
+
+Minifier trap (important): the first attempted fix —
+`.inquiry-modal__panel { backdrop-filter: none }` — did **not** work. `none` is
+the property's initial value, so the CSS minifier (lightningcss) stripped the
+standard `backdrop-filter: none` as redundant while keeping only
+`-webkit-backdrop-filter: none`; the standard property then still cascaded
+`blur(18px)` from `.pearl-panel`. Lesson: you cannot reliably override an
+inherited filter/transform to its initial value via a same-or-lower-specificity
+rule, because the minifier drops initial-value declarations. Remove the source
+class (or the source declaration), do not set the property to `none`.
+
+Rules going forward:
+- Hidden modal states must not remain painted, and the panel must not stack a
+  `backdrop-filter` on a transforming element nested inside another
+  `backdrop-filter` — that combination creates compositing ghosts. One blur
+  layer (the overlay) is enough.
+- The Turnstile wrapper must stay visually contained and transparent inside the
+  modal (it already is: transparent background, no filter); it was not the
+  source here but the rule stands so it never becomes one.
+
+Verification (local `astro preview`, enabled throwaway build): computed
+`backdrop-filter` on the panel is now `none` (overlay still `blur(20px)`); the
+panel keeps its gradient background (no visual regression); Turnstile renders;
+empty submit still yields 4 inline field errors with focus on the first; the
+success view is two balanced lines; the clay error block is intact; X, Escape,
+and backdrop all close; reopening is clean; no overflow at 390px. Clean rebuild:
+`build` + `copy-check` pass; `dist` has no `mailto:`/`support@…`/`alert(`/
+`window.open`/`inquiry-toast` and the panel no longer carries `pearl-panel`.
