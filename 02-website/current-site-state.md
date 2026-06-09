@@ -427,7 +427,7 @@ Card refinements:
 
 Inquiry modal refinements:
 
-- Exact requested copy applied: eyebrow `Project Inquiry`, headline `Rough idea, stubborn workflow, or modernization effort?`, intro `Send over the shape of it, even if it is still messy. Jera Technologies will help turn it into a practical next step.`, message label `What needs attention?`, placeholder describing a workflow, legacy system, modernization effort, product idea, integration, or decision process, fallback heading `Prefer a direct email?`, helper `Send a short note to:`, and contact email `support@jeratechnologies.com`.
+- Exact requested copy applied: eyebrow `Project Inquiry`, headline `Rough idea, stubborn workflow, or modernization effort?`, intro `Send over the shape of it, even if it is still messy. Jera Technologies will help turn it into a practical next step.`, message label `What needs attention?`, placeholder `What's the situation?`, fallback heading `Prefer a direct email?`, helper `Send a short note to:`, and contact email `support@jeratechnologies.com`.
 - The right edge double line artifact was fully resolved by disabling the modal panel's iridescent overlay (`.inquiry-modal__panel.iridescent-edge::after { display: none }`), so the panel's own border, inset highlight, and pearl gradient carry the polish.
 - Modal headline uses `text-wrap: balance`; the intro, fallback note, and email line use `text-wrap: pretty` for cleaner desktop and mobile wraps.
 - Modal panel uses a calm fade plus a soft 240ms rise animation so it lands like a small product surface, and the animation is suppressed under `prefers-reduced-motion`.
@@ -1027,8 +1027,8 @@ Modal copy revision:
 - Message label confirmed correct as "What needs attention?" (the
   reported "What eeds attention?" typo was not present in source; it was
   a stale render).
-- Eyebrow, project category options, message placeholder, fallback
-  heading, and email were unchanged.
+- Eyebrow, project category options, fallback heading, and email were unchanged.
+  The current message placeholder is `What's the situation?`.
 
 Form hierarchy refinement:
 

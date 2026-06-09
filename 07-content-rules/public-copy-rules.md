@@ -279,7 +279,7 @@ May 15 inquiry copy update:
 - Use `Applied AI` in the public inquiry categories and public service label.
 - Final inquiry categories are `Applied AI`, `Enterprise Modernization`, `Workflow Automation`, `Architecture & Integration`, `Decision Support Systems`, `Product Strategy`, and `Not Sure Yet`.
 - Message label should read `What needs attention?`.
-- Message placeholder should read `A workflow, legacy system, modernization effort, product idea, integration, or decision process that needs improvement.`
+- Message placeholder should read `What's the situation?`.
 - Fallback copy should read `Prefer a direct email?` and `Send a short note to:`.
 - Keep the email spelled exactly as `support@jeratechnologies.com`.
 - Do not reintroduce the retired service label, retired engineering variant, retired fallback helper, or typo contact email.
@@ -323,7 +323,7 @@ Copy refinements landed in this pass:
 
 - Homepage product portfolio eyebrow now reads `Product lab` rather than `Product portfolio`. This aligns the public language with the brand direction of describing the lab's surfaced work as Jera built products and product lab work, while still avoiding portfolio gallery framing.
 - About `Focus / AI` and `Approach / Build` metric values were replaced with `Focus / Applied AI` and `Method / Structured` plus refined supporting copy, so the page no longer carries shout-word values that read as SaaS poster language.
-- Inquiry modal copy was confirmed against the launch spec: eyebrow `Project Inquiry`, headline `Rough idea, stubborn workflow, or modernization effort?`, intro `Send over the shape of it, even if it is still messy. Jera Technologies will help turn it into a practical next step.`, message label `What needs attention?`, message placeholder describing a workflow, legacy system, modernization effort, product idea, integration, or decision process that needs improvement, fallback heading `Prefer a direct email?`, fallback helper `Send a short note to:`, and fallback email `support@jeratechnologies.com`.
+- Inquiry modal copy was confirmed against the launch spec: eyebrow `Project Inquiry`, headline `Rough idea, stubborn workflow, or modernization effort?`, intro `Send over the shape of it, even if it is still messy. Jera Technologies will help turn it into a practical next step.`, message label `What needs attention?`, message placeholder `What's the situation?`, fallback heading `Prefer a direct email?`, fallback helper `Send a short note to:`, and fallback email `support@jeratechnologies.com`.
 
 `check-public-copy.mjs` was expanded so the build pipeline blocks any regression of the named internal phrases:
 

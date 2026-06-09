@@ -36,7 +36,7 @@ May 15 form quality refinement:
 
 - The right edge artifact was resolved by softening the modal-specific iridescent overlay and removing the always reserved scrollbar gutter.
 - The final project category options are `Applied AI`, `Enterprise Modernization`, `Workflow Automation`, `Architecture & Integration`, `Decision Support Systems`, `Product Strategy`, and `Not Sure Yet`.
-- The message label is `What needs attention?`, with a placeholder that invites a workflow, legacy system, modernization effort, product idea, integration, or decision process that needs improvement.
+- The message label is `What needs attention?`, with the placeholder `What's the situation?`.
 - The fallback copy is `Prefer a direct email?` and `Send a short note to:`
 - The fallback email remains `support@jeratechnologies.com`.
 - The headline uses balanced wrapping and the supporting copy uses prettier wrapping where supported.

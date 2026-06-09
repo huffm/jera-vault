@@ -8,6 +8,24 @@ Premium Design Architecture Pre-Launch Pass
 
 Make the Jera Technologies public site feel more polished, more intentional, more trustworthy, and more product quality so it reads as a top-dollar independent software studio. Keep the existing positioning, the Astro static delivery model, and the simplified inquiry experience.
 
+## June 9 Inquiry Textarea Copy And Production Gate Note
+
+Scope: narrow copy/documentation slice only. No inquiry API behavior, Turnstile,
+Resend, validation, origin guard, or error-handling changes.
+
+- Updated the inquiry textarea placeholder for the `What needs attention?` field
+  to `What's the situation?`.
+- Production diagnostic finding recorded separately: `/api/inquiry` returned
+  403 in production before external API calls, which points first to local
+  gatekeeping such as `CONTACT_ALLOWED_ORIGINS` or the production form enable
+  configuration, not Resend.
+- Expected production `CONTACT_ALLOWED_ORIGINS` value:
+  `https://jeratechnologies.com,https://www.jeratechnologies.com`.
+- Vercel Production environment variable changes require a redeploy before the
+  production site should be considered verified.
+- `.env.example` was checked and already lists the variables used by the form
+  path; no secrets or real API keys were added.
+
 ## May 28 Principal Design Architect Review + Focused Polish
 
 Scope:
@@ -394,7 +412,8 @@ Implemented changes:
 - Updated the inquiry category options to `Applied AI`, `Enterprise Modernization`, `Workflow Automation`, `Architecture & Integration`, `Decision Support Systems`, `Product Strategy`, and `Not Sure Yet`.
 - Updated the final modal headline to `Rough idea, stubborn workflow, or modernization effort?`.
 - Updated the final modal intro to `Send over the shape of it, even if it is still messy. Jera Technologies will help turn it into a practical next step.`
-- Updated the message label to `What needs attention?` and the placeholder to describe a workflow, legacy system, modernization effort, product idea, integration, or decision process that needs improvement.
+- Updated the message label to `What needs attention?`; the current placeholder
+  is `What's the situation?`.
 - Replaced the fallback helper with `Prefer a direct email?` and `Send a short note to:`.
 - Confirmed the fallback email is `support@jeratechnologies.com`.
 - Improved text wrapping with balanced headline wrapping and prettier supporting copy wrapping where supported.

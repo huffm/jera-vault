@@ -15,6 +15,8 @@ of the static build.
 
 For v1 / soft launch the inquiry form is the **only** public contact path.
 There is no public `mailto:` fallback (see "Contact is form-only" below).
+The current message textarea label is `What needs attention?`; its placeholder
+is `What's the situation?`.
 
 ## Architecture decision
 
@@ -43,10 +45,18 @@ Secret (server-only — NEVER expose, never commit):
 | `RESEND_API_KEY` | Resend transactional email auth. |
 | `CONTACT_TO_EMAIL` | Destination inbox (the Jera alias). |
 | `CONTACT_FROM_EMAIL` | Fixed verified sender. NOT the visitor's email. |
-| `CONTACT_ALLOWED_ORIGINS` | Comma-separated origins allowed to POST. |
+| `CONTACT_ALLOWED_ORIGINS` | Comma-separated origins allowed to POST. Production expected: `https://jeratechnologies.com,https://www.jeratechnologies.com`. |
 
 `PUBLIC_*` values are inlined at **build time** — changing them requires a
-redeploy. Secret values are read at **runtime** in the function.
+redeploy. Secret values are read at **runtime** in the function. Operationally,
+after changing Vercel Production environment variables, redeploy production
+before treating the form as verified.
+
+Production origin allowlist:
+
+```text
+CONTACT_ALLOWED_ORIGINS=https://jeratechnologies.com,https://www.jeratechnologies.com
+```
 
 ## Configuring Turnstile
 
@@ -170,6 +180,15 @@ post-mortem.
 
 This is UX only — the endpoint, Turnstile/Resend, validation, origin checks, the
 honeypot, and the form-only contact rule are unchanged.
+
+## Production diagnostic note
+
+June 9 finding: `/api/inquiry` returned 403 in production before external API
+calls. That points first to local gatekeeping such as
+`CONTACT_ALLOWED_ORIGINS` or production form enable/build configuration, not
+Resend. Resend is reached only after the request passes local validation,
+origin checks, and Turnstile verification; delivery failures are surfaced as the
+generic send failure path.
 
 ## How to test the endpoint
 

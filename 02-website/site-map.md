@@ -130,14 +130,16 @@ Current launch metadata status:
 - Sitemap output uses `https://jeratechnologies.com`.
 - `/products/dai/` is excluded from the sitemap.
 
-## Future Contact Form Direction
+## Current Contact Form Direction
 
-A later slice may add a real contact form using:
+The contact path is now the secure inquiry form:
 
-- Astro API route or Astro Action.
-- Vercel on demand rendering through the Vercel adapter.
+- Static Astro site plus the root Vercel Function at `/api/inquiry`.
 - Resend for email delivery.
-- Vercel environment variables for `RESEND_API_KEY` and `CONTACT_TO_EMAIL`.
-- Optional Cloudflare Turnstile for spam protection.
+- Cloudflare Turnstile for spam protection.
+- Vercel environment variables for `PUBLIC_FORM_ENABLED`,
+  `PUBLIC_TURNSTILE_SITE_KEY`, `TURNSTILE_SECRET_KEY`, `RESEND_API_KEY`,
+  `CONTACT_TO_EMAIL`, `CONTACT_FROM_EMAIL`, and `CONTACT_ALLOWED_ORIGINS`.
 
-Do not add this backend until the launch site needs it.
+See `02-website/inquiry-endpoint-deployment.md` for deployment and production
+origin allowlist details.
