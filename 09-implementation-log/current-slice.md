@@ -14,15 +14,17 @@ Scope: client-side inquiry confirmation UX and documentation. No endpoint,
 Turnstile verification, Resend delivery, environment variables, or payload
 contract changed. No public `mailto:` fallback was added.
 
-- Replaced the in-modal success confirmation with an outside confirmation
+- Replaced the prior in-dialog success confirmation with an outside confirmation
   banner shown after successful submit.
 - Success sequence: reset form and stale UI, close the modal so focus returns to
   the trigger, reset Turnstile after the modal is closed, then show the banner.
-- Banner copy: `Inquiry sent` / `Thanks. I'll review the details and follow up
-  soon.`
-- Banner design: compact bottom-right on desktop; near full-width bottom banner
-  on mobile with safe-area bottom spacing and side gutters.
+- Banner copy: `Inquiry sent` / `Thanks. We’ll be in touch soon.`
+- Banner design: more noticeable bottom-right flag on desktop with a slightly
+  wider pearl surface, stronger blue/cyan left accent, more defined border,
+  richer check tile, and stronger layered elevation; near full-width bottom
+  banner on mobile with safe-area bottom spacing and side gutters.
 - Added an accessible dismiss control and preserved reduced-motion behavior.
+- Auto-dismiss now uses a 6 second duration.
 - Kept failure inline in the modal with the existing generic clay error block.
 
 ## June 9 Inquiry Textarea Copy And Production Gate Note

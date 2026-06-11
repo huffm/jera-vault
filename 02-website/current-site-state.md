@@ -11,8 +11,9 @@ Second principal-level design review of the homepage atmosphere. The viewport-an
 ## June 11 Inquiry Confirmation Banner v1
 
 The inquiry success state now closes the modal and shows a compact confirmation
-banner outside the dialog. This replaces the prior in-modal success state, which
-could feel like a nested modal and could crowd the top-right close X on mobile.
+banner outside the dialog. This replaces the prior in-dialog success state,
+which could feel like an extra dialog layer and could crowd the top-right close
+X on mobile.
 
 Behavior:
 
@@ -25,14 +26,16 @@ Behavior:
 
 Banner:
 
-- Desktop: fixed bottom-right, compact, readable.
+- Desktop: fixed bottom-right, compact but more visible, with a slightly wider
+  pearl surface and stronger elevation.
 - Mobile: near full-width bottom banner with side gutters and
   `env(safe-area-inset-bottom)` spacing.
 - Style: light pearl surface, deep navy text, soft blue/cyan check accent,
-  subtle border, rounded corners, restrained shadow.
+  stronger blue/cyan left accent, more defined border, rounded corners, and
+  restrained shadow/glow.
 - Accessibility: polite live status body, keyboard-reachable dismiss button,
-  visible focus, and reduced-motion-safe animation.
-- Copy: `Inquiry sent` / `Thanks. I'll review the details and follow up soon.`
+  visible focus, reduced-motion-safe animation, and 6 second auto-dismiss.
+- Copy: `Inquiry sent` / `Thanks. We’ll be in touch soon.`
 
 ## May 26 Clean Pearl Base (corrects the warm pearl pass below)
 

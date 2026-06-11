@@ -109,7 +109,10 @@ is detected by Vercel independently of the static build.
 Inquiry confirmation copy:
 
 - Title: `Inquiry sent`
-- Body: `Thanks. I'll review the details and follow up soon.`
+- Body: `Thanks. We’ll be in touch soon.`
+
+Confirmation copy should stay calm, business appropriate, and short. Prefer
+`We’ll be in touch soon` over highly personal first-person follow-up language.
 
 ## Responsive QA Copy Result
 

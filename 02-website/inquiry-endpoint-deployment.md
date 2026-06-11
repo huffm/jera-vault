@@ -143,8 +143,9 @@ outside the dialog. Failure stays inline in the form. See ADR 0006
   status/field/server errors → close the modal (focus returns to the trigger) →
   reset Turnstile while the widget is no longer visible → show the confirmation
   banner. The banner uses a light pearl surface, deep navy text, soft blue
-  accent icon, restrained border/shadow, and a dismiss button. Copy: title
-  "Inquiry sent"; line "Thanks. I'll review the details and follow up soon."
+  accent icon, stronger left success cue, restrained border/shadow, and a
+  dismiss button. Copy: title "Inquiry sent"; line "Thanks. We’ll be in touch
+  soon."
 - **Client validation (UX only; server authoritative):** the modal validates
   inline before POST — category required (allowlist), name 2–120, email ≤200 and
   a basic shape, company ≤200, message 20–4000, Turnstile present — **mirroring
@@ -153,9 +154,9 @@ outside the dialog. Failure stays inline in the form. See ADR 0006
   first invalid field; no native browser bubbles. The server re-validates
   everything and remains the source of truth — client checks are never trusted by
   the endpoint and expose no server internals.
-- **Why a banner:** the previous in-modal success state could feel like a second
-  modal inside the inquiry modal, and on mobile the main close control crowded
-  the confirmation content. Closing the modal first makes the confirmation its
+- **Why a banner:** the previous in-dialog success state could feel like an
+  extra dialog layer, and on mobile the main close control crowded the
+  confirmation content. Closing the modal first makes the confirmation its
   own mobile-safe surface and prevents overlap with modal controls.
 - **Why Turnstile is reset only after the modal closes:** resetting a *visible*
   managed Turnstile widget can briefly flash its challenge overlay. Closing the

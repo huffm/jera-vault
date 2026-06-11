@@ -777,7 +777,7 @@ success state and the June 4 success composition rule.
 
 Why:
 
-- The in-modal success state could read as a modal inside a modal.
+- The prior in-dialog success state could read as an extra dialog layer.
 - On mobile, the main close X could crowd the success content.
 - The confirmation should remain noticeable, but it should not compete with or
   overlap modal controls.
@@ -796,16 +796,17 @@ Success flow:
 
 Banner design:
 
-- Desktop: fixed bottom-right, compact width.
+- Desktop: fixed bottom-right, compact but visible width.
 - Mobile: near full-width bottom banner with safe-area bottom offset and side
   gutters so it does not crowd viewport edges or browser chrome.
 - Visual language: light pearl surface, deep navy text, soft blue/cyan check
-  accent, subtle border, rounded corners, restrained shadow.
+  accent, stronger left success cue, more defined border, rounded corners,
+  restrained shadow, and subtle blue glow.
 - Accessibility: the message body uses `role="status"` with polite live
   announcement, and the banner includes a keyboard-reachable dismiss button with
   visible focus. Entrance motion is disabled under `prefers-reduced-motion`.
-- Copy: title "Inquiry sent"; body "Thanks. I'll review the details and follow
-  up soon."
+  Auto-dismiss is 6 seconds.
+- Copy: title "Inquiry sent"; body "Thanks. We’ll be in touch soon."
 
 Unchanged: `api/inquiry.ts`, Turnstile verification, Resend delivery, environment
 variables, payload shape, client validation contract, honeypot behavior, failure
