@@ -135,22 +135,16 @@ the contact page, inquiry modal, and footer (ADR 0006, June 1 2026).
 
 ## Success / failure UX (client)
 
-On success the inquiry modal **swaps its own content from the form to an in-modal
-success view** — there is no toast, no browser alert, no mail-client popup, and
-no transient overlay. Failure stays inline in the form. See ADR 0006
-("June 1 In-Modal Success State") for the full decision and the ghost-rectangle
-post-mortem.
+On success the inquiry modal **closes** and a compact confirmation banner appears
+outside the dialog. Failure stays inline in the form. See ADR 0006
+("June 11 Inquiry Confirmation Banner v1") for the full current decision.
 
-- **Success:** the same modal transitions form view → success view. Sequence:
-  clear the submitting flag → reset the form → clear status/field/server errors →
-  hide the form view → show the success view → reset Turnstile (now off-screen, so
-  it cannot flash) → move focus into the success view (`role="status"`,
-  announced). Success view: a blue/cyan check, title "Inquiry sent.", line "Thanks
-  for sharing the details. We'll review it and be in touch soon." There is
-  intentionally **no internal action button** (no "Close", no "Send another") —
-  the modal's top-right X, Escape, and backdrop click are the ways out, and the
-  success container takes focus so it is announced (in this state the X is the
-  only focusable element, so no internal button is needed).
+- **Success:** sequence is clear the submitting flag → reset the form → clear
+  status/field/server errors → close the modal (focus returns to the trigger) →
+  reset Turnstile while the widget is no longer visible → show the confirmation
+  banner. The banner uses a light pearl surface, deep navy text, soft blue
+  accent icon, restrained border/shadow, and a dismiss button. Copy: title
+  "Inquiry sent"; line "Thanks. I'll review the details and follow up soon."
 - **Client validation (UX only; server authoritative):** the modal validates
   inline before POST — category required (allowlist), name 2–120, email ≤200 and
   a basic shape, company ≤200, message 20–4000, Turnstile present — **mirroring
@@ -159,15 +153,13 @@ post-mortem.
   first invalid field; no native browser bubbles. The server re-validates
   everything and remains the source of truth — client checks are never trusted by
   the endpoint and expose no server internals.
-- **Why in-modal, not a toast:** the earlier toast was a fixed-position pearl
-  surface that auto-dismissed after ~5s. Reopening the modal within that window
-  left the toast sitting *behind* the modal panel as a faint translucent
-  rectangle (the reported "ghost box"); clicking the backdrop dismissed it. An
-  in-modal success state cannot leave a layer behind the modal and is harder to
-  miss for a project inquiry. The toast system (markup, JS, CSS) was removed.
-- **Why Turnstile is reset only after the form view is hidden:** resetting a
-  *visible* managed Turnstile widget can briefly flash its challenge overlay.
-  Hiding the form view first makes the reset off-screen and invisible.
+- **Why a banner:** the previous in-modal success state could feel like a second
+  modal inside the inquiry modal, and on mobile the main close control crowded
+  the confirmation content. Closing the modal first makes the confirmation its
+  own mobile-safe surface and prevents overlap with modal controls.
+- **Why Turnstile is reset only after the modal closes:** resetting a *visible*
+  managed Turnstile widget can briefly flash its challenge overlay. Closing the
+  modal first makes the reset off-screen and invisible.
 - **Failure:** the modal stays open on the form view and shows a calm two-line
   block (`role="alert"`): title "Inquiry was not sent." and line "Please try
   again in a moment." No backend detail is exposed, no popup. (The long
@@ -175,8 +167,6 @@ post-mortem.
 - **Duplicate submits** are blocked by an `isSubmitting` guard plus the disabled
   submit button while a request is in flight. The honeypot path runs the same
   success transition so a bot sees an identical outcome.
-- **No stale layers:** opening always forces the form view and clears any error;
-  closing from the success view restores the form view for the next open.
 
 This is UX only — the endpoint, Turnstile/Resend, validation, origin checks, the
 honeypot, and the form-only contact rule are unchanged.

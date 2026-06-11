@@ -85,29 +85,31 @@ Run it after `npm run build` before preview deployment.
 
 ## Contact Copy And Links
 
-Use `support@jeratechnologies.com` for public contact email.
+The inquiry form is the single public contact path for v1 / soft launch.
 
 Do not use retired placeholder email addresses or placeholder domains in public source, generated HTML, or vault launch notes.
 
-Use mailto links for v1 contact behavior. A backend contact form should only be added in a future implementation slice with explicit approval.
+Do not add a public `mailto:` fallback or expose the receiving inbox in client
+source. The destination inbox is configured server-side through
+`CONTACT_TO_EMAIL`.
 
-Current v1 mailto behavior:
+Current v1 contact behavior:
 
 - Header project CTA opens the inquiry modal when JavaScript is available and falls back to `/contact`.
 - Contact navigation items route to `/contact`.
 - Product, service, solution, and page level contact CTAs open the inquiry modal when JavaScript is available and fall back to `/contact`.
-- The Contact page has an inquiry form trigger and a direct email button.
-- Footer email uses the same shared mailto link.
+- The Contact page has an inquiry form trigger.
+- Footer contact routes visitors to the inquiry path.
 
-The v1 choice is intentional: the inquiry modal creates a mailto draft, keeping the public site static, simple, honest, and launch ready while avoiding backend dependencies until they are needed.
+The v1 choice is intentional: the inquiry modal posts JSON to the Vercel
+Function at `/api/inquiry`, with Turnstile, honeypot, server-side validation,
+origin checks, and Resend delivery. The Astro site remains static; the function
+is detected by Vercel independently of the static build.
 
-Future contact form direction:
+Inquiry confirmation copy:
 
-- Astro API route or Astro Action.
-- Vercel deployment with the required runtime configuration.
-- Vercel environment variables for the email delivery key and destination address.
-- Resend for email delivery.
-- Optional Cloudflare Turnstile for spam protection.
+- Title: `Inquiry sent`
+- Body: `Thanks. I'll review the details and follow up soon.`
 
 ## Responsive QA Copy Result
 
@@ -426,3 +428,69 @@ Latest check result:
 
 - npm run build and npm run copy-check passed on May 17, 2026.
 - No restricted internal terms appear in generated HTML.
+
+## May 17 About Page Copy
+
+Approved About page copy after the voice pass:
+
+- Page eyebrow: "About Jera Technologies".
+- Page heading: "Software engineering for messy, useful work".
+- Page intro: "Jera Technologies builds practical AI and software systems
+  for teams trying to make complex work easier to see, run, and improve."
+- Dark card eyebrow: "Founder and Principal Engineer".
+- Dark card heading: "Built for the parts of work that refuse to stay
+  simple".
+- Dark card body: "Applied AI, modernization, automation, and product
+  delivery shaped around real workflows, not slideware."
+- Focus card: "Focus" / "AI that earns its keep" / "Tied to real
+  workflows, useful outputs, and review paths people can trust."
+- Method card: "Method" / "Messy ideas, cleaner paths" / "Translate
+  complex technical ideas into software people can operate, maintain, and
+  explain."
+- Operating principles heading: "Calm engineering for complicated
+  systems".
+- Operating principles intro: "The work stays practical: understand the
+  workflow, protect what already works, and make the next version easier
+  to use."
+- Principle 1: "Practical AI" / "AI starts with the workflow, the output
+  people need, and the review path around it."
+- Principle 2: "Enterprise judgment" / "Modernization respects the
+  existing system, the users, and the business rules behind it."
+- Principle 3: "Product minded delivery" / "Useful software needs clear
+  screens, steady workflow paths, and maintainable structure."
+
+Voice rule clarified: a little dry wit is acceptable in public headings
+when it stays calm and senior. Do not let it become cute, goofy, or
+hypey. Do not imply paid client work. Do not overclaim. Keep DAI internal.
+
+Latest check result: npm run build and npm run copy-check passed on
+May 17, 2026. No restricted internal terms in generated HTML.
+
+## Prominent Section Intro Rule
+
+This rule exists because verbose intro copy kept reappearing on page
+after page and degrading the visual quality of the site. Treat it as a
+standing rule, not a one-off cleanup.
+
+A prominent section or page intro (the paragraph that sits under an
+eyebrow and heading, before cards, panels, or a grid) should usually:
+
+- Carry one clear idea.
+- Avoid laundry lists. Do not try to name every service or every
+  capability in the intro sentence.
+- Avoid comma-heavy service lists. More than about three commas in a
+  prominent intro is a signal to rewrite.
+- Stay short enough to render cleanly: aim for roughly 110 characters or
+  fewer, and one or two calm lines on desktop.
+- Let cards and panels carry the detail. The intro frames; the cards
+  explain.
+- Prefer better, shorter copy over widening or narrowing the text
+  measure. A long sentence is a copy problem, not a layout problem.
+
+Card body copy may carry more detail than an intro, but it should still
+be concise. A four item comma list in a card description should usually
+drop to three concrete terms or fewer.
+
+The build copy check (npm run copy-check) now prints an advisory when a
+prominent intro is long or comma-heavy. The advisory never fails the
+build; it is a prompt to review the copy editorially.

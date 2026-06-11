@@ -768,3 +768,45 @@ success view is two balanced lines; the clay error block is intact; X, Escape,
 and backdrop all close; reopening is clean; no overflow at 390px. Clean rebuild:
 `build` + `copy-check` pass; `dist` has no `mailto:`/`support@…`/`alert(`/
 `window.open`/`inquiry-toast` and the panel no longer carries `pearl-panel`.
+
+## June 11 Inquiry Confirmation Banner v1
+
+Decision: a successful inquiry now closes the modal and shows a compact
+confirmation banner outside the dialog. This supersedes the June 1 in-modal
+success state and the June 4 success composition rule.
+
+Why:
+
+- The in-modal success state could read as a modal inside a modal.
+- On mobile, the main close X could crowd the success content.
+- The confirmation should remain noticeable, but it should not compete with or
+  overlap modal controls.
+
+Success flow:
+
+1. On a real success response, or on the honeypot success path, the client clears
+   submitting state and re-enables the submit button.
+2. The form is reset and all status, field, Turnstile, and server error surfaces
+   are cleared.
+3. The inquiry modal closes, so focus returns to the triggering element and the
+   modal close X is no longer present.
+4. Turnstile is reset only after the modal has closed, keeping any widget reset
+   off-screen.
+5. A confirmation banner appears.
+
+Banner design:
+
+- Desktop: fixed bottom-right, compact width.
+- Mobile: near full-width bottom banner with safe-area bottom offset and side
+  gutters so it does not crowd viewport edges or browser chrome.
+- Visual language: light pearl surface, deep navy text, soft blue/cyan check
+  accent, subtle border, rounded corners, restrained shadow.
+- Accessibility: the message body uses `role="status"` with polite live
+  announcement, and the banner includes a keyboard-reachable dismiss button with
+  visible focus. Entrance motion is disabled under `prefers-reduced-motion`.
+- Copy: title "Inquiry sent"; body "Thanks. I'll review the details and follow
+  up soon."
+
+Unchanged: `api/inquiry.ts`, Turnstile verification, Resend delivery, environment
+variables, payload shape, client validation contract, honeypot behavior, failure
+block, and the no-mailto public contact rule.

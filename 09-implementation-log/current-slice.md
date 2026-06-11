@@ -8,6 +8,23 @@ Premium Design Architecture Pre-Launch Pass
 
 Make the Jera Technologies public site feel more polished, more intentional, more trustworthy, and more product quality so it reads as a top-dollar independent software studio. Keep the existing positioning, the Astro static delivery model, and the simplified inquiry experience.
 
+## June 11 Inquiry Confirmation Banner v1
+
+Scope: client-side inquiry confirmation UX and documentation. No endpoint,
+Turnstile verification, Resend delivery, environment variables, or payload
+contract changed. No public `mailto:` fallback was added.
+
+- Replaced the in-modal success confirmation with an outside confirmation
+  banner shown after successful submit.
+- Success sequence: reset form and stale UI, close the modal so focus returns to
+  the trigger, reset Turnstile after the modal is closed, then show the banner.
+- Banner copy: `Inquiry sent` / `Thanks. I'll review the details and follow up
+  soon.`
+- Banner design: compact bottom-right on desktop; near full-width bottom banner
+  on mobile with safe-area bottom spacing and side gutters.
+- Added an accessible dismiss control and preserved reduced-motion behavior.
+- Kept failure inline in the modal with the existing generic clay error block.
+
 ## June 9 Inquiry Textarea Copy And Production Gate Note
 
 Scope: narrow copy/documentation slice only. No inquiry API behavior, Turnstile,
