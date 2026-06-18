@@ -12,13 +12,13 @@ The products are owned products and product examples. They should not be framed 
 
 DAI remains the internal product direction for structured AI workflows.
 
-For the public site, do not lead with the DAI name. Use business facing terms such as Structured Analysis Pipeline, Decision Artifact Pipeline, Analysis Workflow Platform, Reviewable Analysis System, or Structured Decision Support Workflow.
+For the public site, do not lead with the DAI name. Use business facing terms such as Structured Analysis Pipeline, Analysis Workflow Platform, Reviewable Analysis System, Analysis and Evaluation System, or Structured Decision Support Workflow.
 
 The current public page uses Structured Analysis Pipeline.
 
 ### Matchup Analyzer
 
-The Matchup Analyzer is a Jera built decision support application that applies structured analysis workflow design to sports matchup review. It focuses on structured analysis, signal gathering, reviewable outputs, and clear decision artifacts.
+The Matchup Analyzer is a product lab prototype that applies structured analysis workflow design to sports matchup review. It focuses on matchup context, signal comparison, human review, and compact decision support briefs.
 
 ## Product Portfolio Role
 
@@ -26,7 +26,8 @@ The product portfolio should show what Jera Technologies can build through its e
 
 - AI enabled workflows.
 - Structured analysis pipelines.
-- Decision support applications.
+- Decision support systems.
+- AI assisted review workflows.
 - Productized technical ideas.
 - Usable interfaces around complex logic.
 
@@ -39,23 +40,23 @@ The product portfolio should show what Jera Technologies can build through its e
 
 ## Current Website Reflection
 
-The Products page currently presents the Structured Analysis Pipeline and the Matchup Analyzer as Jera built products in the Jera Technologies product portfolio.
+The Product Lab page presents the Structured Analysis Pipeline as a platform concept and the Matchup Analyzer as a sports decision support prototype.
 
-The page emphasizes applied AI software, structured analysis pipelines, decision support applications, productized workflow design, and polished product experiences.
+The page emphasizes applied AI software, structured analysis pipelines, decision support systems, productized workflow design, and focused prototypes.
 
 The public site no longer exposes the DAI name in generated HTML. The public route is `/products/structured-analysis-pipeline/`.
 
 The current Products page headline is:
 
-`Structured software products for clearer decisions`
+`Product concepts grounded in real workflows`
 
 This headline keeps the page business facing and product minded. It communicates the product portfolio without implying paid client work or exposing internal product shorthand.
 
-The homepage product portfolio section now uses:
+The homepage product lab section now uses:
 
-`Jera built products with a clear engineering approach`
+`Product concepts grounded in real workflows`
 
-This phrasing keeps the products connected to Jera engineering capability without sounding like a casual portfolio gallery or overexplaining internal methods.
+This phrasing keeps the product work credible while clearly signaling that the public examples are exploratory concepts and prototypes.
 
 Product cards now use a more mature product surface structure:
 

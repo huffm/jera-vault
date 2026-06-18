@@ -4,11 +4,11 @@
 
 Headline:
 
-Practical software for structured AI workflows
+Practical AI software for clearer workflows
 
 Supporting copy:
 
-Jera Technologies builds AI enabled products, automation, modernization support, and decision applications that turn complex work into clearer software.
+Jera Technologies builds practical AI enabled software for teams that need clearer workflows, better decision support, and modernized systems.
 
 Primary action:
 
@@ -25,20 +25,20 @@ Use three or four concise service cards:
 - Applied AI.
 - Enterprise modernization.
 - Automation & Integration.
-- Decision support applications.
+- Decision support systems.
 
-## Product Portfolio
+## Product Lab
 
-Position the products as proof of engineering capability.
+Position the concepts and prototypes as focused product exploration without overstating maturity.
 
 Suggested copy:
 
-Jera Technologies maintains a product portfolio of Jera built products that show how complex workflows can become structured software, reviewable outputs, and business facing experiences.
+Product lab builds explore structured AI workflows, decision support, automation, and applied product engineering.
 
 Featured products:
 
-- Structured Analysis Pipeline: AI enabled workflows for context, structured analysis, and reviewable decision work.
-- Matchup Analyzer: A decision support application that applies structured workflow design to sports matchup review.
+- Structured Analysis Pipeline: A platform concept for structured AI analysis, human review, and decision support.
+- Matchup Analyzer: A product lab prototype for structured sports matchup review and compact decision support briefs.
 
 ## Solution Examples
 
@@ -48,9 +48,9 @@ Show practical engineering patterns without implying paid client work.
 
 Suggested examples:
 
-- AI decision artifact system.
+- Structured decision support system.
 - Data pipeline modernization.
-- Authentication & Integration Work.
+- Authentication and integration modernization.
 
 ## Why Jera Technologies
 
@@ -74,6 +74,6 @@ Open the inquiry modal or contact Jera Technologies by email.
 ## Current Homepage Notes
 
 - The workflow model heading is `A practical path from idea to usable software`.
-- The services intro avoids the awkward `decision support software` line break by using `decision systems`.
+- The homepage uses `decision support systems` as the established, enterprise friendly service term.
 - The homepage `Discuss a project` CTA opens the inquiry modal when JavaScript is available and falls back to `/contact`.
 - The footer brand copy now emphasizes practical AI enabled products, workflow automation, and modernization support for teams turning complex work into usable software.

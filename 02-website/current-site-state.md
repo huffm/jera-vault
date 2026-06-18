@@ -1274,3 +1274,81 @@ Validation:
 - Console errors and warnings: 0.
 
 No public copy changed. No dependencies added. No DAI repos touched.
+
+## June 18 Public Language Review
+
+The public site completed a language review focused on replacing internal
+product architecture terminology with clear market facing language.
+
+Current conventions:
+
+- Use `decision support systems` for established enterprise positioning.
+- Use `structured decision support` when the copy needs to communicate rigor.
+- Use `AI assisted review workflows` for practical workflow improvement.
+- Use `analysis and evaluation workflows` for structured research and review.
+- Use `reviewable decision support output` or `compact decision support brief`
+  when describing a concrete deliverable.
+- Artifact terminology is restricted in public copy and enforced by the
+  generated HTML copy check.
+
+Public site changes:
+
+- The homepage now leads with practical AI software, clearer workflows,
+  better decision support, and modernized systems.
+- Services consistently use `decision support systems` and `AI assisted
+  review workflows`.
+- The first Solution Example is now `Structured Decision Support System`,
+  with a new public anchor at `#structured-decision-support-system`.
+- The remaining Solution Examples use more specific public titles and
+  descriptions for data pipelines, authentication and integration, and
+  incremental modernization.
+- The Structured Analysis Pipeline is labeled as a product lab concept.
+- The Matchup Analyzer is labeled as a product lab prototype and described
+  as a sports analysis workflow that produces compact decision support
+  briefs. The copy does not present it as a prediction engine or imply
+  certainty, picks, profits, or a betting advantage.
+
+Validation:
+
+- `npm run build` passed and generated 9 pages.
+- `npm run copy-check` passed across all 9 generated HTML files.
+- The intro rhythm advisory reports all prominent intros are concise.
+- A direct generated HTML scan found no retired artifact language, betting
+  claims, prediction claims, or retired Solution Example anchor.
+
+## June 18 Public Language Acceptance Review
+
+Final acceptance status: pass.
+
+Acceptance checks confirmed:
+
+- Public source contains no stale terminology or stale reference to the
+  retired Solution Example filename or anchor.
+- `Structured Decision Support System` renders in the Solution Examples
+  collection with the `#structured-decision-support-system` anchor.
+- The retired anchor is absent from generated HTML and sitemap output.
+- All 180 generated internal links resolve to an existing route and every
+  linked anchor resolves to an element in the target page.
+- Product Lab, Structured Analysis Pipeline, Matchup Analyzer, Services,
+  and Solution Examples metadata use the current public positioning.
+- Sitemap output includes the current product and Solution Example routes,
+  excludes the retired DAI route, and contains no retired terminology.
+- Visible generated copy contains no sports prediction or betting marketing
+  language, paid client claims, or internal strategy language.
+- Remaining restricted phrases are limited to the explicit terms-to-avoid
+  list and dated historical implementation records.
+
+Verification:
+
+- `npm run build` passed and generated 9 pages.
+- `npm run copy-check` passed across all 9 generated HTML files.
+- The intro rhythm advisory reports all prominent intros are concise.
+- `git diff --check` passed in both `jera-site` and `jera-vault`.
+- No separate lint, formatting, or link-check script is defined in the site
+  package. The acceptance review therefore used a generated HTML route and
+  anchor audit in addition to the project scripts.
+
+## June 18 Header Banner Copy
+
+The public header subtitle now reads `Applied AI & Software Solutions`.
+Layout, typography, responsive wrapping, animation, and styling are unchanged.

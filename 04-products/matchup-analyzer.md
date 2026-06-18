@@ -2,9 +2,9 @@
 
 ## Product Positioning
 
-The Matchup Analyzer is a Jera built decision support application that applies structured analysis workflow design to sports matchup analysis.
+The Matchup Analyzer is a product lab prototype that applies structured analysis workflow design to sports matchup review.
 
-It should be presented as a product example of structured analysis, signal gathering, reviewable outputs, and clear decision artifacts.
+It should be presented as a focused exploration of matchup context, market signals, structured reasoning, and compact decision support briefs.
 
 ## What It Does
 
@@ -17,7 +17,7 @@ The product should focus on:
 - Structured analysis.
 - Signal gathering.
 - Reviewable outputs.
-- Clear decision artifacts.
+- Compact decision support briefs.
 - Productized AI workflow design.
 
 ## What It Demonstrates
@@ -31,7 +31,7 @@ The matchup analyzer demonstrates that Jera Technologies can:
 
 ## Public Copy
 
-The matchup analyzer is a Jera built decision support application for sports matchup analysis. It applies structured workflows to gather signals, organize analysis, and produce reviewable decision artifacts.
+The Matchup Analyzer is a product lab prototype for structured sports matchup review. It applies a clear workflow to gather context, compare relevant signals, and produce a compact brief for human review.
 
 ## Boundaries
 
@@ -39,8 +39,8 @@ Do not frame the product as a betting prediction engine. Do not promise picks, p
 
 ## Current Website Reflection
 
-The Matchup Analyzer product page currently describes the product as a Jera built decision support application for structured sports matchup analysis.
+The Matchup Analyzer product page describes the product as a sports decision support prototype for structured matchup review.
 
-The page focuses on signal gathering, structured analysis, reviewable outputs, clear decision artifacts, and productized AI workflow design.
+The page focuses on context gathering, structured analysis, visible uncertainty, compact decision support briefs, and productized AI workflow design.
 
 The page no longer references DAI publicly. It describes the relationship in business facing terms as structured analysis workflow design.

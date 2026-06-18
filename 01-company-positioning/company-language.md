@@ -14,7 +14,7 @@ Jera Technologies helps organizations design, modernize, and automate software w
 
 ## Product Portfolio Description
 
-Jera Technologies maintains a product portfolio of Jera built products that demonstrate its engineering approach. These products show how structured analysis, signal gathering, reviewable outputs, and productized workflows can become usable software experiences.
+Product lab builds explore structured AI workflows, decision support, automation, and applied product engineering. These concepts and prototypes show how complex analysis and review workflows can become usable software.
 
 ## Product Language
 
@@ -25,9 +25,11 @@ Use these phrases when describing products:
 - Product example
 - Solution example
 - Applied AI software
-- Decision support application
+- Decision support system
+- Structured decision support
+- AI assisted review workflow
 - Structured analysis pipeline
-- Reviewable decision artifact
+- Reviewable decision support output
 - Productized AI workflow
 
 ## Claim Boundaries
@@ -47,6 +49,6 @@ Jera Technologies designs and builds practical AI enabled software products, aut
 
 The current site uses the standard company description across the homepage, footer, About page, and SEO metadata.
 
-The homepage hero currently states:
+The homepage hero supporting copy states:
 
-Jera Technologies builds practical AI enabled software products and business solutions for clearer workflows, better decision support, and modernized systems.
+Jera Technologies builds practical AI enabled software for teams that need clearer workflows, better decision support, and modernized systems.

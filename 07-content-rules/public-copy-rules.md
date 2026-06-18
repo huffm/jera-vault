@@ -514,12 +514,10 @@ HTML has no `decision artifact`, `artifact system`, `artifact engine`,
 A tiny follow-up pass tightened a few small brand/positioning lines after
 the typography rhythm pass. No redesign, no full copy reopen.
 
-- Header subtitle: `Modern Systems & Decision Support` →
-  `Workflow Systems & Decision Support`. "Workflow" is the throughline of
-  the current site language; "Modern" read as a near-empty modifier. Fits
-  one line on desktop and wraps to a clean balanced two lines on mobile
-  inside the 196px subtitle cap (the intended mobile behavior), no
-  overflow.
+- Header subtitle: `Workflow Systems & Decision Support` →
+  `Applied AI & Software Solutions`. The existing responsive subtitle
+  treatment remains unchanged: one line on desktop and a clean two-line
+  wrap on mobile with no overflow.
 - Footer brand line: `Practical AI and software engineering for clearer
   workflows.` → `Software systems for work that does not fit the
   template.` This supersedes the earlier fixed footer-line decisions (see

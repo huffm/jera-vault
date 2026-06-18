@@ -10,7 +10,7 @@ The focus is practical software. AI should improve the workflow, not become the 
 
 - AI assisted research and analysis workflows.
 - Retrieval based product experiences.
-- Reviewable decision artifacts.
+- Reviewable decision support outputs.
 - Human review and evaluation flows.
 - Prompted workflows wrapped in usable application interfaces.
 - Structured outputs that can be inspected and improved.
@@ -18,7 +18,7 @@ The focus is practical software. AI should improve the workflow, not become the 
 ## Business Problems It Supports
 
 - Teams need faster synthesis from scattered information.
-- Complex decisions need clearer review artifacts.
+- Complex decisions need clearer review workflows and outputs.
 - Existing workflows need AI support without losing human judgment.
 - Technical ideas need to become polished product experiences.
 

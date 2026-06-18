@@ -6,7 +6,7 @@ DAI is the internal product direction for a Jera Technologies product focused on
 
 Public copy should not lead with the DAI name. The current public label is Structured Analysis Pipeline.
 
-The public product framing should focus on structured analysis, signal organization, reviewable outputs, and clear decision artifacts.
+The public product framing should focus on source context, structured analysis, evaluation, human review, and clear decision support outputs.
 
 ## What DAI Does
 
@@ -18,11 +18,11 @@ It is designed around:
 - Structured analysis of inputs.
 - Review of competing signals.
 - Clear output design.
-- Reviewable decision artifacts.
+- Reviewable decision support outputs.
 
 ## Business Relevance
 
-Many AI tools produce loose answers. Publicly, this product direction is positioned around structured workflows that help people review how information was gathered, interpreted, and turned into a decision artifact.
+Many AI tools produce loose answers. Publicly, this product direction is positioned around structured workflows that help people review how information was gathered, interpreted, evaluated, and presented for a decision.
 
 ## What It Demonstrates
 
@@ -38,7 +38,7 @@ The DAI direction demonstrates that Jera Technologies can:
 
 Preferred public copy:
 
-The Structured Analysis Pipeline is a Jera built product for AI enabled analysis workflows. It helps organize source context, structured analysis, and reviewable outputs into clear decision artifacts.
+The Structured Analysis Pipeline is a platform concept for AI enabled analysis workflows. It organizes source context, structured analysis, evaluation, and human review into clear decision support outputs.
 
 ## Boundaries
 
@@ -46,6 +46,6 @@ Do not expose private prompts, scoring rules, unreleased product strategy, or mo
 
 ## Current Website Reflection
 
-The public product page now uses the name Structured Analysis Pipeline instead of DAI.
+The public product page uses the name Structured Analysis Pipeline instead of DAI and labels the work as a product lab concept.
 
 The page focuses on source context, structured analysis, signal review, clear output design, human review, and productized AI workflows without exposing internal stage language.

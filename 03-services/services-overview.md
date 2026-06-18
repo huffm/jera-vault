@@ -2,7 +2,7 @@
 
 ## Services Positioning
 
-Jera Technologies provides software engineering services for practical AI applications, enterprise modernization, automation, integrations, decision systems, and product experience buildout.
+Jera Technologies provides software engineering services for practical AI applications, enterprise modernization, automation, integrations, decision support systems, and product experience buildout.
 
 The services should be framed around business workflows and usable software, not abstract technology.
 
@@ -29,7 +29,7 @@ Each service page should answer:
 
 ## Product Portfolio Connection
 
-The Structured Analysis Pipeline and the Matchup Analyzer should support the services story. They show that Jera Technologies can design productized workflows, structured analysis systems, and reviewable decision artifacts.
+The Structured Analysis Pipeline and the Matchup Analyzer support the services story. They show how Jera Technologies approaches productized workflows, structured analysis systems, AI assisted review, and reviewable decision support outputs.
 
 ## Current Website Reflection
 
@@ -88,7 +88,7 @@ QA result:
 
 - Service positioning remains broad and client flexible.
 - The public services intro now uses wider page and section measures so desktop copy does not wrap abruptly.
-- The homepage services sentence now uses `decision systems` instead of `decision support software` to avoid awkward line breaks while preserving the service meaning.
+- The current public services language uses `decision support systems` as the established, enterprise friendly term.
 - `Automation And Integration` was renamed to `Automation & Integration` in public copy.
 - Enterprise Modernization continues to avoid stack-specific framing and stays focused on stronger application architecture, improved backend architecture, cleaner frontend patterns, integration flows, authentication and access patterns, workflow modernization, business logic preservation, and maintainable structures.
 - Service inquiry CTAs now open the inquiry modal when JavaScript is available and keep `/contact` or mailto fallbacks.

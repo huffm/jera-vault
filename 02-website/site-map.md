@@ -37,11 +37,11 @@ Core content:
 
 ## Products
 
-Purpose: Showcase Jera built products, including the Structured Analysis Pipeline and the Matchup Analyzer.
+Purpose: Present Jera product lab concepts and prototypes, including the Structured Analysis Pipeline and the Matchup Analyzer.
 
 Core content:
 
-- Products overview.
+- Product lab overview.
 - Structured Analysis Pipeline.
 - Matchup Analyzer.
 - Product philosophy.
@@ -53,9 +53,9 @@ Purpose: Show selected work patterns and engineering approaches without implying
 
 Core content:
 
-- Structured AI decision artifact system.
+- Structured decision support system.
 - Data pipeline modernization.
-- Authentication and integration work.
+- Authentication and integration modernization.
 - Template for future examples.
 
 ## About
@@ -93,16 +93,16 @@ Implemented current routes:
 - `/about/`
 - `/contact/`
 
-The current Contact page uses `support@jeratechnologies.com`.
+The current Contact page uses the secure inquiry form and does not expose the receiving inbox in public source.
 
 Contact CTA behavior:
 
 - Header `Discuss a project` routes to `/contact`.
 - Primary contact CTAs route to `/contact`.
 - Contact navigation items route to `/contact`.
-- The `Email Jera Technologies` button uses `mailto:support@jeratechnologies.com?subject=Project%20Conversation%20with%20Jera%20Technologies`.
+- Contact actions open the inquiry form and fall back to `/contact` when JavaScript is unavailable.
 
-The site remains static for v1. A full backend contact form is intentionally deferred.
+The Astro site is static, with inquiry submission handled by the `/api/inquiry` Vercel Function.
 
 ## Redirects
 
