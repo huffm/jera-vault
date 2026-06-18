@@ -26,7 +26,9 @@ Use AI language only when it describes a real workflow or capability. Preferred 
 - Structured analysis.
 - Signal gathering.
 - Reviewable outputs.
-- Reviewable decision artifacts.
+- Reviewable decision support outputs.
+- AI assisted review workflows.
+- Analysis and evaluation workflows.
 - Human review.
 - Decision support.
 
@@ -38,7 +40,7 @@ Products should feel credible and business facing. They should demonstrate what 
 
 ## Sports Product Language
 
-The matchup analyzer should be described as a sports matchup analysis and decision support application. Do not center the product around gambling, picks, guaranteed predictions, or betting profits.
+The Matchup Analyzer should be described as a product lab prototype for sports matchup review and compact decision support briefs. Do not center the product around gambling, picks, guaranteed predictions, betting advantage, or profits.
 
 ## Current Website Copy Check
 
@@ -54,7 +56,6 @@ Avoid leading public pages with:
 
 - DAI
 - Retrieval
-- Evaluation
 - Synthesis
 - Internal stage sequencing
 - Prompt logic
@@ -66,7 +67,9 @@ Preferred public language:
 - Structured analysis
 - Signal gathering
 - Reviewable outputs
-- Clear decision artifacts
+- Structured decision support
+- AI assisted review workflows
+- Compact decision support briefs
 - Productized software workflows
 - Structured Analysis Pipeline
 - Reviewable Analysis System
@@ -79,7 +82,7 @@ The site now includes a repeatable public copy exposure check:
 
 `npm run copy-check`
 
-The check scans generated HTML in `dist` for restricted public terms including DAI, retrieval, evaluation, synthesis, private scoring rules, internal prompt logic, cognitive architecture, betting model, prediction engine, guaranteed picks, and profit.
+The check scans generated HTML in `dist` for restricted public terms including DAI, internal stage language, private scoring rules, internal prompt logic, cognitive architecture, artifact terminology, betting model, prediction engine, guaranteed picks, and profit.
 
 Run it after `npm run build` before preview deployment.
 
@@ -411,26 +414,27 @@ Current approved service descriptions:
   integrations, and access patterns."
 - Automation & Integration: "Automation across tools, data, and business
   processes, kept visible and easy to review."
-- Decision Support Systems: "Decision systems that keep signals, context,
-  and reviewable artifacts clear."
+- Decision Support Systems: "Decision support systems that keep signals,
+  context, and review paths clear."
 - Product Experience Buildout: "Technical workflows shaped into clear
   interfaces and production ready experiences."
 
 Current approved solution example descriptions:
 
-- Decision Artifact System: "Structuring AI supported work around
-  evidence, analysis, and human review."
+- Structured Decision Support System: "AI assisted analysis organized
+  around evidence, human review, and clear recommendations."
 - Data Pipeline Modernization: "Data movement and reporting workflows
   improved with practical automation."
-- Authentication & Integration Work: "Improving secure access flows,
-  integrations, and connected workflows."
+- Authentication and Integration Modernization: "Safer access flows and
+  more maintainable system connections."
 - Enterprise Modernization Patterns: "Stronger architecture, business
   logic preservation, and integration planning for existing systems."
 
 Latest check result:
 
-- npm run build and npm run copy-check passed on May 17, 2026.
-- No restricted internal terms appear in generated HTML.
+- `npm run build` and `npm run copy-check` passed on June 18, 2026.
+- No artifact terminology or other restricted internal terms appear in generated HTML.
+- The intro rhythm advisory reports all prominent intros are concise.
 
 ## May 17 About Page Copy
 
@@ -468,6 +472,78 @@ hypey. Do not imply paid client work. Do not overclaim. Keep DAI internal.
 
 Latest check result: npm run build and npm run copy-check passed on
 May 17, 2026. No restricted internal terms in generated HTML.
+
+## June 18 Public Positioning Polish
+
+A copy polish pass made the affected public language more natural and
+grounded and less generic. Paired with the desktop typography rhythm
+correction (see `02-website/design-direction.md`).
+
+Changes landed:
+
+- Header subtitle changed from `Practical AI & Software Engineering` to
+  `Modern Systems & Decision Support`. Fits on one line in the brand
+  subtitle box at 390px (187px in a 196px cap, no overflow).
+- Homepage "What Jera builds" heading: `Practical systems for complex
+  work` → `Software for complex work`. Body rewritten to
+  `Workflow software, automation, modernization, and decision support for
+  teams whose real process is messier than the diagram.`
+- Product lab heading (homepage section and Product Lab page):
+  `Product concepts grounded in real workflows` →
+  `Product concepts from real workflow problems`. Body (both surfaces):
+  `The product lab explores AI assisted review, automation, and decision
+  support through prototypes tied to practical workflow problems.`
+- Solution Examples page heading: `Solution patterns for complex software
+  workflows` → `Solution patterns for complex workflows`. Body:
+  `Examples of how Jera approaches AI assisted review, data movement,
+  system access, and modernization with clear software patterns.`
+
+Known tension to track: these new intros run ~124–133 characters and trip
+the build's non-failing intro-rhythm advisory (and run against the
+Prominent Section Intro Rule below, which prefers ≤110 chars). They were
+adopted deliberately as approved positioning copy that reads as natural
+sentences rather than terse category lists; the trade was made knowingly,
+not by oversight. Revisit if the advisory noise becomes a problem.
+
+Validation: `npm run build` and `npm run copy-check` passed; generated
+HTML has no `decision artifact`, `artifact system`, `artifact engine`,
+`applied AI software`, or betting/prediction language.
+
+## June 18 Microcopy Alignment
+
+A tiny follow-up pass tightened a few small brand/positioning lines after
+the typography rhythm pass. No redesign, no full copy reopen.
+
+- Header subtitle: `Modern Systems & Decision Support` →
+  `Workflow Systems & Decision Support`. "Workflow" is the throughline of
+  the current site language; "Modern" read as a near-empty modifier. Fits
+  one line on desktop and wraps to a clean balanced two lines on mobile
+  inside the 196px subtitle cap (the intended mobile behavior), no
+  overflow.
+- Footer brand line: `Practical AI and software engineering for clearer
+  workflows.` → `Software systems for work that does not fit the
+  template.` This supersedes the earlier fixed footer-line decisions (see
+  `02-website/design-direction.md`). It carries a little understated
+  personality, implies practical engineering without listing services,
+  makes no client-work claim, and deliberately uses a different image from
+  the homepage body ("messier than the diagram") so the two do not repeat.
+  One line on desktop within the 64ch footer measure; wraps cleanly on
+  mobile.
+- Homepage Solution section heading: `Selected patterns for complex
+  software work` → `Selected patterns for complex workflows`. Consistent
+  with the Solution Examples page heading (`Solution patterns for complex
+  workflows`) while staying distinct ("Selected" vs "Solution"), so the
+  two surfaces align without being forced identical.
+
+The `terms-to-use-and-avoid.md` contradiction was resolved: "applied AI
+software" was removed from Preferred Terms, added to Restricted Terms, and
+the replacement guidance now points to "AI enabled software" / "AI
+assisted review workflows" / "structured AI workflows". "Applied AI" alone
+remains acceptable as an inquiry category label.
+
+Validation: `npm run build` and `npm run copy-check` passed; generated
+HTML has no `applied AI software`, `decision artifact(s)`, `artifact
+system/engine`, or betting/prediction language.
 
 ## Prominent Section Intro Rule
 

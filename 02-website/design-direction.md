@@ -1232,3 +1232,39 @@ Standing rules refined:
   an intentional fallback, never a competing CTA.
 - Preserve clean pearl base, navy anchors, subtle edge light, and restrained
   surface polish.
+
+## June 18 Desktop Typography Rhythm Correction
+
+A focused typography pass corrected a desktop heading rhythm defect. No
+layout redesign, no visual system change.
+
+Problem:
+
+- Section and page headings were stacking into narrow, mobile-style towers
+  on desktop. "Practical systems for complex work" rendered as two short
+  stacked lines on a 1440px screen.
+- Root cause: `--measure-section-heading` and `--measure-page-heading` were
+  both pinned at `24ch`. At the desktop heading font that is ~487px — under
+  half the ~1180px content column — so a ~34 character heading could not
+  sit on one line and `text-wrap: balance` evened it into a tower. This
+  contradicted the long-standing direction "do not force broad desktop
+  headings into narrow text towers"; the heading tokens had simply never
+  been widened when the intro measures were.
+
+Correction:
+
+- `--measure-section-heading` widened `24ch → 44ch` (~890px desktop).
+- `--measure-page-heading` widened `24ch → 40ch` (~960px desktop).
+- `text-wrap: balance` is kept on headings; it was never the cause. The
+  mobile heading override (`22ch`) is unchanged, so intentional mobile
+  stacking is preserved. Lead/intro measures (`76ch` / `72ch`) are
+  unchanged.
+- Verified by measuring rendered headings and screenshotting at 390, 768,
+  and 1440px: homepage section headings now compose on single lines at
+  893px, page headings on single lines at ~1011px, mobile and tablet
+  rhythm preserved, no horizontal overflow.
+
+Standing rule added: a desktop heading must never inherit a paragraph-width
+measure. Headings and intros are separate measure objects. This is now a
+typography rhythm gate in the product-ui-design-architect skill
+(launch-readiness and text-rhythm references).
