@@ -1352,3 +1352,9 @@ Verification:
 
 The public header subtitle now reads `Applied AI & Software Solutions`.
 Layout, typography, responsive wrapping, animation, and styling are unchanged.
+
+## June 18 Footer Brand Copy
+
+The public footer brand line now reads `Applied AI and software for clearer
+workflows and decisions.` The existing footer composition and responsive
+measure remain unchanged.

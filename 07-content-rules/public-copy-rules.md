@@ -518,15 +518,11 @@ the typography rhythm pass. No redesign, no full copy reopen.
   `Applied AI & Software Solutions`. The existing responsive subtitle
   treatment remains unchanged: one line on desktop and a clean two-line
   wrap on mobile with no overflow.
-- Footer brand line: `Practical AI and software engineering for clearer
-  workflows.` → `Software systems for work that does not fit the
-  template.` This supersedes the earlier fixed footer-line decisions (see
-  `02-website/design-direction.md`). It carries a little understated
-  personality, implies practical engineering without listing services,
-  makes no client-work claim, and deliberately uses a different image from
-  the homepage body ("messier than the diagram") so the two do not repeat.
-  One line on desktop within the 64ch footer measure; wraps cleanly on
-  mobile.
+- Footer brand line: `Software systems for work that does not fit the
+  template.` → `Applied AI and software for clearer workflows and
+  decisions.` The new line aligns with the current header positioning and
+  remains a single calm brand statement. It uses the existing 64ch footer
+  measure and responsive footer composition.
 - Homepage Solution section heading: `Selected patterns for complex
   software work` → `Selected patterns for complex workflows`. Consistent
   with the Solution Examples page heading (`Solution patterns for complex
