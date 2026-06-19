@@ -1268,3 +1268,11 @@ Standing rule added: a desktop heading must never inherit a paragraph-width
 measure. Headings and intros are separate measure objects. This is now a
 typography rhythm gate in the product-ui-design-architect skill
 (launch-readiness and text-rhythm references).
+
+## June 19 Footer Tagline Direction
+
+The footer's single brand statement is `Software for the work behind the
+work.` It replaces the longer service-description line while preserving the
+existing footer composition. The statement should remain quiet, concise,
+and left aligned with the brand block; it does not warrant a new treatment,
+supporting copy, or layout change.

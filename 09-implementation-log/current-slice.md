@@ -1439,3 +1439,26 @@ Remaining Vercel preview QA carried forward:
   consistently top-to-bottom on the live URL and on iOS Safari.
 - Confirm the mailto handoff and the native select popup behavior.
 - Smoke test contact links, redirects, metadata, sitemap, console.
+
+## June 19 Footer Tagline Update
+
+Implemented in `jera-site`:
+
+- Replaced the footer brand line with: Software for the work behind the
+  work.
+- Preserved the footer layout, spacing, typography, responsive grid, and
+  `--measure-footer` value. No visual layout adjustment was needed.
+- Updated the footer measure comment so it no longer documents superseded
+  copy.
+
+Verification:
+
+- Local browser review at 1440x900, 768x900, and 390x844 confirmed a clean
+  single line at every width with no clipping or horizontal overflow.
+- No framework error overlay, console errors, or console warnings were
+  detected.
+- `npm run build` passed and generated 9 static pages.
+- `npm run copy-check` passed across all 9 generated HTML files. Its four
+  existing intro-length advisories remain non-blocking and unrelated.
+- The package defines no separate lint or standalone type-check script;
+  Astro's build completed its generated-type phase successfully.
