@@ -539,6 +539,27 @@ Validation: `npm run build` and `npm run copy-check` passed; generated
 HTML has no `applied AI software`, `decision artifact(s)`, `artifact
 system/engine`, or betting/prediction language.
 
+## June 28 Hero Copy Pass
+
+The homepage hero was rewritten to remove a keyword-stacked headline.
+
+- Hero H1: `Practical AI software for clearer workflows` →
+  `Software for work that outgrew the template`. Rendered with no terminal
+  period, consistent with the heading punctuation rule.
+- Hero subheadline: `Jera Technologies builds practical AI enabled software
+  for teams that need clearer workflows, better decision support, and
+  modernized systems.` → `Applied AI, automation, and modern engineering
+  for workflows, decisions, and systems that need better structure.`
+- Footer brand line `Software for the work behind the work.` was kept and
+  is intentionally not duplicated in the hero. The hero carries broader
+  positioning; the footer stays short and memorable.
+- `Applied AI,` is acceptable here; the restricted phrase is `Applied AI
+  software`, which this copy does not use.
+
+Validation: `npm run build` and `npm run copy-check` passed. Rendered QA at
+1440px and 390px confirmed clean two-line hero breaks, a single-line footer
+brand line, and no horizontal overflow.
+
 ## Prominent Section Intro Rule
 
 This rule exists because verbose intro copy kept reappearing on page

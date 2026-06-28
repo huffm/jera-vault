@@ -8,6 +8,76 @@ Premium Design Architecture Pre-Launch Pass
 
 Make the Jera Technologies public site feel more polished, more intentional, more trustworthy, and more product quality so it reads as a top-dollar independent software studio. Keep the existing positioning, the Astro static delivery model, and the simplified inquiry experience.
 
+## June 28 Hero Copy And Rhythm Pass
+
+Scope: homepage hero headline and subheadline only. Footer brand line left
+unchanged per direction. No layout, component logic, inquiry, or endpoint
+changes. No new dependencies.
+
+Problem: the hero H1 read `Practical AI software for clearer workflows`, a
+keyword-stacked line that sounds assembled rather than spoken. The
+subheadline (`Jera Technologies builds practical AI enabled software for
+teams that need clearer workflows, better decision support, and modernized
+systems.`) led with the brand name and ran as a laundry list.
+
+Changes (`src/components/sections/HeroSection.astro`):
+
+- H1: `Practical AI software for clearer workflows` →
+  `Software for work that outgrew the template`. Rendered without a
+  terminal period to match the site-wide no-terminal-period heading
+  convention (the footer brand line keeps its period because it is a
+  brand paragraph, not a heading). Inline measure kept at `max-w-[22ch]`,
+  which lands a deliberate two-line break: `Software for work that /
+  outgrew the template` at both desktop and 390px.
+- Subheadline: replaced with `Applied AI, automation, and modern
+  engineering for workflows, decisions, and systems that need better
+  structure.` Uses the existing `measure-lead pretty-text` treatment.
+  This is approved hero positioning copy; it intentionally carries broader
+  positioning while the footer stays short. It is not flagged by the intro
+  rhythm advisory (advisory only scans `section-copy`/`page-copy`).
+
+Direction rationale (from the requester): the hero carries the broader
+positioning; the footer stays short and memorable; the same line is not
+repeated in both places. `Software for the work behind the work.` remains
+the footer brand line only.
+
+Boundary check: `Applied AI,` (with the comma) does not match the
+restricted `Applied AI software` term. Copy-check passes.
+
+Verification:
+
+- `npm run build` passed (9 static pages).
+- `npm run copy-check` passed across 9 HTML files. The 4 pre-existing intro
+  rhythm advisories (What Jera builds, Product lab x2, Solution Examples
+  page) are unchanged approved copy from the June 18 positioning polish and
+  were not introduced by this pass.
+- Rendered QA in a real browser (astro dev) at 1440px and 390px:
+  - H1 renders 2 lines at both widths (607px at 1440, 358px at 390),
+    breaking `Software for work that / outgrew the template`. No orphan.
+  - Subheadline: 2 lines at 1440px, 3 calm lines at 390px.
+  - Footer brand line `Software for the work behind the work.` renders on
+    one line at 1440px (519px) and 390px (358px), no overflow.
+  - No horizontal overflow at either width. Console: 0 errors, 0 warnings.
+- Dev server was started in the background and stopped after QA; port 4321
+  freed.
+
+Not changed in this pass (recommended, not implemented):
+
+- Header subtitle `Applied AI & Software Solutions` (left as approved
+  Preferred-Term copy; `Solutions` is generic but blessed by the term
+  list).
+- Site/home meta description `Practical engineering for clearer workflows,
+  modern systems, and better decision support.` still leads with
+  `Practical` and stacks a three-item list; a future SEO-aware pass could
+  align it with the new hero positioning.
+
+Skill update (cross-project): `product-ui-design-architect` gained a
+phonetic-readability / keyword-stack section in `references/text-rhythm.md`
+(read-aloud test, lead-qualifier smell, distinct-line-per-slot, header and
+footer microcopy standards, mobile line-break awareness) plus a Quick
+Doctrine pointer in `SKILL.md`. Reference pattern scanning was already
+covered by `design-source-workflow.md`, so nothing was added there.
+
 ## June 11 Inquiry Confirmation Banner v1
 
 Scope: client-side inquiry confirmation UX and documentation. No endpoint,
